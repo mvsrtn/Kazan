@@ -434,10 +434,10 @@ namespace grafikdeneme
                 if (this.WindowState == FormWindowState.Minimized) this.WindowState = FormWindowState.Normal;
 
                 this.Location = Properties.Settings.Default.F1Location;
-                this.Size = Properties.Settings.Default.F1Size;
+                this.Size = Properties.Settings.Default.F1Size;                
             }
         }
-
+        /*
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.F1State = this.WindowState;
@@ -456,7 +456,9 @@ namespace grafikdeneme
 
             // don't forget to save the settings
             Properties.Settings.Default.Save();
-        }
+        }*/
+
+
     }
 }
 
