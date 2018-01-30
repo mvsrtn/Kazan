@@ -436,7 +436,67 @@ namespace grafikdeneme
                 this.Location = Properties.Settings.Default.F1Location;
                 this.Size = Properties.Settings.Default.F1Size;                
             }
+
+            this.Kesici_1_A.BackColor = Color.Red;
+            this.Kesici_1_B.BackColor = Color.Red;
+            this.Kesici_1_C.BackColor = Color.Red;
+            this.Kesici_2_A.BackColor = Color.Red;
+            this.Kesici_2_B.BackColor = Color.Red;
+            this.Kesici_2_C.BackColor = Color.Red;
+
+
+
         }
+
+        private void Kesici_1_A_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_1_A.BackColor == Color.Red)
+                this.Kesici_1_A.BackColor = Color.Green;
+            else if (this.Kesici_1_A.BackColor == Color.Green)
+                this.Kesici_1_A.BackColor = Color.Red;
+        }
+
+        private void Kesici_1_B_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_1_B.BackColor == Color.Red)
+                this.Kesici_1_B.BackColor = Color.Green;
+            else if (this.Kesici_1_B.BackColor == Color.Green)
+                this.Kesici_1_B.BackColor = Color.Red;
+        }
+
+        private void Kesici_1_C_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_1_C.BackColor == Color.Red)
+                this.Kesici_1_C.BackColor = Color.Green;
+            else if (this.Kesici_1_C.BackColor == Color.Green)
+                this.Kesici_1_C.BackColor = Color.Red;
+        }
+
+        private void Kesici_2_A_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_2_A.BackColor == Color.Red)
+                this.Kesici_2_A.BackColor = Color.Green;
+            else if (this.Kesici_2_A.BackColor == Color.Green)
+                this.Kesici_2_A.BackColor = Color.Red;
+        }
+
+        private void Kesici_2_B_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_2_B.BackColor == Color.Red)
+                this.Kesici_2_B.BackColor = Color.Green;
+            else if (this.Kesici_2_B.BackColor == Color.Green)
+                this.Kesici_2_B.BackColor = Color.Red;
+        }
+
+        private void Kesici_2_C_Click(object sender, EventArgs e)
+        {
+            if (this.Kesici_2_C.BackColor == Color.Red)
+                this.Kesici_2_C.BackColor = Color.Green;
+            else if (this.Kesici_2_C.BackColor == Color.Green)
+                this.Kesici_2_C.BackColor = Color.Red;
+        }
+
+
         /*
         private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
