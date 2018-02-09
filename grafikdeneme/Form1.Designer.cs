@@ -89,6 +89,7 @@
             this.Kesici_1_C = new System.Windows.Forms.Button();
             this.Kesici_1_B = new System.Windows.Forms.Button();
             this.Kesici_1_A = new System.Windows.Forms.Button();
+            this.Yukle = new System.Windows.Forms.Button();
             this.Kaydet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartA1)).BeginInit();
@@ -121,7 +122,7 @@
             this.chartV1.Name = "chartV1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "randomSeries";
+            series1.Name = "V1";
             this.chartV1.Series.Add(series1);
             this.chartV1.Size = new System.Drawing.Size(424, 88);
             this.chartV1.TabIndex = 0;
@@ -149,7 +150,7 @@
             this.chartA1.Name = "chartA1";
             series2.ChartArea = "ChartArea2";
             series2.Legend = "Legend1";
-            series2.Name = "randomSeries";
+            series2.Name = "A1";
             this.chartA1.Series.Add(series2);
             this.chartA1.Size = new System.Drawing.Size(424, 89);
             this.chartA1.TabIndex = 0;
@@ -167,7 +168,7 @@
             this.chartA2.Name = "chartA2";
             series3.ChartArea = "ChartArea2";
             series3.Legend = "Legend1";
-            series3.Name = "randomSeries";
+            series3.Name = "A2";
             this.chartA2.Series.Add(series3);
             this.chartA2.Size = new System.Drawing.Size(424, 89);
             this.chartA2.TabIndex = 0;
@@ -185,7 +186,7 @@
             this.chartV2.Name = "chartV2";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
-            series4.Name = "randomSeries";
+            series4.Name = "V2";
             this.chartV2.Series.Add(series4);
             this.chartV2.Size = new System.Drawing.Size(424, 88);
             this.chartV2.TabIndex = 0;
@@ -275,7 +276,7 @@
             this.chartA3.Name = "chartA3";
             series5.ChartArea = "ChartArea2";
             series5.Legend = "Legend1";
-            series5.Name = "randomSeries";
+            series5.Name = "A3";
             this.chartA3.Series.Add(series5);
             this.chartA3.Size = new System.Drawing.Size(424, 89);
             this.chartA3.TabIndex = 0;
@@ -293,7 +294,7 @@
             this.chartV3.Name = "chartV3";
             series6.ChartArea = "ChartArea1";
             series6.Legend = "Legend1";
-            series6.Name = "randomSeries";
+            series6.Name = "V3";
             this.chartV3.Series.Add(series6);
             this.chartV3.Size = new System.Drawing.Size(424, 88);
             this.chartV3.TabIndex = 0;
@@ -614,6 +615,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Controls.Add(this.panel6);
+            this.panel5.Controls.Add(this.Yukle);
             this.panel5.Controls.Add(this.Kaydet);
             this.panel5.Controls.Add(this.randomData);
             this.panel5.Location = new System.Drawing.Point(632, 3);
@@ -708,6 +710,16 @@
             this.Kesici_1_A.Text = "Kesici 1-A";
             this.Kesici_1_A.UseVisualStyleBackColor = false;
             this.Kesici_1_A.Click += new System.EventHandler(this.Kesici_1_A_Click);
+            // 
+            // Yukle
+            // 
+            this.Yukle.Location = new System.Drawing.Point(6, 350);
+            this.Yukle.Name = "Yukle";
+            this.Yukle.Size = new System.Drawing.Size(141, 34);
+            this.Yukle.TabIndex = 1;
+            this.Yukle.Text = "Yükle";
+            this.Yukle.UseVisualStyleBackColor = true;
+            this.Yukle.Click += new System.EventHandler(this.Yukle_Click);
             // 
             // Kaydet
             // 
@@ -805,6 +817,7 @@
         private System.Windows.Forms.Button Kesici_1_B;
         private System.Windows.Forms.Button Kesici_1_A;
         private System.Windows.Forms.Button Kaydet;
+        private System.Windows.Forms.Button Yukle;
     }
 }
 

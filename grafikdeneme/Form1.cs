@@ -22,44 +22,59 @@ namespace grafikdeneme
 
         private void randomData_Click(object sender, EventArgs e)
         {
+
+            chartV1.Series["V1"].Points.Clear();
+            chartA1.Series["A1"].Points.Clear();
+            chartV2.Series["V2"].Points.Clear();
+            chartA2.Series["A2"].Points.Clear();
+            chartV3.Series["V3"].Points.Clear();
+            chartA3.Series["A3"].Points.Clear();
+
             Random rdn = new Random();
             for (int i = 0; i <= 100; i++)
             {
-                chartV1.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
-                chartV2.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
-                chartV3.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
+                chartV1.Series["V1"].Points.AddXY(i, rdn.Next(0, 100));
+                chartV2.Series["V2"].Points.AddXY(i, rdn.Next(0, 100));
+                chartV3.Series["V3"].Points.AddXY(i, rdn.Next(0, 100));
             }
             chartV1.ChartAreas[0].AxisX.Maximum = 100;
             chartV1.ChartAreas[0].AxisX.Minimum = 0;
-            chartV1.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartV1.Series["randomSeries"].Color = Color.Red;
+            chartV1.Series["V1"].ChartType = SeriesChartType.FastLine;
+            chartV1.Series["V1"].Color = Color.Red;
             chartV2.ChartAreas[0].AxisX.Maximum = 100;
             chartV2.ChartAreas[0].AxisX.Minimum = 0;
-            chartV2.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartV2.Series["randomSeries"].Color = Color.Red;
+            chartV2.Series["V2"].ChartType = SeriesChartType.FastLine;
+            chartV2.Series["V2"].Color = Color.Red;
             chartV3.ChartAreas[0].AxisX.Maximum = 100;
             chartV3.ChartAreas[0].AxisX.Minimum = 0;
-            chartV3.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartV3.Series["randomSeries"].Color = Color.Red;
+            chartV3.Series["V3"].ChartType = SeriesChartType.FastLine;
+            chartV3.Series["V3"].Color = Color.Red;
 
             for (int i = 0; i <= 100; i++)
             {
-                chartA1.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
-                chartA2.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
-                chartA3.Series["randomSeries"].Points.AddXY(i, rdn.Next(0, 100));
+                chartA1.Series["A1"].Points.AddXY(i, rdn.Next(0, 100));
+                chartA2.Series["A2"].Points.AddXY(i, rdn.Next(0, 100));
+                chartA3.Series["A3"].Points.AddXY(i, rdn.Next(0, 100));
             }
             chartA1.ChartAreas[0].AxisX.Maximum = 100;
             chartA1.ChartAreas[0].AxisX.Minimum = 0;
-            chartA1.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartA1.Series["randomSeries"].Color = Color.Blue;
+            chartA1.Series["A1"].ChartType = SeriesChartType.FastLine;
+            chartA1.Series["A1"].Color = Color.Blue;
             chartA2.ChartAreas[0].AxisX.Maximum = 100;
             chartA2.ChartAreas[0].AxisX.Minimum = 0;
-            chartA2.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartA2.Series["randomSeries"].Color = Color.Blue;
+            chartA2.Series["A2"].ChartType = SeriesChartType.FastLine;
+            chartA2.Series["A2"].Color = Color.Blue;
             chartA3.ChartAreas[0].AxisX.Maximum = 100;
             chartA3.ChartAreas[0].AxisX.Minimum = 0;
-            chartA3.Series["randomSeries"].ChartType = SeriesChartType.FastLine;
-            chartA3.Series["randomSeries"].Color = Color.Blue;
+            chartA3.Series["A3"].ChartType = SeriesChartType.FastLine;
+            chartA3.Series["A3"].Color = Color.Blue;
+
+            tb_max_1.Text = (chartV1.Series[0].Points.Count - 1).ToString();
+            tb_min_1.Text = "0";
+            tb_max_2.Text = (chartV2.Series[0].Points.Count - 1).ToString();
+            tb_min_2.Text = "0";
+            tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
+            tb_min_3.Text = "0";
 
         }
 
@@ -531,7 +546,87 @@ namespace grafikdeneme
             File.WriteAllText(sfd.FileName, csv.ToString());
         }
 
+        private void Yukle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "CSV dosyaları (*.csv)|*.csv";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Path.GetFullPath(ofd.FileName);
+            }
+            else
+            {
+                MessageBox.Show("Dosya Seçmediniz.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            StreamReader readFile = new StreamReader(ofd.FileName);
+            string line;
+            string[] row;
+            string first_line=readFile.ReadLine();
+
+            string[] headers = first_line.Split('\t');
+
+            if (first_line != "t\tV1\tA1\tV2\tA2\tV3\tA3")
+            {
+                MessageBox.Show("Seçtiğiniz dosya uygun değil.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            chartV1.Series[headers[1]].Points.Clear();
+            chartA1.Series[headers[2]].Points.Clear();
+            chartV2.Series[headers[3]].Points.Clear();
+            chartA2.Series[headers[4]].Points.Clear();
+            chartV3.Series[headers[5]].Points.Clear();
+            chartA3.Series[headers[6]].Points.Clear();
+
+            int i = 0;
+            while ((line = readFile.ReadLine()) != null)
+            {
+
+                row = line.Split('\t');
+
+                //V1
+                chartV1.Series[headers[1]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[1]));
+                chartV1.Series[headers[1]].ChartType = SeriesChartType.FastLine;
+                chartV1.Series[headers[1]].Color = Color.Red;
+                //A1
+                chartA1.Series[headers[2]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[2]));
+                chartA1.Series[headers[2]].ChartType = SeriesChartType.FastLine;
+                chartA1.Series[headers[2]].Color = Color.Blue;
+                //V2
+                chartV2.Series[headers[3]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[3]));
+                chartV2.Series[headers[3]].ChartType = SeriesChartType.FastLine;
+                chartV2.Series[headers[3]].Color = Color.Red;
+                //A2
+                chartA2.Series[headers[4]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[4]));
+                chartA2.Series[headers[4]].ChartType = SeriesChartType.FastLine;
+                chartA2.Series[headers[4]].Color = Color.Blue;
+                //V3
+                chartV3.Series[headers[5]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[5]));
+                chartV3.Series[headers[5]].ChartType = SeriesChartType.FastLine;
+                chartV3.Series[headers[5]].Color = Color.Red;
+                //A3
+                chartA3.Series[headers[6]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[6]));
+                chartA3.Series[headers[6]].ChartType = SeriesChartType.FastLine;
+                chartA3.Series[headers[6]].Color = Color.Blue;
+                
+                i++;
+            }
+            readFile.Close();
+
+            tb_max_1.Text = (chartV1.Series[0].Points.Count - 1).ToString();
+            tb_min_1.Text = "0";
+            tb_max_2.Text = (chartV2.Series[0].Points.Count - 1).ToString();
+            tb_min_2.Text = "0";
+            tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
+            tb_min_3.Text = "0";
+        }
+
     }
 }
+
+
 
 
