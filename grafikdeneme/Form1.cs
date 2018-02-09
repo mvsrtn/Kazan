@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
 
 namespace grafikdeneme
 {
@@ -76,7 +77,7 @@ namespace grafikdeneme
                 if (Math.Abs(dp.XValue - clickedX) < temp)
                 {
                     temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();                  
+                    tempstr = dp.XValue.ToString();
                 }
                 else
                     break;
@@ -92,7 +93,7 @@ namespace grafikdeneme
                 tb_max_1.Text = tempstr;
                 cb_max_1.Checked = false;
             }
-            
+
         }
 
         private void chartA1_Click(object sender, MouseEventArgs e)
@@ -127,7 +128,7 @@ namespace grafikdeneme
             }
 
         }
-                
+
         private void UpdateLimits_1_Click(object sender, EventArgs e)
         {
 
@@ -152,7 +153,7 @@ namespace grafikdeneme
             chartV1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
             chartA1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
             chartA1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
-                       
+
         }
 
         private void cb_min_1_CheckedChanged(object sender, EventArgs e)
@@ -172,13 +173,12 @@ namespace grafikdeneme
             tb_max_1.Text = (chartA1.Series[0].Points.Count - 1).ToString();
             tb_min_1.Text = "0";
 
-            
+
             chartV1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
             chartV1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
             chartA1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
             chartA1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
         }
-
         
         private void chartV2_Click(object sender, MouseEventArgs e)
         {
@@ -284,7 +284,7 @@ namespace grafikdeneme
             if (cb_max_2.Checked == true)
                 cb_min_2.Checked = false;
         }
-        
+
         private void Zeroize_2_Click(object sender, EventArgs e)
         {
             tb_max_2.Text = (chartA2.Series[0].Points.Count - 1).ToString();
@@ -296,8 +296,6 @@ namespace grafikdeneme
             chartA2.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_2.Text);
             chartA2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
         }
-
-
 
         private void chartV3_Click(object sender, MouseEventArgs e)
         {
@@ -418,7 +416,7 @@ namespace grafikdeneme
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             if (Properties.Settings.Default.F1Size.Width == 0) Properties.Settings.Default.Upgrade();
 
             if (Properties.Settings.Default.F1Size.Width == 0 || Properties.Settings.Default.F1Size.Height == 0)
@@ -434,7 +432,7 @@ namespace grafikdeneme
                 if (this.WindowState == FormWindowState.Minimized) this.WindowState = FormWindowState.Normal;
 
                 this.Location = Properties.Settings.Default.F1Location;
-                this.Size = Properties.Settings.Default.F1Size;                
+                this.Size = Properties.Settings.Default.F1Size;
             }
 
             this.Kesici_1_A.BackColor = Color.Red;
@@ -496,28 +494,42 @@ namespace grafikdeneme
                 this.Kesici_2_C.BackColor = Color.Red;
         }
 
-
-        /*
-        private void Form1_Closing(object sender, FormClosingEventArgs e)
+        private void Kaydet_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.F1State = this.WindowState;
-            if (this.WindowState == FormWindowState.Normal)
+            string newLine = "t\tV1\tA1\tV2\tA2\tV3\tA3";
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "CSV dosyaları (*.csv)|*.csv";
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                // save location and size if the state is normal
-                Properties.Settings.Default.F1Location = this.Location;
-                Properties.Settings.Default.F1Size = this.Size;
+                Path.GetFullPath(sfd.FileName);
             }
             else
             {
-                // save the RestoreBounds if the form is minimized or maximized!
-                Properties.Settings.Default.F1Location = this.RestoreBounds.Location;
-                Properties.Settings.Default.F1Size = this.RestoreBounds.Size;
+                MessageBox.Show("Dosya adı belirtmediniz!!!\nVeriler kaydedilmeyecek.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            // don't forget to save the settings
-            Properties.Settings.Default.Save();
-        }*/
+            var csv = new StringBuilder();
 
+            csv.AppendLine(newLine);
+
+            for (int i = 0; i < chartV1.Series[0].Points.Count; i++)
+            {
+                string t1 = chartV1.Series[0].Points[i].XValue.ToString();
+                string V1 = chartV1.Series[0].Points[i].YValues[0].ToString();
+                string A1 = chartA1.Series[0].Points[i].YValues[0].ToString();
+                string V2 = chartV2.Series[0].Points[i].YValues[0].ToString();
+                string A2 = chartA2.Series[0].Points[i].YValues[0].ToString();
+                string V3 = chartV3.Series[0].Points[i].YValues[0].ToString();
+                string A3 = chartA3.Series[0].Points[i].YValues[0].ToString();
+
+
+                newLine = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}", t1, V1, A1, V2, A2, V3, A3);
+                csv.AppendLine(newLine);
+            }
+            File.WriteAllText(sfd.FileName, csv.ToString());
+        }
 
     }
 }
