@@ -8,18 +8,90 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
-
 namespace grafikdeneme
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
-
-
         }
 
+        private void DataReceivedHandler(object sender, EventArgs e)
+        {
+             if (sp.ReadByte() == 0xCD)
+            {
+                if (sp.ReadByte() == 0xAB)
+                {
+                    int temp = sp.ReadByte();
+                    // Zaman yükleme komutu cevabı
+                    if (temp == 0x54)
+                    {
+                        int surehigh = sp.ReadByte();
+                        int surelow = sp.ReadByte();
+                        int sure = surehigh * 256 + surelow;
+                        tb_ZamanYukle.Text = sure.ToString();
+                    }
+                    // Teste başla komutu cevabı
+                    else if (temp == 0xBA)
+                    {
+                        int surehigh = sp.ReadByte();
+                        int surelow = sp.ReadByte();
+                        int sure = surehigh * 256 + surelow;
+                    }
+                    //Teste başla komutu cevabı
+                    else if (temp == 0xEE)
+                    {
+                        int surehigh = sp.ReadByte();
+                        int surelow = sp.ReadByte();
+                        int sure = surehigh * 256 + surelow;
+                    }
+                    //Topraklı Ayırıcı Devreye al/devre dışı komutu cevabı
+                    else if (temp == 0xAA)
+                    {
+                        int ayirici_no = sp.ReadByte();
+                        int ayirici_state = sp.ReadByte();
+                    }
+                    //Kesici Devreye al/devre dışı komutu cevabı
+                    else if (temp == 0x4B)
+                    {
+                        int kesici_no = sp.ReadByte();
+                        int kesici_state = sp.ReadByte();
+                    }
+                    //Hatalı mesaj
+                    else if (temp == 0x48)
+                    {
+                        int[] komut = new int[2];
+                        for (int i = 0; i < 2; i++)
+                        {
+                            komut[i] = sp.ReadByte();
+                        }
+                        int[] hata = { 0x54, 0x41 };
+
+                        if (hata.SequenceEqual(komut))
+                        {
+                            //HATA MESAJI ÜRET
+                            {
+                                MessageBox.Show("Hatalı Mesaj Alındı", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        byte[] bytes = new byte[15];
+                        sp.Read(bytes, 0, 15);
+                        int[] data = new int[16];
+                        data[0] = temp;
+                        bytes.CopyTo(data, 1);
+
+                    }
+                }
+            }
+        }
+        
         private void randomData_Click(object sender, EventArgs e)
         {
 
@@ -624,6 +696,25 @@ namespace grafikdeneme
             tb_min_3.Text = "0";
         }
 
+        private void tb_ZamanYukle_TextChanged(object sender, EventArgs e)
+        {
+            cb_zamanayarlandı.Checked = false;
+        }
+
+        private void b_setzaman_Click(object sender, EventArgs e)
+        {
+            if (tb_ZamanYukle.Text.Length == 0)
+            {
+                MessageBox.Show("Test Süresi Değeri Boş Bırakılamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            byte[] zaman = BitConverter.GetBytes(Int16.Parse(tb_ZamanYukle.Text));
+            Array.Reverse(zaman);
+
+            byte[] data = { 0xAB, 0xCD, 0x54, zaman[0], zaman[1] };
+
+            sp.Write(data,0,5);
+        }
     }
 }
 

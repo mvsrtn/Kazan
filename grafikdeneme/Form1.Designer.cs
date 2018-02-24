@@ -1,4 +1,8 @@
-﻿namespace grafikdeneme
+﻿
+using System.IO.Ports;
+
+
+namespace grafikdeneme
 {
     partial class Form1
     {
@@ -28,18 +32,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartV1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.randomData = new System.Windows.Forms.Button();
             this.chartA1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -81,6 +86,9 @@
             this.tb_min_2 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.cb_zamanayarlandı = new System.Windows.Forms.CheckBox();
+            this.b_setzaman = new System.Windows.Forms.Button();
+            this.tb_ZamanYukle = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.Kesici_2_C = new System.Windows.Forms.Button();
             this.Kesici_2_B = new System.Windows.Forms.Button();
@@ -91,6 +99,7 @@
             this.Kesici_1_A = new System.Windows.Forms.Button();
             this.Yukle = new System.Windows.Forms.Button();
             this.Kaydet = new System.Windows.Forms.Button();
+            this.sp = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartA1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartA2)).BeginInit();
@@ -113,17 +122,17 @@
             // 
             // chartV1
             // 
-            this.chartV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chartV1.ChartAreas.Add(chartArea1);
+            this.chartV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea7.Name = "ChartArea1";
+            this.chartV1.ChartAreas.Add(chartArea7);
             this.chartV1.Location = new System.Drawing.Point(3, 3);
             this.chartV1.Name = "chartV1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "V1";
-            this.chartV1.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "V1";
+            this.chartV1.Series.Add(series7);
             this.chartV1.Size = new System.Drawing.Size(424, 88);
             this.chartV1.TabIndex = 0;
             this.chartV1.Text = "V1";
@@ -141,17 +150,17 @@
             // 
             // chartA1
             // 
-            this.chartA1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea2";
-            this.chartA1.ChartAreas.Add(chartArea2);
+            this.chartA1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea8.Name = "ChartArea2";
+            this.chartA1.ChartAreas.Add(chartArea8);
             this.chartA1.Location = new System.Drawing.Point(3, 97);
             this.chartA1.Name = "chartA1";
-            series2.ChartArea = "ChartArea2";
-            series2.Legend = "Legend1";
-            series2.Name = "A1";
-            this.chartA1.Series.Add(series2);
+            series8.ChartArea = "ChartArea2";
+            series8.Legend = "Legend1";
+            series8.Name = "A1";
+            this.chartA1.Series.Add(series8);
             this.chartA1.Size = new System.Drawing.Size(424, 89);
             this.chartA1.TabIndex = 0;
             this.chartA1.Text = "A1";
@@ -159,17 +168,17 @@
             // 
             // chartA2
             // 
-            this.chartA2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea2";
-            this.chartA2.ChartAreas.Add(chartArea3);
+            this.chartA2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea9.Name = "ChartArea2";
+            this.chartA2.ChartAreas.Add(chartArea9);
             this.chartA2.Location = new System.Drawing.Point(3, 97);
             this.chartA2.Name = "chartA2";
-            series3.ChartArea = "ChartArea2";
-            series3.Legend = "Legend1";
-            series3.Name = "A2";
-            this.chartA2.Series.Add(series3);
+            series9.ChartArea = "ChartArea2";
+            series9.Legend = "Legend1";
+            series9.Name = "A2";
+            this.chartA2.Series.Add(series9);
             this.chartA2.Size = new System.Drawing.Size(424, 89);
             this.chartA2.TabIndex = 0;
             this.chartA2.Text = "A2";
@@ -177,17 +186,17 @@
             // 
             // chartV2
             // 
-            this.chartV2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea4.Name = "ChartArea1";
-            this.chartV2.ChartAreas.Add(chartArea4);
+            this.chartV2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea10.Name = "ChartArea1";
+            this.chartV2.ChartAreas.Add(chartArea10);
             this.chartV2.Location = new System.Drawing.Point(3, 3);
             this.chartV2.Name = "chartV2";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "V2";
-            this.chartV2.Series.Add(series4);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "V2";
+            this.chartV2.Series.Add(series10);
             this.chartV2.Size = new System.Drawing.Size(424, 88);
             this.chartV2.TabIndex = 0;
             this.chartV2.Text = "V2";
@@ -267,17 +276,17 @@
             // 
             // chartA3
             // 
-            this.chartA3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea5.Name = "ChartArea2";
-            this.chartA3.ChartAreas.Add(chartArea5);
+            this.chartA3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea11.Name = "ChartArea2";
+            this.chartA3.ChartAreas.Add(chartArea11);
             this.chartA3.Location = new System.Drawing.Point(3, 97);
             this.chartA3.Name = "chartA3";
-            series5.ChartArea = "ChartArea2";
-            series5.Legend = "Legend1";
-            series5.Name = "A3";
-            this.chartA3.Series.Add(series5);
+            series11.ChartArea = "ChartArea2";
+            series11.Legend = "Legend1";
+            series11.Name = "A3";
+            this.chartA3.Series.Add(series11);
             this.chartA3.Size = new System.Drawing.Size(424, 89);
             this.chartA3.TabIndex = 0;
             this.chartA3.Text = "A3";
@@ -285,17 +294,17 @@
             // 
             // chartV3
             // 
-            this.chartV3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea6.Name = "ChartArea1";
-            this.chartV3.ChartAreas.Add(chartArea6);
+            this.chartV3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea12.Name = "ChartArea1";
+            this.chartV3.ChartAreas.Add(chartArea12);
             this.chartV3.Location = new System.Drawing.Point(3, 3);
             this.chartV3.Name = "chartV3";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "V3";
-            this.chartV3.Series.Add(series6);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "V3";
+            this.chartV3.Series.Add(series12);
             this.chartV3.Size = new System.Drawing.Size(424, 88);
             this.chartV3.TabIndex = 0;
             this.chartV3.Text = "V3";
@@ -303,9 +312,9 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(1, 2);
             this.panel1.Name = "panel1";
@@ -314,9 +323,9 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -332,9 +341,9 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -358,9 +367,9 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.cb_max_1);
             this.panel2.Controls.Add(this.cb_min_1);
             this.panel2.Controls.Add(this.Zeroize_1);
@@ -448,9 +457,9 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -466,9 +475,9 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.ColumnCount = 1;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -484,9 +493,9 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -502,9 +511,9 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.Zeroize_2);
             this.panel3.Controls.Add(this.cb_max_2);
             this.panel3.Controls.Add(this.UpdataLimits_2);
@@ -592,9 +601,9 @@
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.Zeroize_3);
             this.panel4.Controls.Add(this.tb_min_3);
             this.panel4.Controls.Add(this.UpdataLimits_3);
@@ -610,9 +619,12 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.cb_zamanayarlandı);
+            this.panel5.Controls.Add(this.b_setzaman);
+            this.panel5.Controls.Add(this.tb_ZamanYukle);
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.Yukle);
@@ -623,13 +635,41 @@
             this.panel5.Size = new System.Drawing.Size(152, 585);
             this.panel5.TabIndex = 5;
             // 
+            // cb_zamanayarlandı
+            // 
+            this.cb_zamanayarlandı.AutoSize = true;
+            this.cb_zamanayarlandı.Location = new System.Drawing.Point(132, 22);
+            this.cb_zamanayarlandı.Name = "cb_zamanayarlandı";
+            this.cb_zamanayarlandı.Size = new System.Drawing.Size(15, 14);
+            this.cb_zamanayarlandı.TabIndex = 5;
+            this.cb_zamanayarlandı.UseVisualStyleBackColor = true;
+            // 
+            // b_setzaman
+            // 
+            this.b_setzaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.b_setzaman.Location = new System.Drawing.Point(62, 19);
+            this.b_setzaman.Name = "b_setzaman";
+            this.b_setzaman.Size = new System.Drawing.Size(65, 20);
+            this.b_setzaman.TabIndex = 4;
+            this.b_setzaman.Text = "Gönder";
+            this.b_setzaman.UseVisualStyleBackColor = true;
+            this.b_setzaman.Click += new System.EventHandler(this.b_setzaman_Click);
+            // 
+            // tb_ZamanYukle
+            // 
+            this.tb_ZamanYukle.Location = new System.Drawing.Point(5, 20);
+            this.tb_ZamanYukle.Name = "tb_ZamanYukle";
+            this.tb_ZamanYukle.Size = new System.Drawing.Size(51, 20);
+            this.tb_ZamanYukle.TabIndex = 3;
+            this.tb_ZamanYukle.TextChanged += new System.EventHandler(this.tb_ZamanYukle_TextChanged);
+            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.Kesici_2_C);
             this.panel7.Controls.Add(this.Kesici_2_B);
             this.panel7.Controls.Add(this.Kesici_2_A);
             this.panel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel7.Location = new System.Drawing.Point(3, 141);
+            this.panel7.Location = new System.Drawing.Point(3, 321);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(145, 132);
             this.panel7.TabIndex = 2;
@@ -672,7 +712,7 @@
             this.panel6.Controls.Add(this.Kesici_1_C);
             this.panel6.Controls.Add(this.Kesici_1_B);
             this.panel6.Controls.Add(this.Kesici_1_A);
-            this.panel6.Location = new System.Drawing.Point(4, 3);
+            this.panel6.Location = new System.Drawing.Point(3, 183);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(145, 132);
             this.panel6.TabIndex = 2;
@@ -713,7 +753,7 @@
             // 
             // Yukle
             // 
-            this.Yukle.Location = new System.Drawing.Point(6, 350);
+            this.Yukle.Location = new System.Drawing.Point(7, 505);
             this.Yukle.Name = "Yukle";
             this.Yukle.Size = new System.Drawing.Size(141, 34);
             this.Yukle.TabIndex = 1;
@@ -723,13 +763,23 @@
             // 
             // Kaydet
             // 
-            this.Kaydet.Location = new System.Drawing.Point(6, 295);
+            this.Kaydet.Location = new System.Drawing.Point(7, 465);
             this.Kaydet.Name = "Kaydet";
             this.Kaydet.Size = new System.Drawing.Size(141, 34);
             this.Kaydet.TabIndex = 1;
             this.Kaydet.Text = "Kaydet";
             this.Kaydet.UseVisualStyleBackColor = true;
             this.Kaydet.Click += new System.EventHandler(this.Kaydet_Click);
+            // 
+            // sp
+            // 
+            this.sp.PortName = "COM3";
+            this.sp.BaudRate = 9600;
+            this.sp.DataBits = 8;
+            this.sp.Parity = Parity.None;
+            this.sp.StopBits = StopBits.One;
+            this.sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.DataReceivedHandler);
+            this.sp.Open();
             // 
             // Form1
             // 
@@ -759,6 +809,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -818,6 +869,10 @@
         private System.Windows.Forms.Button Kesici_1_A;
         private System.Windows.Forms.Button Kaydet;
         private System.Windows.Forms.Button Yukle;
+        private System.Windows.Forms.TextBox tb_ZamanYukle;
+        private SerialPort sp;
+        private System.Windows.Forms.CheckBox cb_zamanayarlandı;
+        private System.Windows.Forms.Button b_setzaman;
     }
 }
 
