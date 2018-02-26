@@ -1,5 +1,6 @@
-﻿
+﻿using System;
 using System.IO.Ports;
+using System.IO;
 
 
 namespace grafikdeneme
@@ -33,18 +34,18 @@ namespace grafikdeneme
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartV1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.randomData = new System.Windows.Forms.Button();
             this.chartA1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -86,6 +87,7 @@ namespace grafikdeneme
             this.tb_min_2 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label_testsuresi = new System.Windows.Forms.Label();
             this.cb_zamanayarlandı = new System.Windows.Forms.CheckBox();
             this.b_setzaman = new System.Windows.Forms.Button();
             this.tb_ZamanYukle = new System.Windows.Forms.TextBox();
@@ -97,9 +99,14 @@ namespace grafikdeneme
             this.Kesici_1_C = new System.Windows.Forms.Button();
             this.Kesici_1_B = new System.Windows.Forms.Button();
             this.Kesici_1_A = new System.Windows.Forms.Button();
-            this.Yukle = new System.Windows.Forms.Button();
-            this.Kaydet = new System.Windows.Forms.Button();
             this.sp = new System.IO.Ports.SerialPort(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kaydetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.portAyarlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chartV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartA1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartA2)).BeginInit();
@@ -118,6 +125,7 @@ namespace grafikdeneme
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartV1
@@ -125,82 +133,82 @@ namespace grafikdeneme
             this.chartV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea7.Name = "ChartArea1";
-            this.chartV1.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.chartV1.ChartAreas.Add(chartArea1);
             this.chartV1.Location = new System.Drawing.Point(3, 3);
             this.chartV1.Name = "chartV1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "V1";
-            this.chartV1.Series.Add(series7);
-            this.chartV1.Size = new System.Drawing.Size(424, 88);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "V1";
+            this.chartV1.Series.Add(series1);
+            this.chartV1.Size = new System.Drawing.Size(424, 85);
             this.chartV1.TabIndex = 0;
             this.chartV1.Text = "V1";
-            this.chartV1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartV1_Click);
+            this.chartV1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartV1_Click);
             // 
             // randomData
             // 
-            this.randomData.Location = new System.Drawing.Point(7, 545);
+            this.randomData.Location = new System.Drawing.Point(5, 339);
             this.randomData.Name = "randomData";
             this.randomData.Size = new System.Drawing.Size(141, 34);
             this.randomData.TabIndex = 1;
             this.randomData.Text = "randomData";
             this.randomData.UseVisualStyleBackColor = true;
-            this.randomData.Click += new System.EventHandler(this.randomData_Click);
+            this.randomData.Click += new System.EventHandler(this.RandomData_Click);
             // 
             // chartA1
             // 
             this.chartA1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea8.Name = "ChartArea2";
-            this.chartA1.ChartAreas.Add(chartArea8);
-            this.chartA1.Location = new System.Drawing.Point(3, 97);
+            chartArea2.Name = "ChartArea2";
+            this.chartA1.ChartAreas.Add(chartArea2);
+            this.chartA1.Location = new System.Drawing.Point(3, 94);
             this.chartA1.Name = "chartA1";
-            series8.ChartArea = "ChartArea2";
-            series8.Legend = "Legend1";
-            series8.Name = "A1";
-            this.chartA1.Series.Add(series8);
-            this.chartA1.Size = new System.Drawing.Size(424, 89);
+            series2.ChartArea = "ChartArea2";
+            series2.Legend = "Legend1";
+            series2.Name = "A1";
+            this.chartA1.Series.Add(series2);
+            this.chartA1.Size = new System.Drawing.Size(424, 85);
             this.chartA1.TabIndex = 0;
             this.chartA1.Text = "A1";
-            this.chartA1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartA1_Click);
+            this.chartA1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartA1_Click);
             // 
             // chartA2
             // 
             this.chartA2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea9.Name = "ChartArea2";
-            this.chartA2.ChartAreas.Add(chartArea9);
-            this.chartA2.Location = new System.Drawing.Point(3, 97);
+            chartArea3.Name = "ChartArea2";
+            this.chartA2.ChartAreas.Add(chartArea3);
+            this.chartA2.Location = new System.Drawing.Point(3, 94);
             this.chartA2.Name = "chartA2";
-            series9.ChartArea = "ChartArea2";
-            series9.Legend = "Legend1";
-            series9.Name = "A2";
-            this.chartA2.Series.Add(series9);
-            this.chartA2.Size = new System.Drawing.Size(424, 89);
+            series3.ChartArea = "ChartArea2";
+            series3.Legend = "Legend1";
+            series3.Name = "A2";
+            this.chartA2.Series.Add(series3);
+            this.chartA2.Size = new System.Drawing.Size(424, 85);
             this.chartA2.TabIndex = 0;
             this.chartA2.Text = "A2";
-            this.chartA2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartA2_Click);
+            this.chartA2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartA2_Click);
             // 
             // chartV2
             // 
             this.chartV2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea10.Name = "ChartArea1";
-            this.chartV2.ChartAreas.Add(chartArea10);
+            chartArea4.Name = "ChartArea1";
+            this.chartV2.ChartAreas.Add(chartArea4);
             this.chartV2.Location = new System.Drawing.Point(3, 3);
             this.chartV2.Name = "chartV2";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "V2";
-            this.chartV2.Series.Add(series10);
-            this.chartV2.Size = new System.Drawing.Size(424, 88);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "V2";
+            this.chartV2.Series.Add(series4);
+            this.chartV2.Size = new System.Drawing.Size(424, 85);
             this.chartV2.TabIndex = 0;
             this.chartV2.Text = "V2";
-            this.chartV2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartV2_Click);
+            this.chartV2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartV2_Click);
             // 
             // cb_max_3
             // 
@@ -210,7 +218,7 @@ namespace grafikdeneme
             this.cb_max_3.Size = new System.Drawing.Size(15, 14);
             this.cb_max_3.TabIndex = 4;
             this.cb_max_3.UseVisualStyleBackColor = true;
-            this.cb_max_3.CheckedChanged += new System.EventHandler(this.cb_max_3_CheckedChanged);
+            this.cb_max_3.CheckedChanged += new System.EventHandler(this.Cb_max_3_CheckedChanged);
             // 
             // cb_min_3
             // 
@@ -220,7 +228,7 @@ namespace grafikdeneme
             this.cb_min_3.Size = new System.Drawing.Size(15, 14);
             this.cb_min_3.TabIndex = 4;
             this.cb_min_3.UseVisualStyleBackColor = true;
-            this.cb_min_3.CheckedChanged += new System.EventHandler(this.cb_min_3_CheckedChanged);
+            this.cb_min_3.CheckedChanged += new System.EventHandler(this.Cb_min_3_CheckedChanged);
             // 
             // label_max_3
             // 
@@ -279,36 +287,36 @@ namespace grafikdeneme
             this.chartA3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea11.Name = "ChartArea2";
-            this.chartA3.ChartAreas.Add(chartArea11);
-            this.chartA3.Location = new System.Drawing.Point(3, 97);
+            chartArea5.Name = "ChartArea2";
+            this.chartA3.ChartAreas.Add(chartArea5);
+            this.chartA3.Location = new System.Drawing.Point(3, 94);
             this.chartA3.Name = "chartA3";
-            series11.ChartArea = "ChartArea2";
-            series11.Legend = "Legend1";
-            series11.Name = "A3";
-            this.chartA3.Series.Add(series11);
-            this.chartA3.Size = new System.Drawing.Size(424, 89);
+            series5.ChartArea = "ChartArea2";
+            series5.Legend = "Legend1";
+            series5.Name = "A3";
+            this.chartA3.Series.Add(series5);
+            this.chartA3.Size = new System.Drawing.Size(424, 85);
             this.chartA3.TabIndex = 0;
             this.chartA3.Text = "A3";
-            this.chartA3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartA3_Click);
+            this.chartA3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartA3_Click);
             // 
             // chartV3
             // 
             this.chartV3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea12.Name = "ChartArea1";
-            this.chartV3.ChartAreas.Add(chartArea12);
+            chartArea6.Name = "ChartArea1";
+            this.chartV3.ChartAreas.Add(chartArea6);
             this.chartV3.Location = new System.Drawing.Point(3, 3);
             this.chartV3.Name = "chartV3";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "V3";
-            this.chartV3.Series.Add(series12);
-            this.chartV3.Size = new System.Drawing.Size(424, 88);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "V3";
+            this.chartV3.Series.Add(series6);
+            this.chartV3.Size = new System.Drawing.Size(424, 85);
             this.chartV3.TabIndex = 0;
             this.chartV3.Text = "V3";
-            this.chartV3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartV3_Click);
+            this.chartV3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartV3_Click);
             // 
             // panel1
             // 
@@ -316,27 +324,25 @@ namespace grafikdeneme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(1, 2);
+            this.panel1.Location = new System.Drawing.Point(1, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(795, 600);
+            this.panel1.Size = new System.Drawing.Size(795, 570);
             this.panel1.TabIndex = 6;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(5, -6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 591);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 570);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -362,7 +368,7 @@ namespace grafikdeneme
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(623, 585);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(623, 564);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
@@ -380,7 +386,7 @@ namespace grafikdeneme
             this.panel2.Controls.Add(this.label_min_1);
             this.panel2.Location = new System.Drawing.Point(439, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 189);
+            this.panel2.Size = new System.Drawing.Size(181, 182);
             this.panel2.TabIndex = 8;
             // 
             // cb_max_1
@@ -391,7 +397,7 @@ namespace grafikdeneme
             this.cb_max_1.Size = new System.Drawing.Size(15, 14);
             this.cb_max_1.TabIndex = 4;
             this.cb_max_1.UseVisualStyleBackColor = true;
-            this.cb_max_1.CheckedChanged += new System.EventHandler(this.cb_max_1_CheckedChanged);
+            this.cb_max_1.CheckedChanged += new System.EventHandler(this.Cb_max_1_CheckedChanged);
             // 
             // cb_min_1
             // 
@@ -401,7 +407,7 @@ namespace grafikdeneme
             this.cb_min_1.Size = new System.Drawing.Size(15, 14);
             this.cb_min_1.TabIndex = 4;
             this.cb_min_1.UseVisualStyleBackColor = true;
-            this.cb_min_1.CheckedChanged += new System.EventHandler(this.cb_min_1_CheckedChanged);
+            this.cb_min_1.CheckedChanged += new System.EventHandler(this.Cb_min_1_CheckedChanged);
             // 
             // Zeroize_1
             // 
@@ -463,14 +469,14 @@ namespace grafikdeneme
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.chartV1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.chartA1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.chartV1, 0, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(430, 189);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(430, 182);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -483,12 +489,12 @@ namespace grafikdeneme
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.chartV2, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.chartA2, 0, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 198);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 191);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(430, 189);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(430, 182);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -501,12 +507,12 @@ namespace grafikdeneme
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Controls.Add(this.chartV3, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.chartA3, 0, 1);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 393);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 379);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(430, 189);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(430, 182);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // panel3
@@ -522,9 +528,9 @@ namespace grafikdeneme
             this.panel3.Controls.Add(this.label_min_2);
             this.panel3.Controls.Add(this.tb_max_2);
             this.panel3.Controls.Add(this.tb_min_2);
-            this.panel3.Location = new System.Drawing.Point(439, 198);
+            this.panel3.Location = new System.Drawing.Point(439, 191);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(181, 189);
+            this.panel3.Size = new System.Drawing.Size(181, 182);
             this.panel3.TabIndex = 9;
             // 
             // Zeroize_2
@@ -545,7 +551,7 @@ namespace grafikdeneme
             this.cb_max_2.Size = new System.Drawing.Size(15, 14);
             this.cb_max_2.TabIndex = 4;
             this.cb_max_2.UseVisualStyleBackColor = true;
-            this.cb_max_2.CheckedChanged += new System.EventHandler(this.cb_max_2_CheckedChanged);
+            this.cb_max_2.CheckedChanged += new System.EventHandler(this.Cb_max_2_CheckedChanged);
             // 
             // UpdataLimits_2
             // 
@@ -565,7 +571,7 @@ namespace grafikdeneme
             this.cb_min_2.Size = new System.Drawing.Size(15, 14);
             this.cb_min_2.TabIndex = 4;
             this.cb_min_2.UseVisualStyleBackColor = true;
-            this.cb_min_2.CheckedChanged += new System.EventHandler(this.cb_min_2_CheckedChanged);
+            this.cb_min_2.CheckedChanged += new System.EventHandler(this.Cb_min_2_CheckedChanged);
             // 
             // label_max_2
             // 
@@ -612,9 +618,9 @@ namespace grafikdeneme
             this.panel4.Controls.Add(this.label_max_3);
             this.panel4.Controls.Add(this.cb_max_3);
             this.panel4.Controls.Add(this.cb_min_3);
-            this.panel4.Location = new System.Drawing.Point(439, 393);
+            this.panel4.Location = new System.Drawing.Point(439, 379);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(181, 189);
+            this.panel4.Size = new System.Drawing.Size(181, 182);
             this.panel4.TabIndex = 10;
             // 
             // panel5
@@ -622,23 +628,32 @@ namespace grafikdeneme
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.label_testsuresi);
             this.panel5.Controls.Add(this.cb_zamanayarlandı);
             this.panel5.Controls.Add(this.b_setzaman);
             this.panel5.Controls.Add(this.tb_ZamanYukle);
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Controls.Add(this.Yukle);
-            this.panel5.Controls.Add(this.Kaydet);
             this.panel5.Controls.Add(this.randomData);
             this.panel5.Location = new System.Drawing.Point(632, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(152, 585);
+            this.panel5.Size = new System.Drawing.Size(152, 564);
             this.panel5.TabIndex = 5;
+            // 
+            // label_testsuresi
+            // 
+            this.label_testsuresi.AutoSize = true;
+            this.label_testsuresi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_testsuresi.Location = new System.Drawing.Point(29, 7);
+            this.label_testsuresi.Name = "label_testsuresi";
+            this.label_testsuresi.Size = new System.Drawing.Size(89, 20);
+            this.label_testsuresi.TabIndex = 6;
+            this.label_testsuresi.Text = "Test Süresi";
             // 
             // cb_zamanayarlandı
             // 
             this.cb_zamanayarlandı.AutoSize = true;
-            this.cb_zamanayarlandı.Location = new System.Drawing.Point(132, 22);
+            this.cb_zamanayarlandı.Location = new System.Drawing.Point(132, 32);
             this.cb_zamanayarlandı.Name = "cb_zamanayarlandı";
             this.cb_zamanayarlandı.Size = new System.Drawing.Size(15, 14);
             this.cb_zamanayarlandı.TabIndex = 5;
@@ -647,21 +662,21 @@ namespace grafikdeneme
             // b_setzaman
             // 
             this.b_setzaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.b_setzaman.Location = new System.Drawing.Point(62, 19);
+            this.b_setzaman.Location = new System.Drawing.Point(62, 29);
             this.b_setzaman.Name = "b_setzaman";
             this.b_setzaman.Size = new System.Drawing.Size(65, 20);
             this.b_setzaman.TabIndex = 4;
             this.b_setzaman.Text = "Gönder";
             this.b_setzaman.UseVisualStyleBackColor = true;
-            this.b_setzaman.Click += new System.EventHandler(this.b_setzaman_Click);
+            this.b_setzaman.Click += new System.EventHandler(this.B_setzaman_Click);
             // 
             // tb_ZamanYukle
             // 
-            this.tb_ZamanYukle.Location = new System.Drawing.Point(5, 20);
+            this.tb_ZamanYukle.Location = new System.Drawing.Point(5, 30);
             this.tb_ZamanYukle.Name = "tb_ZamanYukle";
             this.tb_ZamanYukle.Size = new System.Drawing.Size(51, 20);
             this.tb_ZamanYukle.TabIndex = 3;
-            this.tb_ZamanYukle.TextChanged += new System.EventHandler(this.tb_ZamanYukle_TextChanged);
+            this.tb_ZamanYukle.TextChanged += new System.EventHandler(this.Tb_ZamanYukle_TextChanged);
             // 
             // panel7
             // 
@@ -669,7 +684,7 @@ namespace grafikdeneme
             this.panel7.Controls.Add(this.Kesici_2_B);
             this.panel7.Controls.Add(this.Kesici_2_A);
             this.panel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel7.Location = new System.Drawing.Point(3, 321);
+            this.panel7.Location = new System.Drawing.Point(5, 191);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(145, 132);
             this.panel7.TabIndex = 2;
@@ -712,7 +727,7 @@ namespace grafikdeneme
             this.panel6.Controls.Add(this.Kesici_1_C);
             this.panel6.Controls.Add(this.Kesici_1_B);
             this.panel6.Controls.Add(this.Kesici_1_A);
-            this.panel6.Location = new System.Drawing.Point(3, 183);
+            this.panel6.Location = new System.Drawing.Point(5, 56);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(145, 132);
             this.panel6.TabIndex = 2;
@@ -751,41 +766,137 @@ namespace grafikdeneme
             this.Kesici_1_A.UseVisualStyleBackColor = false;
             this.Kesici_1_A.Click += new System.EventHandler(this.Kesici_1_A_Click);
             // 
-            // Yukle
-            // 
-            this.Yukle.Location = new System.Drawing.Point(7, 505);
-            this.Yukle.Name = "Yukle";
-            this.Yukle.Size = new System.Drawing.Size(141, 34);
-            this.Yukle.TabIndex = 1;
-            this.Yukle.Text = "Yükle";
-            this.Yukle.UseVisualStyleBackColor = true;
-            this.Yukle.Click += new System.EventHandler(this.Yukle_Click);
-            // 
-            // Kaydet
-            // 
-            this.Kaydet.Location = new System.Drawing.Point(7, 465);
-            this.Kaydet.Name = "Kaydet";
-            this.Kaydet.Size = new System.Drawing.Size(141, 34);
-            this.Kaydet.TabIndex = 1;
-            this.Kaydet.Text = "Kaydet";
-            this.Kaydet.UseVisualStyleBackColor = true;
-            this.Kaydet.Click += new System.EventHandler(this.Kaydet_Click);
-            // 
             // sp
             // 
-            this.sp.PortName = "COM3";
-            this.sp.BaudRate = 9600;
-            this.sp.DataBits = 8;
-            this.sp.Parity = Parity.None;
-            this.sp.StopBits = StopBits.One;
+           /* string fullPathToFile = System.Windows.Forms.Application.StartupPath + "\\PortSettings.txt";
+            StreamReader stream_ayarlar = new StreamReader(fullPathToFile);
+            string temp = stream_ayarlar.ReadToEnd();
+            string[] ayarlar = temp.Split();
+            char[] delimeters = new char[] { '#', ':',' ' };
+            for (int i=0; i < ayarlar.Length; i++)
+            {
+                string[] satir = ayarlar[i].Split(delimeters);
+                if (ayarlar[i] == "")
+                    continue;
+                switch (satir[1])
+                {
+                    case "PortName":
+                        this.sp.PortName = satir[2];
+                        break;
+                    case "BaudRate":
+                        this.sp.BaudRate = Convert.ToInt16(satir[2]);
+                        break;
+                    case "StopBits":
+                        switch (satir[2])
+                        {
+                            case "0.0":
+                                this.sp.StopBits = StopBits.None;
+                                break;
+                            case "1.0":
+                                this.sp.StopBits = StopBits.One;
+                                break;
+                            case "1.5":
+                                this.sp.StopBits = StopBits.OnePointFive;
+                                break;
+                            case "2.0":
+                                this.sp.StopBits = StopBits.Two;
+                                break;
+                            default:
+                                this.sp.StopBits = StopBits.One;
+                                break;
+                        }
+                        break;
+                    case "Parity":
+                        switch (satir[2])
+                        {
+                            case "Even":
+                                this.sp.Parity = Parity.Even;
+                                break;
+                            case "Mark":
+                                this.sp.Parity = Parity.Mark;
+                                break;
+                            case "None":
+                                this.sp.Parity = Parity.None;
+                                break;
+                            case "Odd":
+                                this.sp.Parity = Parity.Odd;
+                                break;
+                            case "Space":
+                                this.sp.Parity = Parity.Space;
+                                break;
+                            default:
+                                this.sp.Parity = Parity.None;
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }*/
             this.sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.DataReceivedHandler);
-            this.sp.Open();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dosyaToolStripMenuItem,
+            this.ayarlarToolStripMenuItem,
+            this.hakkındaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dosyaToolStripMenuItem
+            // 
+            this.dosyaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acToolStripMenuItem,
+            this.kaydetToolStripMenuItem});
+            this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
+            this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.dosyaToolStripMenuItem.Text = "Dosya";
+            // 
+            // acToolStripMenuItem
+            // 
+            this.acToolStripMenuItem.Name = "acToolStripMenuItem";
+            this.acToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.acToolStripMenuItem.Text = "Aç";
+            this.acToolStripMenuItem.Click += new System.EventHandler(this.AcToolStripMenuItem_Click);
+            // 
+            // kaydetToolStripMenuItem
+            // 
+            this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
+            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kaydetToolStripMenuItem.Text = "Kaydet";
+            this.kaydetToolStripMenuItem.Click += new System.EventHandler(this.KaydetToolStripMenuItem_Click);
+            // 
+            // ayarlarToolStripMenuItem
+            // 
+            this.ayarlarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.portAyarlarıToolStripMenuItem});
+            this.ayarlarToolStripMenuItem.Name = "ayarlarToolStripMenuItem";
+            this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.ayarlarToolStripMenuItem.Text = "Ayarlar";
+            // 
+            // hakkındaToolStripMenuItem
+            // 
+            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
+            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            // 
+            // portAyarlarıToolStripMenuItem
+            // 
+            this.portAyarlarıToolStripMenuItem.Name = "portAyarlarıToolStripMenuItem";
+            this.portAyarlarıToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.portAyarlarıToolStripMenuItem.Text = "Port Ayarları";
+            this.portAyarlarıToolStripMenuItem.Click += new System.EventHandler(this.PortAyarlarıToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "Form1";
             this.Text = "MAVIS";
@@ -812,7 +923,10 @@ namespace grafikdeneme
             this.panel5.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -867,12 +981,18 @@ namespace grafikdeneme
         private System.Windows.Forms.Button Kesici_1_C;
         private System.Windows.Forms.Button Kesici_1_B;
         private System.Windows.Forms.Button Kesici_1_A;
-        private System.Windows.Forms.Button Kaydet;
-        private System.Windows.Forms.Button Yukle;
         private System.Windows.Forms.TextBox tb_ZamanYukle;
         private SerialPort sp;
         private System.Windows.Forms.CheckBox cb_zamanayarlandı;
         private System.Windows.Forms.Button b_setzaman;
+        private System.Windows.Forms.Label label_testsuresi;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dosyaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kaydetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayarlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem portAyarlarıToolStripMenuItem;
     }
 }
 

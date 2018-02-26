@@ -1,0 +1,4 @@
+#PortName:COM3
+#BaudRate:9600
+#StopBits:1.0
+#Parity:None

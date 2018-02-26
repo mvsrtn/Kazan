@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
+using System.IO.Ports;
 namespace grafikdeneme
 {
     public partial class Form1 : Form
@@ -15,7 +16,99 @@ namespace grafikdeneme
         public Form1()
         {
             CheckForIllegalCrossThreadCalls = false;
+
             InitializeComponent();
+
+            SetPortConfig();
+        }
+
+        private int SetPortConfig()
+        {
+            sp.Close();
+            string fullPathToFile = System.Windows.Forms.Application.StartupPath + "\\PortSettings.txt";
+            StreamReader stream_ayarlar = new StreamReader(fullPathToFile);
+            string temp = stream_ayarlar.ReadToEnd();
+            stream_ayarlar.Close();
+            string[] ayarlar = temp.Split();
+            char[] delimeters = new char[] { '#', ':', ' ' };
+            for (int i = 0; i < ayarlar.Length; i++)
+            {
+                string[] satir = ayarlar[i].Split(delimeters);
+                if (ayarlar[i] == "")
+                    continue;
+                switch (satir[1])
+                {
+                    case "PortName":
+                        sp.PortName = satir[2];
+                        break;
+                    case "BaudRate":
+                        sp.BaudRate = Convert.ToInt32(satir[2]);
+                        break;
+                    case "StopBits":
+                        switch (satir[2])
+                        {
+                            case "0.0": //Stop bit 0 olamaz
+                                //sp.StopBits = None; 
+                                break;
+                            case "1.0":
+                                sp.StopBits = StopBits.One;
+                                break;
+                            case "1.5":
+                                sp.StopBits = StopBits.OnePointFive;
+                                break;
+                            case "2.0":
+                                sp.StopBits = StopBits.Two;
+                                break;
+                            default:
+                                sp.StopBits = StopBits.One;
+                                break;
+                        }
+                        break;
+                    case "Parity":
+                        switch (satir[2])
+                        {
+                            case "Even":
+                                sp.Parity = Parity.Even;
+                                break;
+                            case "Mark":
+                                sp.Parity = Parity.Mark;
+                                break;
+                            case "None":
+                                sp.Parity = Parity.None;
+                                break;
+                            case "Odd":
+                                sp.Parity = Parity.Odd;
+                                break;
+                            case "Space":
+                                sp.Parity = Parity.Space;
+                                break;
+                            default:
+                                sp.Parity = Parity.None;
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            try
+            {
+                sp.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Port Başlatılamadı!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            return 0;
+        }
+
+        private void PortAyarlarıToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int error = SetPortConfig();
+            if (error == 1)
+                return;
+            MessageBox.Show("Haberleşme Ayarları Güncellendi", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DataReceivedHandler(object sender, EventArgs e)
@@ -31,7 +124,10 @@ namespace grafikdeneme
                         int surehigh = sp.ReadByte();
                         int surelow = sp.ReadByte();
                         int sure = surehigh * 256 + surelow;
-                        tb_ZamanYukle.Text = sure.ToString();
+                        if (sure == Int16.Parse(tb_ZamanYukle.Text))
+                            cb_zamanayarlandı.Checked = true;
+                        else
+                            cb_zamanayarlandı.Checked = false;
                     }
                     // Teste başla komutu cevabı
                     else if (temp == 0xBA)
@@ -92,7 +188,7 @@ namespace grafikdeneme
             }
         }
         
-        private void randomData_Click(object sender, EventArgs e)
+        private void RandomData_Click(object sender, EventArgs e)
         {
 
             chartV1.Series["V1"].Points.Clear();
@@ -150,7 +246,7 @@ namespace grafikdeneme
 
         }
 
-        private void chartV1_Click(object sender, MouseEventArgs e)
+        private void ChartV1_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartV1.ChartAreas[0].AxisX;
 
@@ -183,7 +279,7 @@ namespace grafikdeneme
 
         }
 
-        private void chartA1_Click(object sender, MouseEventArgs e)
+        private void ChartA1_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartA1.ChartAreas[0].AxisX;
 
@@ -243,13 +339,13 @@ namespace grafikdeneme
 
         }
 
-        private void cb_min_1_CheckedChanged(object sender, EventArgs e)
+        private void Cb_min_1_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_min_1.Checked == true)
                 cb_max_1.Checked = false;
         }
 
-        private void cb_max_1_CheckedChanged(object sender, EventArgs e)
+        private void Cb_max_1_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_max_1.Checked == true)
                 cb_min_1.Checked = false;
@@ -267,7 +363,7 @@ namespace grafikdeneme
             chartA1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
         }
         
-        private void chartV2_Click(object sender, MouseEventArgs e)
+        private void ChartV2_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartV2.ChartAreas[0].AxisX;
 
@@ -300,7 +396,7 @@ namespace grafikdeneme
 
         }
 
-        private void chartA2_Click(object sender, MouseEventArgs e)
+        private void ChartA2_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartA2.ChartAreas[0].AxisX;
 
@@ -360,13 +456,13 @@ namespace grafikdeneme
 
         }
 
-        private void cb_min_2_CheckedChanged(object sender, EventArgs e)
+        private void Cb_min_2_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_min_2.Checked == true)
                 cb_max_2.Checked = false;
         }
 
-        private void cb_max_2_CheckedChanged(object sender, EventArgs e)
+        private void Cb_max_2_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_max_2.Checked == true)
                 cb_min_2.Checked = false;
@@ -384,7 +480,7 @@ namespace grafikdeneme
             chartA2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
         }
 
-        private void chartV3_Click(object sender, MouseEventArgs e)
+        private void ChartV3_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartV3.ChartAreas[0].AxisX;
 
@@ -417,7 +513,7 @@ namespace grafikdeneme
 
         }
 
-        private void chartA3_Click(object sender, MouseEventArgs e)
+        private void ChartA3_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartA3.ChartAreas[0].AxisX;
 
@@ -477,13 +573,13 @@ namespace grafikdeneme
 
         }
 
-        private void cb_min_3_CheckedChanged(object sender, EventArgs e)
+        private void Cb_min_3_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_min_3.Checked == true)
                 cb_max_3.Checked = false;
         }
 
-        private void cb_max_3_CheckedChanged(object sender, EventArgs e)
+        private void Cb_max_3_CheckedChanged(object sender, EventArgs e)
         {
             if (cb_max_3.Checked == true)
                 cb_min_3.Checked = false;
@@ -580,13 +676,15 @@ namespace grafikdeneme
             else if (this.Kesici_2_C.BackColor == Color.Green)
                 this.Kesici_2_C.BackColor = Color.Red;
         }
-
-        private void Kaydet_Click(object sender, EventArgs e)
+        
+        private void KaydetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string newLine = "t\tV1\tA1\tV2\tA2\tV3\tA3";
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "CSV dosyaları (*.csv)|*.csv";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "CSV dosyaları (*.csv)|*.csv"
+            };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 Path.GetFullPath(sfd.FileName);
@@ -618,10 +716,12 @@ namespace grafikdeneme
             File.WriteAllText(sfd.FileName, csv.ToString());
         }
 
-        private void Yukle_Click(object sender, EventArgs e)
+        private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "CSV dosyaları (*.csv)|*.csv";
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "CSV dosyaları (*.csv)|*.csv"
+            };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -636,7 +736,7 @@ namespace grafikdeneme
             StreamReader readFile = new StreamReader(ofd.FileName);
             string line;
             string[] row;
-            string first_line=readFile.ReadLine();
+            string first_line = readFile.ReadLine();
 
             string[] headers = first_line.Split('\t');
 
@@ -683,7 +783,7 @@ namespace grafikdeneme
                 chartA3.Series[headers[6]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[6]));
                 chartA3.Series[headers[6]].ChartType = SeriesChartType.FastLine;
                 chartA3.Series[headers[6]].Color = Color.Blue;
-                
+
                 i++;
             }
             readFile.Close();
@@ -695,13 +795,13 @@ namespace grafikdeneme
             tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
             tb_min_3.Text = "0";
         }
-
-        private void tb_ZamanYukle_TextChanged(object sender, EventArgs e)
+        
+        private void Tb_ZamanYukle_TextChanged(object sender, EventArgs e)
         {
             cb_zamanayarlandı.Checked = false;
         }
 
-        private void b_setzaman_Click(object sender, EventArgs e)
+        private void B_setzaman_Click(object sender, EventArgs e)
         {
             if (tb_ZamanYukle.Text.Length == 0)
             {
@@ -713,8 +813,17 @@ namespace grafikdeneme
 
             byte[] data = { 0xAB, 0xCD, 0x54, zaman[0], zaman[1] };
 
-            sp.Write(data,0,5);
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
+        
     }
 }
 

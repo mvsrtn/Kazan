@@ -19,10 +19,10 @@ C:\Users\Asus Pc\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdenem
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\grafikdeneme.exe.config
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\grafikdeneme.exe
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\grafikdeneme.pdb
-C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.csprojResolveAssemblyReference.cache
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.Form1.resources
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.Properties.Resources.resources
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.csproj.GenerateResource.Cache
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.csproj.CoreCompileInputs.cache
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.exe
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.pdb
+C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\PortSettings.txt
