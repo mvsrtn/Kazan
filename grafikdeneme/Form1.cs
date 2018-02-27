@@ -154,6 +154,48 @@ namespace grafikdeneme
                     {
                         int kesici_no = sp.ReadByte();
                         int kesici_state = sp.ReadByte();
+
+                        if (kesici_no == 0x01)
+                        {
+                            if (kesici_state == 0x00) 
+                            {
+                                //Kesici 1 devredışı
+                                this.Kesici_1.BackColor = Color.Green;
+                            }
+                            else if (kesici_state == 0x0F)
+                            {
+                                //Kesici 1 devrede
+                                this.Kesici_1.BackColor = Color.Red;
+                            }
+                        }
+                        else if (kesici_no == 0x02)
+                        {
+                            if (kesici_state == 0x00)
+                            {
+                                //Kesici 2 devredışı
+                                this.Kesici_2.BackColor = Color.Green;
+                            }
+                            else if (kesici_state == 0x0F)
+                            {
+                                //Kesici 2 devrede
+                                this.Kesici_2.BackColor = Color.Red;
+                            }
+                        }
+                        else if (kesici_no == 0x03)
+                        {
+                            if (kesici_state == 0x00)
+                            {
+                                //Kesici 3 devredışı
+                                this.Kesici_3.BackColor = Color.Green;
+                            }
+                            else if (kesici_state == 0x0F)
+                            {
+                                //Kesici 3 devrede
+                                this.Kesici_3.BackColor = Color.Red;
+                            }
+                        }
+
+
                     }
                     //Hatalı mesaj
                     else if (temp == 0x48)
@@ -618,9 +660,9 @@ namespace grafikdeneme
                 this.Size = Properties.Settings.Default.F1Size;
             }
 
-            this.Kesici_1_A.BackColor = Color.Red;
-            this.Kesici_1_B.BackColor = Color.Red;
-            this.Kesici_1_C.BackColor = Color.Red;
+            this.Kesici_1.BackColor = Color.Red;
+            this.Kesici_2.BackColor = Color.Red;
+            this.Kesici_3.BackColor = Color.Red;
             this.Kesici_2_A.BackColor = Color.Red;
             this.Kesici_2_B.BackColor = Color.Red;
             this.Kesici_2_C.BackColor = Color.Red;
@@ -628,31 +670,7 @@ namespace grafikdeneme
 
 
         }
-
-        private void Kesici_1_A_Click(object sender, EventArgs e)
-        {
-            if (this.Kesici_1_A.BackColor == Color.Red)
-                this.Kesici_1_A.BackColor = Color.Green;
-            else if (this.Kesici_1_A.BackColor == Color.Green)
-                this.Kesici_1_A.BackColor = Color.Red;
-        }
-
-        private void Kesici_1_B_Click(object sender, EventArgs e)
-        {
-            if (this.Kesici_1_B.BackColor == Color.Red)
-                this.Kesici_1_B.BackColor = Color.Green;
-            else if (this.Kesici_1_B.BackColor == Color.Green)
-                this.Kesici_1_B.BackColor = Color.Red;
-        }
-
-        private void Kesici_1_C_Click(object sender, EventArgs e)
-        {
-            if (this.Kesici_1_C.BackColor == Color.Red)
-                this.Kesici_1_C.BackColor = Color.Green;
-            else if (this.Kesici_1_C.BackColor == Color.Green)
-                this.Kesici_1_C.BackColor = Color.Red;
-        }
-
+        
         private void Kesici_2_A_Click(object sender, EventArgs e)
         {
             if (this.Kesici_2_A.BackColor == Color.Red)
@@ -824,6 +842,96 @@ namespace grafikdeneme
             }
         }
         
+        private void Kesici_1_On_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x01, 0x0F };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void Kesici_1_Off_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x01, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void Kesici_2_On_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x02, 0x0F };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void Kesici_2_Off_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x02, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void Kesici_3_On_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x03, 0x0F };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void Kesici_3_Off_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0x4B, 0x03, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
     }
 }
 

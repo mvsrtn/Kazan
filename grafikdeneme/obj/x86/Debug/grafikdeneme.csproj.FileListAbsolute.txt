@@ -20,3 +20,4 @@ C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Debug\grafikdeneme.cs
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Debug\grafikdeneme.exe
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Debug\grafikdeneme.pdb
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Debug\PortSettings.txt
+C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Debug\grafikdeneme.csprojResolveAssemblyReference.cache
