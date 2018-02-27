@@ -34,18 +34,18 @@ namespace grafikdeneme
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartV1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.randomData = new System.Windows.Forms.Button();
             this.chartA1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -92,9 +92,12 @@ namespace grafikdeneme
             this.b_setzaman = new System.Windows.Forms.Button();
             this.tb_ZamanYukle = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.Kesici_2_C = new System.Windows.Forms.Button();
-            this.Kesici_2_B = new System.Windows.Forms.Button();
-            this.Kesici_2_A = new System.Windows.Forms.Button();
+            this.DirencliAyirici = new System.Windows.Forms.Button();
+            this.TopraklıAyirici = new System.Windows.Forms.Button();
+            this.DirencliOn = new System.Windows.Forms.Button();
+            this.ToprakliOn = new System.Windows.Forms.Button();
+            this.DirencliOff = new System.Windows.Forms.Button();
+            this.ToprakliOff = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.Kesici_3 = new System.Windows.Forms.Button();
             this.Kesici_2 = new System.Windows.Forms.Button();
@@ -105,6 +108,8 @@ namespace grafikdeneme
             this.Kesici_2_Off = new System.Windows.Forms.Button();
             this.Kesici_1_Off = new System.Windows.Forms.Button();
             this.Kesici_1 = new System.Windows.Forms.Button();
+            this.TesteBasla = new System.Windows.Forms.Button();
+            this.TestiDurdur = new System.Windows.Forms.Button();
             this.sp = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,14 +143,14 @@ namespace grafikdeneme
             this.chartV1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea7.Name = "ChartArea1";
-            this.chartV1.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.chartV1.ChartAreas.Add(chartArea1);
             this.chartV1.Location = new System.Drawing.Point(3, 3);
             this.chartV1.Name = "chartV1";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "V1";
-            this.chartV1.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "V1";
+            this.chartV1.Series.Add(series1);
             this.chartV1.Size = new System.Drawing.Size(417, 85);
             this.chartV1.TabIndex = 0;
             this.chartV1.Text = "V1";
@@ -153,7 +158,7 @@ namespace grafikdeneme
             // 
             // randomData
             // 
-            this.randomData.Location = new System.Drawing.Point(5, 339);
+            this.randomData.Location = new System.Drawing.Point(14, 502);
             this.randomData.Name = "randomData";
             this.randomData.Size = new System.Drawing.Size(141, 34);
             this.randomData.TabIndex = 1;
@@ -166,14 +171,14 @@ namespace grafikdeneme
             this.chartA1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea8.Name = "ChartArea2";
-            this.chartA1.ChartAreas.Add(chartArea8);
+            chartArea2.Name = "ChartArea2";
+            this.chartA1.ChartAreas.Add(chartArea2);
             this.chartA1.Location = new System.Drawing.Point(3, 94);
             this.chartA1.Name = "chartA1";
-            series8.ChartArea = "ChartArea2";
-            series8.Legend = "Legend1";
-            series8.Name = "A1";
-            this.chartA1.Series.Add(series8);
+            series2.ChartArea = "ChartArea2";
+            series2.Legend = "Legend1";
+            series2.Name = "A1";
+            this.chartA1.Series.Add(series2);
             this.chartA1.Size = new System.Drawing.Size(417, 85);
             this.chartA1.TabIndex = 0;
             this.chartA1.Text = "A1";
@@ -184,14 +189,14 @@ namespace grafikdeneme
             this.chartA2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea9.Name = "ChartArea2";
-            this.chartA2.ChartAreas.Add(chartArea9);
+            chartArea3.Name = "ChartArea2";
+            this.chartA2.ChartAreas.Add(chartArea3);
             this.chartA2.Location = new System.Drawing.Point(3, 94);
             this.chartA2.Name = "chartA2";
-            series9.ChartArea = "ChartArea2";
-            series9.Legend = "Legend1";
-            series9.Name = "A2";
-            this.chartA2.Series.Add(series9);
+            series3.ChartArea = "ChartArea2";
+            series3.Legend = "Legend1";
+            series3.Name = "A2";
+            this.chartA2.Series.Add(series3);
             this.chartA2.Size = new System.Drawing.Size(417, 85);
             this.chartA2.TabIndex = 0;
             this.chartA2.Text = "A2";
@@ -202,14 +207,14 @@ namespace grafikdeneme
             this.chartV2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea10.Name = "ChartArea1";
-            this.chartV2.ChartAreas.Add(chartArea10);
+            chartArea4.Name = "ChartArea1";
+            this.chartV2.ChartAreas.Add(chartArea4);
             this.chartV2.Location = new System.Drawing.Point(3, 3);
             this.chartV2.Name = "chartV2";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "V2";
-            this.chartV2.Series.Add(series10);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "V2";
+            this.chartV2.Series.Add(series4);
             this.chartV2.Size = new System.Drawing.Size(417, 85);
             this.chartV2.TabIndex = 0;
             this.chartV2.Text = "V2";
@@ -292,14 +297,14 @@ namespace grafikdeneme
             this.chartA3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea11.Name = "ChartArea2";
-            this.chartA3.ChartAreas.Add(chartArea11);
+            chartArea5.Name = "ChartArea2";
+            this.chartA3.ChartAreas.Add(chartArea5);
             this.chartA3.Location = new System.Drawing.Point(3, 94);
             this.chartA3.Name = "chartA3";
-            series11.ChartArea = "ChartArea2";
-            series11.Legend = "Legend1";
-            series11.Name = "A3";
-            this.chartA3.Series.Add(series11);
+            series5.ChartArea = "ChartArea2";
+            series5.Legend = "Legend1";
+            series5.Name = "A3";
+            this.chartA3.Series.Add(series5);
             this.chartA3.Size = new System.Drawing.Size(417, 85);
             this.chartA3.TabIndex = 0;
             this.chartA3.Text = "A3";
@@ -310,14 +315,14 @@ namespace grafikdeneme
             this.chartV3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea12.Name = "ChartArea1";
-            this.chartV3.ChartAreas.Add(chartArea12);
+            chartArea6.Name = "ChartArea1";
+            this.chartV3.ChartAreas.Add(chartArea6);
             this.chartV3.Location = new System.Drawing.Point(3, 3);
             this.chartV3.Name = "chartV3";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "V3";
-            this.chartV3.Series.Add(series12);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "V3";
+            this.chartV3.Series.Add(series6);
             this.chartV3.Size = new System.Drawing.Size(417, 85);
             this.chartV3.TabIndex = 0;
             this.chartV3.Text = "V3";
@@ -638,6 +643,8 @@ namespace grafikdeneme
             this.panel5.Controls.Add(this.tb_ZamanYukle);
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Controls.Add(this.panel6);
+            this.panel5.Controls.Add(this.TesteBasla);
+            this.panel5.Controls.Add(this.TestiDurdur);
             this.panel5.Controls.Add(this.randomData);
             this.panel5.Location = new System.Drawing.Point(623, 3);
             this.panel5.Name = "panel5";
@@ -657,6 +664,7 @@ namespace grafikdeneme
             // cb_zamanayarlandı
             // 
             this.cb_zamanayarlandı.AutoSize = true;
+            this.cb_zamanayarlandı.Enabled = false;
             this.cb_zamanayarlandı.Location = new System.Drawing.Point(132, 32);
             this.cb_zamanayarlandı.Name = "cb_zamanayarlandı";
             this.cb_zamanayarlandı.Size = new System.Drawing.Size(15, 14);
@@ -684,47 +692,87 @@ namespace grafikdeneme
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.Kesici_2_C);
-            this.panel7.Controls.Add(this.Kesici_2_B);
-            this.panel7.Controls.Add(this.Kesici_2_A);
+            this.panel7.Controls.Add(this.DirencliAyirici);
+            this.panel7.Controls.Add(this.TopraklıAyirici);
+            this.panel7.Controls.Add(this.DirencliOn);
+            this.panel7.Controls.Add(this.ToprakliOn);
+            this.panel7.Controls.Add(this.DirencliOff);
+            this.panel7.Controls.Add(this.ToprakliOff);
             this.panel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.panel7.Location = new System.Drawing.Point(5, 191);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(145, 132);
+            this.panel7.Size = new System.Drawing.Size(150, 88);
             this.panel7.TabIndex = 2;
             // 
-            // Kesici_2_C
+            // DirencliAyirici
             // 
-            this.Kesici_2_C.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Kesici_2_C.Location = new System.Drawing.Point(50, 85);
-            this.Kesici_2_C.Name = "Kesici_2_C";
-            this.Kesici_2_C.Size = new System.Drawing.Size(50, 34);
-            this.Kesici_2_C.TabIndex = 0;
-            this.Kesici_2_C.Text = "Kesici 2-C";
-            this.Kesici_2_C.UseVisualStyleBackColor = true;
-            this.Kesici_2_C.Click += new System.EventHandler(this.Kesici_2_C_Click);
+            this.DirencliAyirici.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DirencliAyirici.Location = new System.Drawing.Point(50, 45);
+            this.DirencliAyirici.Name = "DirencliAyirici";
+            this.DirencliAyirici.Size = new System.Drawing.Size(50, 34);
+            this.DirencliAyirici.TabIndex = 0;
+            this.DirencliAyirici.Text = "Dirençli Ayırıcı";
+            this.DirencliAyirici.UseVisualStyleBackColor = true;
+            this.DirencliAyirici.Click += new System.EventHandler(this.Kesici_2_B_Click);
             // 
-            // Kesici_2_B
+            // TopraklıAyirici
             // 
-            this.Kesici_2_B.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Kesici_2_B.Location = new System.Drawing.Point(50, 45);
-            this.Kesici_2_B.Name = "Kesici_2_B";
-            this.Kesici_2_B.Size = new System.Drawing.Size(50, 34);
-            this.Kesici_2_B.TabIndex = 0;
-            this.Kesici_2_B.Text = "Kesici 2-B";
-            this.Kesici_2_B.UseVisualStyleBackColor = true;
-            this.Kesici_2_B.Click += new System.EventHandler(this.Kesici_2_B_Click);
+            this.TopraklıAyirici.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TopraklıAyirici.Location = new System.Drawing.Point(50, 5);
+            this.TopraklıAyirici.Name = "TopraklıAyirici";
+            this.TopraklıAyirici.Size = new System.Drawing.Size(50, 34);
+            this.TopraklıAyirici.TabIndex = 0;
+            this.TopraklıAyirici.Text = "Topraklı Ayırıcı";
+            this.TopraklıAyirici.UseVisualStyleBackColor = true;
+            this.TopraklıAyirici.Click += new System.EventHandler(this.Kesici_2_A_Click);
             // 
-            // Kesici_2_A
+            // DirencliOn
             // 
-            this.Kesici_2_A.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Kesici_2_A.Location = new System.Drawing.Point(50, 5);
-            this.Kesici_2_A.Name = "Kesici_2_A";
-            this.Kesici_2_A.Size = new System.Drawing.Size(50, 34);
-            this.Kesici_2_A.TabIndex = 0;
-            this.Kesici_2_A.Text = "Kesici 2-A";
-            this.Kesici_2_A.UseVisualStyleBackColor = true;
-            this.Kesici_2_A.Click += new System.EventHandler(this.Kesici_2_A_Click);
+            this.DirencliOn.BackColor = System.Drawing.SystemColors.Control;
+            this.DirencliOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DirencliOn.Location = new System.Drawing.Point(0, 45);
+            this.DirencliOn.Name = "DirencliOn";
+            this.DirencliOn.Size = new System.Drawing.Size(50, 34);
+            this.DirencliOn.TabIndex = 0;
+            this.DirencliOn.Text = "ON";
+            this.DirencliOn.UseVisualStyleBackColor = false;
+            this.DirencliOn.Click += new System.EventHandler(this.DirencliOn_Click);
+            // 
+            // ToprakliOn
+            // 
+            this.ToprakliOn.BackColor = System.Drawing.SystemColors.Control;
+            this.ToprakliOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ToprakliOn.Location = new System.Drawing.Point(0, 5);
+            this.ToprakliOn.Name = "ToprakliOn";
+            this.ToprakliOn.Size = new System.Drawing.Size(50, 34);
+            this.ToprakliOn.TabIndex = 0;
+            this.ToprakliOn.Text = "ON";
+            this.ToprakliOn.UseVisualStyleBackColor = false;
+            this.ToprakliOn.Click += new System.EventHandler(this.ToprakliOn_Click);
+            // 
+            // DirencliOff
+            // 
+            this.DirencliOff.BackColor = System.Drawing.SystemColors.Control;
+            this.DirencliOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DirencliOff.Location = new System.Drawing.Point(100, 45);
+            this.DirencliOff.Name = "DirencliOff";
+            this.DirencliOff.Size = new System.Drawing.Size(50, 34);
+            this.DirencliOff.TabIndex = 0;
+            this.DirencliOff.Text = "OFF";
+            this.DirencliOff.UseVisualStyleBackColor = false;
+            this.DirencliOff.Click += new System.EventHandler(this.DirencliOff_Click);
+            // 
+            // ToprakliOff
+            // 
+            this.ToprakliOff.BackColor = System.Drawing.SystemColors.Control;
+            this.ToprakliOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ToprakliOff.Location = new System.Drawing.Point(100, 5);
+            this.ToprakliOff.Name = "ToprakliOff";
+            this.ToprakliOff.Size = new System.Drawing.Size(50, 34);
+            this.ToprakliOff.TabIndex = 0;
+            this.ToprakliOff.Text = "OFF";
+            this.ToprakliOff.UseVisualStyleBackColor = false;
+            this.ToprakliOff.Click += new System.EventHandler(this.ToprakliOff_Click);
             // 
             // panel6
             // 
@@ -844,6 +892,26 @@ namespace grafikdeneme
             this.Kesici_1.TabIndex = 0;
             this.Kesici_1.Text = "Kesici 1";
             this.Kesici_1.UseVisualStyleBackColor = false;
+            // 
+            // TesteBasla
+            // 
+            this.TesteBasla.Location = new System.Drawing.Point(5, 295);
+            this.TesteBasla.Name = "TesteBasla";
+            this.TesteBasla.Size = new System.Drawing.Size(150, 34);
+            this.TesteBasla.TabIndex = 1;
+            this.TesteBasla.Text = "Teste Başla";
+            this.TesteBasla.UseVisualStyleBackColor = true;
+            this.TesteBasla.Click += new System.EventHandler(this.TesteBasla_Click);
+            // 
+            // TestiDurdur
+            // 
+            this.TestiDurdur.Location = new System.Drawing.Point(5, 340);
+            this.TestiDurdur.Name = "TestiDurdur";
+            this.TestiDurdur.Size = new System.Drawing.Size(150, 34);
+            this.TestiDurdur.TabIndex = 1;
+            this.TestiDurdur.Text = "Testi Durdur";
+            this.TestiDurdur.UseVisualStyleBackColor = true;
+            this.TestiDurdur.Click += new System.EventHandler(this.TestiDurdur_Click);
             // 
             // sp
             // 
@@ -989,9 +1057,8 @@ namespace grafikdeneme
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button Kesici_2_C;
-        private System.Windows.Forms.Button Kesici_2_B;
-        private System.Windows.Forms.Button Kesici_2_A;
+        private System.Windows.Forms.Button DirencliAyirici;
+        private System.Windows.Forms.Button TopraklıAyirici;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button Kesici_3;
         private System.Windows.Forms.Button Kesici_2;
@@ -1014,6 +1081,12 @@ namespace grafikdeneme
         private System.Windows.Forms.Button Kesici_2_On;
         private System.Windows.Forms.Button Kesici_3_Off;
         private System.Windows.Forms.Button Kesici_2_Off;
+        private System.Windows.Forms.Button DirencliOn;
+        private System.Windows.Forms.Button ToprakliOn;
+        private System.Windows.Forms.Button DirencliOff;
+        private System.Windows.Forms.Button ToprakliOff;
+        private System.Windows.Forms.Button TesteBasla;
+        private System.Windows.Forms.Button TestiDurdur;
     }
 }
 

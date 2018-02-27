@@ -132,22 +132,46 @@ namespace grafikdeneme
                     // Teste başla komutu cevabı
                     else if (temp == 0xBA)
                     {
-                        int surehigh = sp.ReadByte();
-                        int surelow = sp.ReadByte();
-                        int sure = surehigh * 256 + surelow;
+                        Application.UseWaitCursor = true;
                     }
                     //Teste başla komutu cevabı
                     else if (temp == 0xEE)
                     {
-                        int surehigh = sp.ReadByte();
-                        int surelow = sp.ReadByte();
-                        int sure = surehigh * 256 + surelow;
+                        Application.UseWaitCursor = false;
+                        MessageBox.Show("Test Sonlandı", "UYARI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }
                     //Topraklı Ayırıcı Devreye al/devre dışı komutu cevabı
                     else if (temp == 0xAA)
                     {
                         int ayirici_no = sp.ReadByte();
                         int ayirici_state = sp.ReadByte();
+                        if (ayirici_no == 0x01)
+                        {
+                            if (ayirici_state == 0x00)
+                            {
+                                //TopraklıAyirici devredışı
+                                this.TopraklıAyirici.BackColor = Color.Green;
+                            }
+                            else if (ayirici_state == 0x0F)
+                            {
+                                //ToprakliAyirici devrede
+                                this.TopraklıAyirici.BackColor = Color.Red;
+                            }
+                        }
+                        else if (ayirici_no == 0x02)
+                        {
+                            if (ayirici_state == 0x00)
+                            {
+                                //DirencliAyirici devredışı
+                                this.DirencliAyirici.BackColor = Color.Green;
+                            }
+                            else if (ayirici_state == 0x0F)
+                            {
+                                //DirencliliAyirici devrede
+                                this.DirencliAyirici.BackColor = Color.Red;
+                            }
+                        }
                     }
                     //Kesici Devreye al/devre dışı komutu cevabı
                     else if (temp == 0x4B)
@@ -660,41 +684,30 @@ namespace grafikdeneme
                 this.Size = Properties.Settings.Default.F1Size;
             }
 
-            this.Kesici_1.BackColor = Color.Red;
-            this.Kesici_2.BackColor = Color.Red;
-            this.Kesici_3.BackColor = Color.Red;
-            this.Kesici_2_A.BackColor = Color.Red;
-            this.Kesici_2_B.BackColor = Color.Red;
-            this.Kesici_2_C.BackColor = Color.Red;
-
-
-
+            this.Kesici_1.BackColor = Color.Yellow;
+            this.Kesici_2.BackColor = Color.Yellow;
+            this.Kesici_3.BackColor = Color.Yellow;
+            this.TopraklıAyirici.BackColor = Color.Yellow;
+            this.DirencliAyirici.BackColor = Color.Yellow;
+            
         }
         
         private void Kesici_2_A_Click(object sender, EventArgs e)
         {
-            if (this.Kesici_2_A.BackColor == Color.Red)
-                this.Kesici_2_A.BackColor = Color.Green;
-            else if (this.Kesici_2_A.BackColor == Color.Green)
-                this.Kesici_2_A.BackColor = Color.Red;
+            if (this.TopraklıAyirici.BackColor == Color.Red)
+                this.TopraklıAyirici.BackColor = Color.Green;
+            else if (this.TopraklıAyirici.BackColor == Color.Green)
+                this.TopraklıAyirici.BackColor = Color.Red;
         }
 
         private void Kesici_2_B_Click(object sender, EventArgs e)
         {
-            if (this.Kesici_2_B.BackColor == Color.Red)
-                this.Kesici_2_B.BackColor = Color.Green;
-            else if (this.Kesici_2_B.BackColor == Color.Green)
-                this.Kesici_2_B.BackColor = Color.Red;
+            if (this.DirencliAyirici.BackColor == Color.Red)
+                this.DirencliAyirici.BackColor = Color.Green;
+            else if (this.DirencliAyirici.BackColor == Color.Green)
+                this.DirencliAyirici.BackColor = Color.Red;
         }
-
-        private void Kesici_2_C_Click(object sender, EventArgs e)
-        {
-            if (this.Kesici_2_C.BackColor == Color.Red)
-                this.Kesici_2_C.BackColor = Color.Green;
-            else if (this.Kesici_2_C.BackColor == Color.Green)
-                this.Kesici_2_C.BackColor = Color.Red;
-        }
-        
+                
         private void KaydetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string newLine = "t\tV1\tA1\tV2\tA2\tV3\tA3";
@@ -932,6 +945,98 @@ namespace grafikdeneme
             }
         }
 
+        private void ToprakliOn_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0xAA, 0x01, 0x0F };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void ToprakliOff_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0xAA, 0x01, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void DirencliOn_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0xAA, 0x02, 0x0F };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void DirencliOff_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0xAA, 0x02, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void TesteBasla_Click(object sender, EventArgs e)
+        {
+            if (cb_zamanayarlandı.Checked == false)
+                return;
+
+            byte[] data = { 0xAB, 0xCD, 0xBA, 0x00, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void TestiDurdur_Click(object sender, EventArgs e)
+        {
+            byte[] data = { 0xAB, 0xCD, 0xEE, 0x00, 0x00 };
+
+            try
+            {
+                sp.Write(data, 0, 5);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }
 
