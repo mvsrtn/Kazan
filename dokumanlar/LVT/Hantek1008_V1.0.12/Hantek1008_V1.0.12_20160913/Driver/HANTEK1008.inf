@@ -1,0 +1,123 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGuid = {36fc9e60-c465-11cf-8056-444553540000}
+provider=%ODM%
+LayoutFile=layout.inf
+CatalogFile=HANTEK1008.cat
+
+[ClassInstall32]
+Addreg = DSOReg
+
+[ClassInstall]
+Addreg = DSOReg
+
+[ClassInstall32.ntamd64]
+Addreg = DSOReg
+
+[ClassInstall32.ntia64]
+Addreg = DSOReg
+
+[DSOReg]
+HKR, , , 0, %ClassName%
+HKR, , Icon, , -5
+HKR, , NoInstallClass, , 1
+
+[Manufacturer]
+%ODM%=ODM
+%ODM%=ODM,NTia64
+%ODM%=ODM,NTamd64
+
+
+[ODM]
+%USB\VID_0783&PID_5725.DeviceDesc%=DSODEV.Dev, USB\VID_0783&PID_5725
+
+[ODM.NTamd64]
+%USB\VID_0783&PID_5725.DeviceDesc% = DSODEV.Dev.NTamd64, USB\VID_0783&PID_5725
+
+[ODM.NTia64]
+%USB\VID_0783&PID_5725.DeviceDesc% = DSODEV.Dev.NTia64, USB\VID_0783&PID_5725
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+DSODEV.Files.Ext = 10,System32\Drivers
+DSODEV.Files.Ext.amd64 = 10,System32\Drivers
+DSODEV.Files.Ext.ia64 = 10,System32\Drivers
+
+[DSODEV.Dev]
+CopyFiles=DSODEV.Files.Ext
+AddReg=DSODEV.AddReg
+
+[DSODEV.Dev.NT]
+CopyFiles=DSODEV.Files.Ext
+AddReg=DSODEV.AddReg
+
+[DSODEV.Dev.NTamd64]
+CopyFiles = DSODEV.Files.Ext.amd64
+AddReg    = DSODEV.amd64.AddReg
+
+[DSODEV.Dev.NTia64]
+CopyFiles = DSODEV.Files.Ext.I64
+AddReg    = DSODEV.ia64.AddReg
+
+[DSODEV.Dev.NT.Services]
+Addservice = DSODEV, 0x00000002, DSODEV.AddService
+
+[DSODEV.Dev.NTamd64.Services]
+AddService = DSODEV, 2, DSODEV.AddServiceAmd64
+
+[DSODEV.Dev.NTia64.Services]
+AddService = DSODEV, 2, DSODEV.AddServiceIA64
+
+[DSODEV.AddService]
+DisplayName    = %DSODEV.SvcDesc%
+ServiceType    = 1                  
+StartType      = 3                  
+ErrorControl   = 1                  
+ServiceBinary  = %10%\System32\Drivers\Hantek1008X86.SYS
+LoadOrderGroup = Base
+
+[DSODEV.AddServiceAmd64]
+DisplayName   = %DSODEV.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\Hantek1008AMD64.SYS
+
+[DSODEV.AddServiceIA64]
+DisplayName   = %DSODEV.SvcDesc%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %10%\System32\Drivers\Hantek1008IA64.SYS
+
+[DSODEV.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,Hantek1008X86.SYS
+
+[DSODEV.amd64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,Hantek1008AMD64.SYS
+
+[DSODEV.ia64.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,Hantek1008IA64.SYS
+
+
+[DSODEV.Files.Ext]
+Hantek1008X86.SYS
+
+[DSODEV.Files.Ext.amd64]
+Hantek1008AMD64.SYS
+
+[DSODEV.Files.Ext.I64]
+Hantek1008IA64.SYS
+
+
+[Strings]
+ClassName="Hantek1008"
+ODM="ODM"
+USB\VID_0783&PID_5725.DeviceDesc="Hantek1008"
+DSODEV.SvcDesc="Hantek1008 DRIVER"

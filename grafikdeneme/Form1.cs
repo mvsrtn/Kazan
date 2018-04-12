@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.IO;
 using System.IO.Ports;
+using System.Globalization;
+using System.Text.RegularExpressions;
+
 namespace grafikdeneme
 {
     public partial class Form1 : Form
@@ -257,71 +260,67 @@ namespace grafikdeneme
         private void RandomData_Click(object sender, EventArgs e)
         {
 
-            chartV1.Series["V1"].Points.Clear();
-            chartA1.Series["A1"].Points.Clear();
-            chartV2.Series["V2"].Points.Clear();
-            chartA2.Series["A2"].Points.Clear();
-            chartV3.Series["V3"].Points.Clear();
-            chartA3.Series["A3"].Points.Clear();
+            chartMain.Series["V1"].Points.Clear();
+            chartMain.Series["A1"].Points.Clear();
+            chartMain.Series["V2"].Points.Clear();
+            chartMain.Series["A2"].Points.Clear();
+            chartMain.Series["V3"].Points.Clear();
+            chartMain.Series["A3"].Points.Clear();
 
             Random rdn = new Random();
             for (int i = 0; i <= 100; i++)
             {
-                chartV1.Series["V1"].Points.AddXY(i, rdn.Next(0, 100));
-                chartV2.Series["V2"].Points.AddXY(i, rdn.Next(0, 100));
-                chartV3.Series["V3"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["V1"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["V2"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["V3"].Points.AddXY(i, rdn.Next(0, 100));
             }
-            chartV1.ChartAreas[0].AxisX.Maximum = 100;
-            chartV1.ChartAreas[0].AxisX.Minimum = 0;
-            chartV1.Series["V1"].ChartType = SeriesChartType.FastLine;
-            chartV1.Series["V1"].Color = Color.Red;
-            chartV2.ChartAreas[0].AxisX.Maximum = 100;
-            chartV2.ChartAreas[0].AxisX.Minimum = 0;
-            chartV2.Series["V2"].ChartType = SeriesChartType.FastLine;
-            chartV2.Series["V2"].Color = Color.Red;
-            chartV3.ChartAreas[0].AxisX.Maximum = 100;
-            chartV3.ChartAreas[0].AxisX.Minimum = 0;
-            chartV3.Series["V3"].ChartType = SeriesChartType.FastLine;
-            chartV3.Series["V3"].Color = Color.Red;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["V1"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["V1"].Color = Color.Red;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["V2"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["V2"].Color = Color.Red;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["V3"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["V3"].Color = Color.Red;
 
             for (int i = 0; i <= 100; i++)
             {
-                chartA1.Series["A1"].Points.AddXY(i, rdn.Next(0, 100));
-                chartA2.Series["A2"].Points.AddXY(i, rdn.Next(0, 100));
-                chartA3.Series["A3"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["A1"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["A2"].Points.AddXY(i, rdn.Next(0, 100));
+                chartMain.Series["A3"].Points.AddXY(i, rdn.Next(0, 100));
             }
-            chartA1.ChartAreas[0].AxisX.Maximum = 100;
-            chartA1.ChartAreas[0].AxisX.Minimum = 0;
-            chartA1.Series["A1"].ChartType = SeriesChartType.FastLine;
-            chartA1.Series["A1"].Color = Color.Blue;
-            chartA2.ChartAreas[0].AxisX.Maximum = 100;
-            chartA2.ChartAreas[0].AxisX.Minimum = 0;
-            chartA2.Series["A2"].ChartType = SeriesChartType.FastLine;
-            chartA2.Series["A2"].Color = Color.Blue;
-            chartA3.ChartAreas[0].AxisX.Maximum = 100;
-            chartA3.ChartAreas[0].AxisX.Minimum = 0;
-            chartA3.Series["A3"].ChartType = SeriesChartType.FastLine;
-            chartA3.Series["A3"].Color = Color.Blue;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["A1"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["A1"].Color = Color.Blue;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["A2"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["A2"].Color = Color.Blue;
+            chartMain.ChartAreas[0].AxisX.Maximum = 100;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.Series["A3"].ChartType = SeriesChartType.FastLine;
+            chartMain.Series["A3"].Color = Color.Blue;
 
-            tb_max_1.Text = (chartV1.Series[0].Points.Count - 1).ToString();
+            tb_max_1.Text = (chartMain.Series[0].Points.Count - 1).ToString();
             tb_min_1.Text = "0";
-            tb_max_2.Text = (chartV2.Series[0].Points.Count - 1).ToString();
-            tb_min_2.Text = "0";
-            tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
-            tb_min_3.Text = "0";
 
         }
 
         private void ChartV1_Click(object sender, MouseEventArgs e)
         {
-            Axis ax = chartV1.ChartAreas[0].AxisX;
+            Axis ax = chartMain.ChartAreas[0].AxisX;
 
             //double Xpoint;
             double clickedX = ax.PixelPositionToValue(e.X);
             double temp = double.MaxValue;
             string tempstr = "";
 
-            foreach (DataPoint dp in chartV1.Series[0].Points)
+            foreach (DataPoint dp in chartMain.Series[0].Points)
             {
                 if (Math.Abs(dp.XValue - clickedX) < temp)
                 {
@@ -344,40 +343,7 @@ namespace grafikdeneme
             }
 
         }
-
-        private void ChartA1_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartA1.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartA1.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_1.Checked == true)
-            {
-                tb_min_1.Text = tempstr;
-                cb_min_1.Checked = false;
-            }
-            if (cb_max_1.Checked == true)
-            {
-                tb_max_1.Text = tempstr;
-                cb_max_1.Checked = false;
-            }
-
-        }
-
+        
         private void UpdateLimits_1_Click(object sender, EventArgs e)
         {
 
@@ -398,10 +364,10 @@ namespace grafikdeneme
                 return;
             }
 
-            chartV1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
-            chartV1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
-            chartA1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
-            chartA1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
+            chartMain.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
+            chartMain.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
+            chartMain.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
+            chartMain.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
 
         }
 
@@ -419,250 +385,14 @@ namespace grafikdeneme
 
         private void Zeroize_1_Click(object sender, EventArgs e)
         {
-            tb_max_1.Text = (chartA1.Series[0].Points.Count - 1).ToString();
+            tb_max_1.Text = (chartMain.Series[0].Points.Count - 1).ToString();
             tb_min_1.Text = "0";
 
 
-            chartV1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
-            chartV1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
-            chartA1.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
-            chartA1.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
+            chartMain.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
+            chartMain.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
         }
         
-        private void ChartV2_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartV2.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartV2.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_2.Checked == true)
-            {
-                tb_min_2.Text = tempstr;
-                cb_min_2.Checked = false;
-            }
-            if (cb_max_2.Checked == true)
-            {
-                tb_max_2.Text = tempstr;
-                cb_max_2.Checked = false;
-            }
-
-        }
-
-        private void ChartA2_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartA2.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartA2.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_2.Checked == true)
-            {
-                tb_min_2.Text = tempstr;
-                cb_min_2.Checked = false;
-            }
-            if (cb_max_2.Checked == true)
-            {
-                tb_max_2.Text = tempstr;
-                cb_max_2.Checked = false;
-            }
-
-        }
-
-        private void UpdateLimits_2_Click(object sender, EventArgs e)
-        {
-
-            if (tb_min_2.Text.Length == 0)
-            {
-                MessageBox.Show("Grafik Minimum Değeri Boş Bırakılamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (tb_max_2.Text.Length == 0)
-            {
-                MessageBox.Show("Grafik Maximum Değeri Boş Bırakılamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (Int32.Parse(tb_min_2.Text) >= Int32.Parse(tb_max_2.Text))
-            {
-                MessageBox.Show("Grafik Minimum Değeri Grafik Maksimum Değerinden Küçük Olamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            chartV2.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_2.Text);
-            chartV2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
-            chartA2.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_2.Text);
-            chartA2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
-
-        }
-
-        private void Cb_min_2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_min_2.Checked == true)
-                cb_max_2.Checked = false;
-        }
-
-        private void Cb_max_2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_max_2.Checked == true)
-                cb_min_2.Checked = false;
-        }
-
-        private void Zeroize_2_Click(object sender, EventArgs e)
-        {
-            tb_max_2.Text = (chartA2.Series[0].Points.Count - 1).ToString();
-            tb_min_2.Text = "0";
-
-
-            chartV2.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_2.Text);
-            chartV2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
-            chartA2.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_2.Text);
-            chartA2.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_2.Text);
-        }
-
-        private void ChartV3_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartV3.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartV3.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_3.Checked == true)
-            {
-                tb_min_3.Text = tempstr;
-                cb_min_3.Checked = false;
-            }
-            if (cb_max_3.Checked == true)
-            {
-                tb_max_3.Text = tempstr;
-                cb_max_3.Checked = false;
-            }
-
-        }
-
-        private void ChartA3_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartA3.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartA3.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_3.Checked == true)
-            {
-                tb_min_3.Text = tempstr;
-                cb_min_3.Checked = false;
-            }
-            if (cb_max_3.Checked == true)
-            {
-                tb_max_3.Text = tempstr;
-                cb_max_3.Checked = false;
-            }
-
-        }
-
-        private void UpdateLimits_3_Click(object sender, EventArgs e)
-        {
-
-            if (tb_min_3.Text.Length == 0)
-            {
-                MessageBox.Show("Grafik Minimum Değeri Boş Bırakılamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (tb_max_3.Text.Length == 0)
-            {
-                MessageBox.Show("Grafik Maximum Değeri Boş Bırakılamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (Int32.Parse(tb_min_3.Text) >= Int32.Parse(tb_max_3.Text))
-            {
-                MessageBox.Show("Grafik Minimum Değeri Grafik Maksimum Değerinden Küçük Olamaz", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            chartV3.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_3.Text);
-            chartV3.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_3.Text);
-            chartA3.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_3.Text);
-            chartA3.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_3.Text);
-
-        }
-
-        private void Cb_min_3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_min_3.Checked == true)
-                cb_max_3.Checked = false;
-        }
-
-        private void Cb_max_3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_max_3.Checked == true)
-                cb_min_3.Checked = false;
-        }
-
-        private void Zeroize_3_Click(object sender, EventArgs e)
-        {
-            tb_max_3.Text = (chartA3.Series[0].Points.Count - 1).ToString();
-            tb_min_3.Text = "0";
-
-
-            chartV3.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_3.Text);
-            chartV3.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_3.Text);
-            chartA3.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_3.Text);
-            chartA3.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_3.Text);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -709,7 +439,7 @@ namespace grafikdeneme
         }
                 
         private void KaydetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {/*
             string newLine = "t\tV1\tA1\tV2\tA2\tV3\tA3";
 
             SaveFileDialog sfd = new SaveFileDialog
@@ -730,10 +460,10 @@ namespace grafikdeneme
 
             csv.AppendLine(newLine);
 
-            for (int i = 0; i < chartV1.Series[0].Points.Count; i++)
+            for (int i = 0; i < chartMain.Series[0].Points.Count; i++)
             {
-                string t1 = chartV1.Series[0].Points[i].XValue.ToString();
-                string V1 = chartV1.Series[0].Points[i].YValues[0].ToString();
+                string t1 = chartMain.Series[0].Points[i].XValue.ToString();
+                string V1 = chartMain.Series[0].Points[i].YValues[0].ToString();
                 string A1 = chartA1.Series[0].Points[i].YValues[0].ToString();
                 string V2 = chartV2.Series[0].Points[i].YValues[0].ToString();
                 string A2 = chartA2.Series[0].Points[i].YValues[0].ToString();
@@ -744,14 +474,202 @@ namespace grafikdeneme
                 newLine = string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}", t1, V1, A1, V2, A2, V3, A3);
                 csv.AppendLine(newLine);
             }
-            File.WriteAllText(sfd.FileName, csv.ToString());
+            File.WriteAllText(sfd.FileName, csv.ToString());*/
         }
 
+        private void ReadCalibParams()
+        {
+            string fullPathToFile = System.Windows.Forms.Application.StartupPath + "\\CalibrationParams.txt";
+            StreamReader stream_calib = new StreamReader(fullPathToFile);
+            var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            string temp = Regex.Replace(stream_calib.ReadToEnd(), "[.,]", separator);            
+            stream_calib.Close();
+            string[] hede = temp.Split('\t','\n','\r');
+            string[] parameters = new string[255];
+            int ii = 0;
+            for (int i = 0; i < hede.Length; i++)
+            {
+                if (hede[i].Length != 0)
+                {
+                    parameters[ii] = hede[i];
+                    ii = ii + 1;
+                }
+            }
+           
+
+           // string[] hede = parameters.Except(new string[] { "\t", " " }).ToArray();
+           // string[] ahey = parameters.Except(new string[] { "" }).ToArray();
+            //char[] delimeters = new char[] { '#', ':', ' ' };
+            for (int i = 0; i < parameters.Length; i++)
+            {
+               if (parameters[i] == "#L1")
+                {
+                    double okunandeger = 0;
+                    while (true)
+                    {
+                        i++;
+                        if (parameters[i] == "#L2")
+                        {
+                            i = i - 1;
+                            break;
+                        }
+                        try
+                        {                            
+                            okunandeger = double.Parse(parameters[i]);
+                        }
+                        catch
+                        { }
+                        if (okunandeger == ScaleFactor)
+                        {
+                            i++;
+                            L1_RMS = double.Parse(parameters[i]);
+                            i++;
+                            L1_PEAK = double.Parse(parameters[i]);
+                        }
+                    }
+                }
+                if (parameters[i] == "#L2")
+                {
+                    double okunandeger = 0;
+                    while (true)
+                    {
+                        i++;
+                        if (parameters[i] == "#L3")
+                        {
+                            i = i - 1;
+                            break;
+                        }
+                        try
+                        {
+                            okunandeger = double.Parse(parameters[i]);
+                        }
+                        catch
+                        { }
+                        if (okunandeger == ScaleFactor)
+                        {
+                            i++;
+                            L2_RMS = double.Parse(parameters[i]);
+                            i++;
+                            L2_PEAK = double.Parse(parameters[i]);
+                        }
+                    }
+                }
+                if (parameters[i] == "#L3")
+                {
+                    double okunandeger = 0;
+                    while (true)
+                    {
+                        i++;
+                        if (i == parameters.Length)
+                        {
+                            break;
+                        }
+                        try
+                        {
+                            okunandeger = double.Parse(parameters[i]);
+                        }
+                        catch
+                        { }
+                        if (okunandeger == ScaleFactor)
+                        {
+                            i++;
+                            L3_RMS = double.Parse(parameters[i]);
+                            i++;
+                            L3_PEAK = double.Parse(parameters[i]);
+                        }
+                    }
+                }
+
+            }
+            
+        }
+        
+        private void AcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ScaleFactor == 0)
+            {
+                MessageBox.Show("Lüfen Akım Skalası seçiniz.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "Excel dosyaları (*.xls)|*.xls"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                Path.GetFullPath(ofd.FileName);
+            }
+            else
+            {
+                MessageBox.Show("Dosya Seçmediniz.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //read calibration parameters
+            ReadCalibParams();
+
+
+            // Get the number separator for this culture and replace any others with it
+            var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+
+            double[] cizilecekData = new double[4000];
+
+            StreamReader readFile = new StreamReader(ofd.FileName);
+            Color[] Color_list = { Color.Blue, Color.Red, Color.Green, Color.Magenta, Color.Orange, Color.DarkBlue, Color.Yellow, Color.Black };
+            int Color_id = 0;
+            double graphStartPoint = 0;
+            double graphMinPoint = 0;
+
+            while (true)
+            {
+                string ch_name = readFile.ReadLine();
+                if (ch_name == null)
+                {
+                    break;
+                }
+                if (ch_name != "")
+                {
+                    chartMain.Series[ch_name].Points.Clear();
+                    string ch_clock = readFile.ReadLine();
+                    string ch_size = readFile.ReadLine();
+                    string ch_unit = readFile.ReadLine();
+                    readFile.ReadLine();
+
+                    int numOfData = Convert.ToInt32(string.Join(null, Regex.Split(ch_size, "[^\\d]")));
+                    
+                    for (int i = 0; i < numOfData; i++)
+                    {
+                        string hede = Regex.Replace(readFile.ReadLine(), "[.,]", separator);
+                        cizilecekData[i] = Convert.ToDouble(hede);                        
+                    }
+
+                    graphStartPoint = graphStartPoint + graphMinPoint - cizilecekData.Max();
+                    
+
+                    for (int i=0; i<cizilecekData.Length; i++)
+                    {
+                        chartMain.Series[ch_name].Points.AddXY(i + 1, cizilecekData[i] + graphStartPoint);
+                    }
+                    chartMain.Series[ch_name].ChartType = SeriesChartType.FastLine;
+                    chartMain.Series[ch_name].Color = Color_list[Color_id++];
+                    chartMain.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
+                    graphMinPoint = cizilecekData.Min();
+                }
+
+
+            }
+            readFile.Close();
+
+
+        }
+        
+        /*
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = "CSV dosyaları (*.csv)|*.csv"
+                Filter = "CSV dosyaları (*.csv)|*.csv"                
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -826,7 +744,8 @@ namespace grafikdeneme
             tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
             tb_min_3.Text = "0";
         }
-        
+        */
+
         private void Tb_ZamanYukle_TextChanged(object sender, EventArgs e)
         {
             cb_zamanayarlandı.Checked = false;
@@ -1036,6 +955,105 @@ namespace grafikdeneme
                 MessageBox.Show("Haberleşme Hatası!", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void Rb_120kA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_120kA.Checked == true)
+            {
+                Rb_50kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_500A.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 120000;
+        }
+
+        private void Rb_50kA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_50kA.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_500A.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 50000;
+        }
+
+        private void Rb_10kA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_10kA.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_50kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_500A.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 10000;
+        }
+
+        private void Rb_5kA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_5kA.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_50kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_500A.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 5000;
+        }
+
+        private void Rb_2kA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_2kA.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_50kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_500A.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 2000;
+        }
+
+        private void Rb_500A_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Rb_500A.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_50kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_100A.Checked = false;
+            }
+            ScaleFactor = 500;
+        }
+
+        private void Rb_100A_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (Rb_100A.Checked == true)
+            {
+                Rb_120kA.Checked = false;
+                Rb_50kA.Checked = false;
+                Rb_10kA.Checked = false;
+                Rb_5kA.Checked = false;
+                Rb_2kA.Checked = false;
+                Rb_500A.Checked = false;
+            }
+            ScaleFactor = 100;
         }
     }
 }
