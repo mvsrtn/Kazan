@@ -496,10 +496,6 @@ namespace grafikdeneme
                 }
             }
            
-
-           // string[] hede = parameters.Except(new string[] { "\t", " " }).ToArray();
-           // string[] ahey = parameters.Except(new string[] { "" }).ToArray();
-            //char[] delimeters = new char[] { '#', ':', ' ' };
             for (int i = 0; i < parameters.Length; i++)
             {
                if (parameters[i] == "#L1")
@@ -608,7 +604,7 @@ namespace grafikdeneme
 
             //read calibration parameters
             ReadCalibParams();
-
+            
 
             // Get the number separator for this culture and replace any others with it
             var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
@@ -620,6 +616,10 @@ namespace grafikdeneme
             int Color_id = 0;
             double graphStartPoint = 0;
             double graphMinPoint = 0;
+            double[] peak2peak = new double[6];
+            double[] maxpoints = new double[6];
+            double[] minpoints = new double[6];
+            int ch_counter = 0;
 
             while (true)
             {
@@ -627,9 +627,10 @@ namespace grafikdeneme
                 if (ch_name == null)
                 {
                     break;
-                }
+                }                
                 if (ch_name != "")
                 {
+                    
                     chartMain.Series[ch_name].Points.Clear();
                     string ch_clock = readFile.ReadLine();
                     string ch_size = readFile.ReadLine();
@@ -654,16 +655,64 @@ namespace grafikdeneme
                     chartMain.Series[ch_name].ChartType = SeriesChartType.FastLine;
                     chartMain.Series[ch_name].Color = Color_list[Color_id++];
                     chartMain.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
+                    chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+                    chartMain.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.Gray;
+                    chartMain.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
+                    chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
+                    chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+                    chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+                    chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
+
                     graphMinPoint = cizilecekData.Min();
+                    maxpoints[ch_counter] = cizilecekData.Max();
+                    minpoints[ch_counter] = cizilecekData.Min();
+                    ch_counter = ch_counter + 1;
                 }
 
 
             }
             readFile.Close();
 
+            // I1_RMS hesapla
+            double I1_RMS = ((maxpoints[1]-minpoints[1]) * L1_RMS)/1000; // kA cinsinden
+            tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
+
+            // I1_peak hesapla
+            double I1_peak = 0;
+            if (maxpoints[1] >= Math.Abs(minpoints[1]))
+                I1_peak = (maxpoints[1] * L1_PEAK) / 1000; // kA cinsinden
+            else
+                I1_peak = (minpoints[1] * L1_PEAK) / 1000; // kA cinsinden
+            tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
+
+            // I2_RMS hesapla
+            double I2_RMS = ((maxpoints[3] - minpoints[3]) * L2_RMS) / 1000; // kA cinsinden
+            tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
+
+            // I2_peak hesapla
+            double I2_peak = 0;
+            if (maxpoints[3] >= Math.Abs(minpoints[3]))
+                I2_peak = (maxpoints[3] * L2_PEAK) / 1000; // kA cinsinden
+            else
+                I2_peak = (minpoints[3] * L2_PEAK) / 1000; // kA cinsinden
+            tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
+
+            // I3_RMS hesapla
+            double I3_RMS = ((maxpoints[5] - minpoints[5]) * L3_RMS) / 1000; // kA cinsinden
+            tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
+
+            // I3_peak hesapla
+            double I3_peak = 0;
+            if (maxpoints[5] >= Math.Abs(minpoints[5]))
+                I3_peak = (maxpoints[5] * L3_PEAK) / 1000; // kA cinsinden
+            else
+                I3_peak = (minpoints[1] * L3_PEAK) / 1000; // kA cinsinden
+            tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
+
+
 
         }
-        
+
         /*
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1055,6 +1104,7 @@ namespace grafikdeneme
             }
             ScaleFactor = 100;
         }
+        
     }
 }
 
