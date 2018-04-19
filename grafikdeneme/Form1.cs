@@ -22,7 +22,7 @@ namespace grafikdeneme
 
             InitializeComponent();
 
-            SetPortConfig();
+            //SetPortConfig();
         }
 
         private int SetPortConfig()
@@ -620,6 +620,8 @@ namespace grafikdeneme
             double[] maxpoints = new double[6];
             double[] minpoints = new double[6];
             int ch_counter = 0;
+            string ch_clock = "";
+            string ch_size = "";
 
             while (true)
             {
@@ -632,8 +634,9 @@ namespace grafikdeneme
                 {
                     
                     chartMain.Series[ch_name].Points.Clear();
-                    string ch_clock = readFile.ReadLine();
-                    string ch_size = readFile.ReadLine();
+                    ch_clock = readFile.ReadLine();
+                    ch_size = readFile.ReadLine();
+                    
                     string ch_unit = readFile.ReadLine();
                     readFile.ReadLine();
 
@@ -648,17 +651,26 @@ namespace grafikdeneme
                     graphStartPoint = graphStartPoint + graphMinPoint - cizilecekData.Max();
                     
 
-                    for (int i=0; i<cizilecekData.Length; i++)
+                    //for (int i=0; i<cizilecekData.Length; i++)
+                    for (int i =0; i< Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value); i++)
                     {
-                        chartMain.Series[ch_name].Points.AddXY(i + 1, cizilecekData[i] + graphStartPoint);
+                        chartMain.Series[ch_name].Points.AddXY(i, cizilecekData[i] + graphStartPoint);
                     }
                     chartMain.Series[ch_name].ChartType = SeriesChartType.FastLine;
                     chartMain.Series[ch_name].Color = Color_list[Color_id++];
+                    chartMain.ChartAreas[0].AxisX.Minimum = 0;
+                    chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value)-1;
                     chartMain.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
-                    chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+
+                    // MinorGrid Disabled
+                    chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+                    chartMain.ChartAreas[0].AxisX.MinorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
                     chartMain.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.Gray;
                     chartMain.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
+
+                    //Major Grid Disabled
                     chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
+                    chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
                     chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
                     chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
                     chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
@@ -710,6 +722,8 @@ namespace grafikdeneme
             tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
 
 
+            tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * Double.Parse(Regex.Match(ch_size, @"\d+").Value) * 0.001 / 20);
+            Tb_ms_div.Text = tb_ms_div_old.ToString("F2");
 
         }
 
@@ -1105,6 +1119,29 @@ namespace grafikdeneme
             ScaleFactor = 100;
         }
         
+        private void Tb_ms_div_TextChanged(object sender, EventArgs e)
+        {
+            if (Tb_ms_div.Text == "")
+                return;
+            double ms_div = Convert.ToDouble(Tb_ms_div.Text);
+            chartMain.ChartAreas[0].AxisX.Maximum = chartMain.ChartAreas[0].AxisX.Maximum * ms_div / tb_ms_div_old;
+            tb_ms_div_old = ms_div;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = chartMain.ChartAreas[0].AxisX.Maximum / 20;
+
+        }
+
+        private void Tb_ms_div_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            if (Tb_ms_div.Text != "")
+            {
+                tb_ms_div_old = Convert.ToDouble(Tb_ms_div.Text);
+            }
+            else
+            {
+                tb_ms_div_old = 1;
+            }
+        }
     }
 }
 

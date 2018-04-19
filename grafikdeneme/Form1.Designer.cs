@@ -35,15 +35,15 @@ namespace grafikdeneme
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.randomData = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -81,14 +81,6 @@ namespace grafikdeneme
             this.UpdataLimits_1 = new System.Windows.Forms.Button();
             this.label_min_1 = new System.Windows.Forms.Label();
             this.chartMain = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Rb_100A = new System.Windows.Forms.RadioButton();
-            this.Rb_500A = new System.Windows.Forms.RadioButton();
-            this.Rb_2kA = new System.Windows.Forms.RadioButton();
-            this.Rb_5kA = new System.Windows.Forms.RadioButton();
-            this.Rb_10kA = new System.Windows.Forms.RadioButton();
-            this.Rb_50kA = new System.Windows.Forms.RadioButton();
-            this.Rb_120kA = new System.Windows.Forms.RadioButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -102,6 +94,17 @@ namespace grafikdeneme
             this.tb_I2_rms = new System.Windows.Forms.TextBox();
             this.tb_I1_peak = new System.Windows.Forms.TextBox();
             this.tb_I1_rms = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Tb_ms_div = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Rb_100A = new System.Windows.Forms.RadioButton();
+            this.Rb_500A = new System.Windows.Forms.RadioButton();
+            this.Rb_2kA = new System.Windows.Forms.RadioButton();
+            this.Rb_5kA = new System.Windows.Forms.RadioButton();
+            this.Rb_10kA = new System.Windows.Forms.RadioButton();
+            this.Rb_50kA = new System.Windows.Forms.RadioButton();
+            this.Rb_120kA = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.sp = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,19 +113,16 @@ namespace grafikdeneme
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portAyarlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartMain)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // randomData
@@ -538,138 +538,38 @@ namespace grafikdeneme
             this.chartMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chartMain.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chartMain.ChartAreas.Add(chartArea1);
             this.chartMain.Location = new System.Drawing.Point(136, 3);
             this.chartMain.Name = "chartMain";
-            series9.ChartArea = "ChartArea1";
-            series9.Name = "#CHANNEL:CH1";
-            series10.ChartArea = "ChartArea1";
-            series10.Name = "#CHANNEL:CH2";
-            series11.ChartArea = "ChartArea1";
-            series11.Name = "#CHANNEL:CH3";
-            series12.ChartArea = "ChartArea1";
-            series12.Name = "#CHANNEL:CH4";
-            series13.ChartArea = "ChartArea1";
-            series13.Name = "#CHANNEL:CH5";
-            series14.ChartArea = "ChartArea1";
-            series14.Name = "#CHANNEL:CH6";
-            series15.ChartArea = "ChartArea1";
-            series15.Name = "#CHANNEL:CH7";
-            series16.ChartArea = "ChartArea1";
-            series16.Name = "#CHANNEL:CH8";
-            this.chartMain.Series.Add(series9);
-            this.chartMain.Series.Add(series10);
-            this.chartMain.Series.Add(series11);
-            this.chartMain.Series.Add(series12);
-            this.chartMain.Series.Add(series13);
-            this.chartMain.Series.Add(series14);
-            this.chartMain.Series.Add(series15);
-            this.chartMain.Series.Add(series16);
+            series1.ChartArea = "ChartArea1";
+            series1.Name = "#CHANNEL:CH1";
+            series2.ChartArea = "ChartArea1";
+            series2.Name = "#CHANNEL:CH2";
+            series3.ChartArea = "ChartArea1";
+            series3.Name = "#CHANNEL:CH3";
+            series4.ChartArea = "ChartArea1";
+            series4.Name = "#CHANNEL:CH4";
+            series5.ChartArea = "ChartArea1";
+            series5.Name = "#CHANNEL:CH5";
+            series6.ChartArea = "ChartArea1";
+            series6.Name = "#CHANNEL:CH6";
+            series7.ChartArea = "ChartArea1";
+            series7.Name = "#CHANNEL:CH7";
+            series8.ChartArea = "ChartArea1";
+            series8.Name = "#CHANNEL:CH8";
+            this.chartMain.Series.Add(series1);
+            this.chartMain.Series.Add(series2);
+            this.chartMain.Series.Add(series3);
+            this.chartMain.Series.Add(series4);
+            this.chartMain.Series.Add(series5);
+            this.chartMain.Series.Add(series6);
+            this.chartMain.Series.Add(series7);
+            this.chartMain.Series.Add(series8);
             this.chartMain.Size = new System.Drawing.Size(261, 564);
             this.chartMain.TabIndex = 0;
             this.chartMain.Text = "chartMain";
             this.chartMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartV1_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Rb_100A);
-            this.groupBox1.Controls.Add(this.Rb_500A);
-            this.groupBox1.Controls.Add(this.Rb_2kA);
-            this.groupBox1.Controls.Add(this.Rb_5kA);
-            this.groupBox1.Controls.Add(this.Rb_10kA);
-            this.groupBox1.Controls.Add(this.Rb_50kA);
-            this.groupBox1.Controls.Add(this.Rb_120kA);
-            this.groupBox1.Location = new System.Drawing.Point(22, 170);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(77, 190);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Akım Skala";
-            // 
-            // Rb_100A
-            // 
-            this.Rb_100A.AutoSize = true;
-            this.Rb_100A.Location = new System.Drawing.Point(6, 169);
-            this.Rb_100A.Name = "Rb_100A";
-            this.Rb_100A.Size = new System.Drawing.Size(56, 17);
-            this.Rb_100A.TabIndex = 0;
-            this.Rb_100A.TabStop = true;
-            this.Rb_100A.Text = "0.1 kA";
-            this.Rb_100A.UseVisualStyleBackColor = true;
-            this.Rb_100A.CheckedChanged += new System.EventHandler(this.Rb_100A_CheckedChanged);
-            // 
-            // Rb_500A
-            // 
-            this.Rb_500A.AutoSize = true;
-            this.Rb_500A.Location = new System.Drawing.Point(6, 144);
-            this.Rb_500A.Name = "Rb_500A";
-            this.Rb_500A.Size = new System.Drawing.Size(56, 17);
-            this.Rb_500A.TabIndex = 0;
-            this.Rb_500A.TabStop = true;
-            this.Rb_500A.Text = "0.5 kA";
-            this.Rb_500A.UseVisualStyleBackColor = true;
-            this.Rb_500A.CheckedChanged += new System.EventHandler(this.Rb_500A_CheckedChanged);
-            // 
-            // Rb_2kA
-            // 
-            this.Rb_2kA.AutoSize = true;
-            this.Rb_2kA.Location = new System.Drawing.Point(6, 119);
-            this.Rb_2kA.Name = "Rb_2kA";
-            this.Rb_2kA.Size = new System.Drawing.Size(47, 17);
-            this.Rb_2kA.TabIndex = 0;
-            this.Rb_2kA.TabStop = true;
-            this.Rb_2kA.Text = "2 kA";
-            this.Rb_2kA.UseVisualStyleBackColor = true;
-            this.Rb_2kA.CheckedChanged += new System.EventHandler(this.Rb_2kA_CheckedChanged);
-            // 
-            // Rb_5kA
-            // 
-            this.Rb_5kA.AutoSize = true;
-            this.Rb_5kA.Location = new System.Drawing.Point(6, 94);
-            this.Rb_5kA.Name = "Rb_5kA";
-            this.Rb_5kA.Size = new System.Drawing.Size(47, 17);
-            this.Rb_5kA.TabIndex = 0;
-            this.Rb_5kA.TabStop = true;
-            this.Rb_5kA.Text = "5 kA";
-            this.Rb_5kA.UseVisualStyleBackColor = true;
-            this.Rb_5kA.CheckedChanged += new System.EventHandler(this.Rb_5kA_CheckedChanged);
-            // 
-            // Rb_10kA
-            // 
-            this.Rb_10kA.AutoSize = true;
-            this.Rb_10kA.Location = new System.Drawing.Point(6, 69);
-            this.Rb_10kA.Name = "Rb_10kA";
-            this.Rb_10kA.Size = new System.Drawing.Size(53, 17);
-            this.Rb_10kA.TabIndex = 0;
-            this.Rb_10kA.TabStop = true;
-            this.Rb_10kA.Text = "10 kA";
-            this.Rb_10kA.UseVisualStyleBackColor = true;
-            this.Rb_10kA.CheckedChanged += new System.EventHandler(this.Rb_10kA_CheckedChanged);
-            // 
-            // Rb_50kA
-            // 
-            this.Rb_50kA.AutoSize = true;
-            this.Rb_50kA.Location = new System.Drawing.Point(6, 44);
-            this.Rb_50kA.Name = "Rb_50kA";
-            this.Rb_50kA.Size = new System.Drawing.Size(53, 17);
-            this.Rb_50kA.TabIndex = 0;
-            this.Rb_50kA.TabStop = true;
-            this.Rb_50kA.Text = "50 kA";
-            this.Rb_50kA.UseVisualStyleBackColor = true;
-            this.Rb_50kA.CheckedChanged += new System.EventHandler(this.Rb_50kA_CheckedChanged);
-            // 
-            // Rb_120kA
-            // 
-            this.Rb_120kA.AutoSize = true;
-            this.Rb_120kA.Location = new System.Drawing.Point(6, 19);
-            this.Rb_120kA.Name = "Rb_120kA";
-            this.Rb_120kA.Size = new System.Drawing.Size(59, 17);
-            this.Rb_120kA.TabIndex = 0;
-            this.Rb_120kA.TabStop = true;
-            this.Rb_120kA.Text = "120 kA";
-            this.Rb_120kA.UseVisualStyleBackColor = true;
-            this.Rb_120kA.CheckedChanged += new System.EventHandler(this.Rb_120kA_CheckedChanged);
             // 
             // panel3
             // 
@@ -786,6 +686,138 @@ namespace grafikdeneme
             this.tb_I1_rms.Size = new System.Drawing.Size(100, 20);
             this.tb_I1_rms.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.Tb_ms_div);
+            this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(127, 564);
+            this.panel4.TabIndex = 11;
+            // 
+            // Tb_ms_div
+            // 
+            this.Tb_ms_div.Location = new System.Drawing.Point(8, 16);
+            this.Tb_ms_div.Name = "Tb_ms_div";
+            this.Tb_ms_div.Size = new System.Drawing.Size(67, 20);
+            this.Tb_ms_div.TabIndex = 1;
+            this.Tb_ms_div.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_ms_div.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Tb_ms_div_MouseClick);
+            this.Tb_ms_div.TextChanged += new System.EventHandler(this.Tb_ms_div_TextChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Rb_100A);
+            this.groupBox1.Controls.Add(this.Rb_500A);
+            this.groupBox1.Controls.Add(this.Rb_2kA);
+            this.groupBox1.Controls.Add(this.Rb_5kA);
+            this.groupBox1.Controls.Add(this.Rb_10kA);
+            this.groupBox1.Controls.Add(this.Rb_50kA);
+            this.groupBox1.Controls.Add(this.Rb_120kA);
+            this.groupBox1.Location = new System.Drawing.Point(22, 170);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(77, 190);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Akım Skala";
+            // 
+            // Rb_100A
+            // 
+            this.Rb_100A.AutoSize = true;
+            this.Rb_100A.Location = new System.Drawing.Point(6, 169);
+            this.Rb_100A.Name = "Rb_100A";
+            this.Rb_100A.Size = new System.Drawing.Size(56, 17);
+            this.Rb_100A.TabIndex = 0;
+            this.Rb_100A.TabStop = true;
+            this.Rb_100A.Text = "0.1 kA";
+            this.Rb_100A.UseVisualStyleBackColor = true;
+            this.Rb_100A.CheckedChanged += new System.EventHandler(this.Rb_100A_CheckedChanged);
+            // 
+            // Rb_500A
+            // 
+            this.Rb_500A.AutoSize = true;
+            this.Rb_500A.Location = new System.Drawing.Point(6, 144);
+            this.Rb_500A.Name = "Rb_500A";
+            this.Rb_500A.Size = new System.Drawing.Size(56, 17);
+            this.Rb_500A.TabIndex = 0;
+            this.Rb_500A.TabStop = true;
+            this.Rb_500A.Text = "0.5 kA";
+            this.Rb_500A.UseVisualStyleBackColor = true;
+            this.Rb_500A.CheckedChanged += new System.EventHandler(this.Rb_500A_CheckedChanged);
+            // 
+            // Rb_2kA
+            // 
+            this.Rb_2kA.AutoSize = true;
+            this.Rb_2kA.Location = new System.Drawing.Point(6, 119);
+            this.Rb_2kA.Name = "Rb_2kA";
+            this.Rb_2kA.Size = new System.Drawing.Size(47, 17);
+            this.Rb_2kA.TabIndex = 0;
+            this.Rb_2kA.TabStop = true;
+            this.Rb_2kA.Text = "2 kA";
+            this.Rb_2kA.UseVisualStyleBackColor = true;
+            this.Rb_2kA.CheckedChanged += new System.EventHandler(this.Rb_2kA_CheckedChanged);
+            // 
+            // Rb_5kA
+            // 
+            this.Rb_5kA.AutoSize = true;
+            this.Rb_5kA.Location = new System.Drawing.Point(6, 94);
+            this.Rb_5kA.Name = "Rb_5kA";
+            this.Rb_5kA.Size = new System.Drawing.Size(47, 17);
+            this.Rb_5kA.TabIndex = 0;
+            this.Rb_5kA.TabStop = true;
+            this.Rb_5kA.Text = "5 kA";
+            this.Rb_5kA.UseVisualStyleBackColor = true;
+            this.Rb_5kA.CheckedChanged += new System.EventHandler(this.Rb_5kA_CheckedChanged);
+            // 
+            // Rb_10kA
+            // 
+            this.Rb_10kA.AutoSize = true;
+            this.Rb_10kA.Location = new System.Drawing.Point(6, 69);
+            this.Rb_10kA.Name = "Rb_10kA";
+            this.Rb_10kA.Size = new System.Drawing.Size(53, 17);
+            this.Rb_10kA.TabIndex = 0;
+            this.Rb_10kA.TabStop = true;
+            this.Rb_10kA.Text = "10 kA";
+            this.Rb_10kA.UseVisualStyleBackColor = true;
+            this.Rb_10kA.CheckedChanged += new System.EventHandler(this.Rb_10kA_CheckedChanged);
+            // 
+            // Rb_50kA
+            // 
+            this.Rb_50kA.AutoSize = true;
+            this.Rb_50kA.Location = new System.Drawing.Point(6, 44);
+            this.Rb_50kA.Name = "Rb_50kA";
+            this.Rb_50kA.Size = new System.Drawing.Size(53, 17);
+            this.Rb_50kA.TabIndex = 0;
+            this.Rb_50kA.TabStop = true;
+            this.Rb_50kA.Text = "50 kA";
+            this.Rb_50kA.UseVisualStyleBackColor = true;
+            this.Rb_50kA.CheckedChanged += new System.EventHandler(this.Rb_50kA_CheckedChanged);
+            // 
+            // Rb_120kA
+            // 
+            this.Rb_120kA.AutoSize = true;
+            this.Rb_120kA.Location = new System.Drawing.Point(6, 19);
+            this.Rb_120kA.Name = "Rb_120kA";
+            this.Rb_120kA.Size = new System.Drawing.Size(59, 17);
+            this.Rb_120kA.TabIndex = 0;
+            this.Rb_120kA.TabStop = true;
+            this.Rb_120kA.Text = "120 kA";
+            this.Rb_120kA.UseVisualStyleBackColor = true;
+            this.Rb_120kA.CheckedChanged += new System.EventHandler(this.Rb_120kA_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(81, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "ms/div";
+            // 
             // sp
             // 
             this.sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.DataReceivedHandler);
@@ -814,14 +846,14 @@ namespace grafikdeneme
             // acToolStripMenuItem
             // 
             this.acToolStripMenuItem.Name = "acToolStripMenuItem";
-            this.acToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.acToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.acToolStripMenuItem.Text = "Aç";
             this.acToolStripMenuItem.Click += new System.EventHandler(this.AcToolStripMenuItem_Click);
             // 
             // kaydetToolStripMenuItem
             // 
             this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
-            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.kaydetToolStripMenuItem.Text = "Kaydet";
             this.kaydetToolStripMenuItem.Click += new System.EventHandler(this.KaydetToolStripMenuItem_Click);
             // 
@@ -846,35 +878,6 @@ namespace grafikdeneme
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.groupBox1);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(127, 564);
-            this.panel4.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(43, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(60, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "ms/div";
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -894,14 +897,14 @@ namespace grafikdeneme
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartMain)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -983,8 +986,9 @@ namespace grafikdeneme
         private System.Windows.Forms.TextBox tb_I2_peak;
         private System.Windows.Forms.TextBox tb_I2_rms;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Tb_ms_div;
         private System.Windows.Forms.Label label7;
+        private double tb_ms_div_old;
     }
 }
 
