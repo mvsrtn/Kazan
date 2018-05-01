@@ -95,6 +95,7 @@ namespace grafikdeneme
             this.tb_I1_peak = new System.Windows.Forms.TextBox();
             this.tb_I1_rms = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Tb_v_div = new System.Windows.Forms.TextBox();
             this.Tb_ms_div = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Rb_100A = new System.Windows.Forms.RadioButton();
@@ -104,6 +105,7 @@ namespace grafikdeneme
             this.Rb_10kA = new System.Windows.Forms.RadioButton();
             this.Rb_50kA = new System.Windows.Forms.RadioButton();
             this.Rb_120kA = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.sp = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -543,20 +545,28 @@ namespace grafikdeneme
             this.chartMain.Location = new System.Drawing.Point(136, 3);
             this.chartMain.Name = "chartMain";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.Name = "#CHANNEL:CH1";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series2.Name = "#CHANNEL:CH2";
             series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series3.Name = "#CHANNEL:CH3";
             series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series4.Name = "#CHANNEL:CH4";
             series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series5.Name = "#CHANNEL:CH5";
             series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series6.Name = "#CHANNEL:CH6";
             series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series7.Name = "#CHANNEL:CH7";
             series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series8.Name = "#CHANNEL:CH8";
             this.chartMain.Series.Add(series1);
             this.chartMain.Series.Add(series2);
@@ -691,13 +701,25 @@ namespace grafikdeneme
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.Tb_v_div);
             this.panel4.Controls.Add(this.Tb_ms_div);
             this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(127, 564);
             this.panel4.TabIndex = 11;
+            // 
+            // Tb_v_div
+            // 
+            this.Tb_v_div.Location = new System.Drawing.Point(8, 42);
+            this.Tb_v_div.Name = "Tb_v_div";
+            this.Tb_v_div.Size = new System.Drawing.Size(67, 20);
+            this.Tb_v_div.TabIndex = 1;
+            this.Tb_v_div.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_v_div.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Tb_v_div_MouseClick);
+            this.Tb_v_div.TextChanged += new System.EventHandler(this.Tb_v_div_TextChanged);
             // 
             // Tb_ms_div
             // 
@@ -808,6 +830,15 @@ namespace grafikdeneme
             this.Rb_120kA.Text = "120 kA";
             this.Rb_120kA.UseVisualStyleBackColor = true;
             this.Rb_120kA.CheckedChanged += new System.EventHandler(this.Rb_120kA_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(81, 45);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "V/div";
             // 
             // label7
             // 
@@ -989,6 +1020,10 @@ namespace grafikdeneme
         private System.Windows.Forms.TextBox Tb_ms_div;
         private System.Windows.Forms.Label label7;
         private double tb_ms_div_old;
+        private System.Windows.Forms.TextBox Tb_v_div;
+        private System.Windows.Forms.Label label8;
+        private double tb_v_div_old;
+        private double[][] cizilecekData = new double[6][];
     }
 }
 

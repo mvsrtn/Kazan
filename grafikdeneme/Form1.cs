@@ -609,124 +609,153 @@ namespace grafikdeneme
             // Get the number separator for this culture and replace any others with it
             var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
-            double[] cizilecekData = new double[4000];
+            
 
             StreamReader readFile = new StreamReader(ofd.FileName);
             Color[] Color_list = { Color.Blue, Color.Red, Color.Green, Color.Magenta, Color.Orange, Color.DarkBlue, Color.Yellow, Color.Black };
             int Color_id = 0;
             double graphStartPoint = 0;
-            double graphMinPoint = 0;
             double[] peak2peak = new double[6];
-            double[] maxpoints = new double[6];
-            double[] minpoints = new double[6];
             int ch_counter = 0;
             string ch_clock = "";
             string ch_size = "";
+            string[] ch_name = new string[6];
 
-            while (true)
+            while (ch_counter < 6)
             {
-                string ch_name = readFile.ReadLine();
-                if (ch_name == null)
+                ch_name[ch_counter] = readFile.ReadLine();
+                if (ch_name[ch_counter] == null)
                 {
                     break;
-                }                
-                if (ch_name != "")
+                }
+                if (ch_name[ch_counter] != "")
                 {
-                    
-                    chartMain.Series[ch_name].Points.Clear();
+                    chartMain.Series[ch_name[ch_counter]].Points.Clear();
                     ch_clock = readFile.ReadLine();
                     ch_size = readFile.ReadLine();
-                    
+
                     string ch_unit = readFile.ReadLine();
                     readFile.ReadLine();
 
                     int numOfData = Convert.ToInt32(string.Join(null, Regex.Split(ch_size, "[^\\d]")));
-                    
+
+                    double[] temp_d = new double[numOfData];
+
                     for (int i = 0; i < numOfData; i++)
                     {
-                        string hede = Regex.Replace(readFile.ReadLine(), "[.,]", separator);
-                        cizilecekData[i] = Convert.ToDouble(hede);                        
+                        string temp_s = Regex.Replace(readFile.ReadLine(), "[.,]", separator);
+                        temp_d[i] = Convert.ToDouble(temp_s);
                     }
-
-                    graphStartPoint = graphStartPoint + graphMinPoint - cizilecekData.Max();
-                    
-
-                    //for (int i=0; i<cizilecekData.Length; i++)
-                    for (int i =0; i< Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value); i++)
-                    {
-                        chartMain.Series[ch_name].Points.AddXY(i, cizilecekData[i] + graphStartPoint);
-                    }
-                    chartMain.Series[ch_name].ChartType = SeriesChartType.FastLine;
-                    chartMain.Series[ch_name].Color = Color_list[Color_id++];
-                    chartMain.ChartAreas[0].AxisX.Minimum = 0;
-                    chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value)-1;
-                    chartMain.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
-
-                    // MinorGrid Disabled
-                    chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
-                    chartMain.ChartAreas[0].AxisX.MinorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
-                    chartMain.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.Gray;
-                    chartMain.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-                    //Major Grid Disabled
-                    chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-                    chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
-                    chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-                    chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
-                    chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
-
-                    graphMinPoint = cizilecekData.Min();
-                    maxpoints[ch_counter] = cizilecekData.Max();
-                    minpoints[ch_counter] = cizilecekData.Min();
+                    cizilecekData[ch_counter] = temp_d;
                     ch_counter = ch_counter + 1;
                 }
-
-
             }
             readFile.Close();
+            double p2p_max = 0;
 
+            for (int i = 0; i<6; i++)
+            {
+                double p2p = 0;
+                if (Math.Abs(cizilecekData[i].Max()) > Math.Abs(cizilecekData[i].Min()))
+                    p2p = 2 * Math.Abs(cizilecekData[i].Max());
+                else
+                    p2p = 2 * Math.Abs(cizilecekData[i].Min());                
+                if (p2p_max < p2p)
+                {
+                    p2p_max = p2p;
+                }
+            }
+
+            graphStartPoint = -p2p_max/2;
+
+            for (int ii = 0; ii < 6; ii++)
+            {
+                for (int i = 0; i < cizilecekData[ii].Length; i++)
+                {
+                    chartMain.Series[ch_name[ii]].Points.AddXY(i, cizilecekData[ii][i] + graphStartPoint);
+                }
+                graphStartPoint = graphStartPoint - p2p_max;
+                chartMain.Series[ch_name[ii]].ChartType = SeriesChartType.FastLine;
+                chartMain.Series[ch_name[ii]].Color = Color_list[Color_id++];
+            }                                  
+             
             // I1_RMS hesapla
-            double I1_RMS = ((maxpoints[1]-minpoints[1]) * L1_RMS)/1000; // kA cinsinden
+            double I1_RMS = ((cizilecekData[1].Max() - cizilecekData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
             tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
 
             // I1_peak hesapla
             double I1_peak = 0;
-            if (maxpoints[1] >= Math.Abs(minpoints[1]))
-                I1_peak = (maxpoints[1] * L1_PEAK) / 1000; // kA cinsinden
+            if (cizilecekData[1].Max() >= Math.Abs(cizilecekData[1].Min()))
+                I1_peak = (cizilecekData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
             else
-                I1_peak = (minpoints[1] * L1_PEAK) / 1000; // kA cinsinden
+                I1_peak = (cizilecekData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
+            I1_peak = Math.Abs(I1_peak);
             tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
 
             // I2_RMS hesapla
-            double I2_RMS = ((maxpoints[3] - minpoints[3]) * L2_RMS) / 1000; // kA cinsinden
+            double I2_RMS = ((cizilecekData[3].Max() - cizilecekData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
             tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
 
             // I2_peak hesapla
             double I2_peak = 0;
-            if (maxpoints[3] >= Math.Abs(minpoints[3]))
-                I2_peak = (maxpoints[3] * L2_PEAK) / 1000; // kA cinsinden
+            if (cizilecekData[3].Max() >= Math.Abs(cizilecekData[3].Min()))
+                I2_peak = (cizilecekData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
             else
-                I2_peak = (minpoints[3] * L2_PEAK) / 1000; // kA cinsinden
+                I2_peak = (cizilecekData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
+            I2_peak = Math.Abs(I2_peak);
             tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
 
             // I3_RMS hesapla
-            double I3_RMS = ((maxpoints[5] - minpoints[5]) * L3_RMS) / 1000; // kA cinsinden
+            double I3_RMS = ((cizilecekData[5].Max() - cizilecekData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
             tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
 
             // I3_peak hesapla
             double I3_peak = 0;
-            if (maxpoints[5] >= Math.Abs(minpoints[5]))
-                I3_peak = (maxpoints[5] * L3_PEAK) / 1000; // kA cinsinden
+            if (cizilecekData[5].Max() >= Math.Abs(cizilecekData[5].Min()))
+                I3_peak = (cizilecekData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
             else
-                I3_peak = (minpoints[1] * L3_PEAK) / 1000; // kA cinsinden
+                I3_peak = (cizilecekData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
+            I3_peak = Math.Abs(I3_peak);
             tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
 
 
             tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * Double.Parse(Regex.Match(ch_size, @"\d+").Value) * 0.001 / 20);
             Tb_ms_div.Text = tb_ms_div_old.ToString("F2");
 
-        }
 
+            tb_v_div_old = (p2p_max * 6) / 36;
+            Tb_v_div.Text = tb_v_div_old.ToString("F2");
+
+
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
+
+            // XAxis MinorGrid Disabled
+            chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            chartMain.ChartAreas[0].AxisX.MinorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
+            chartMain.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.Gray;
+            chartMain.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
+
+            //XAxis Major Grid Enabled
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 40;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+
+            chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+            chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
+            
+            //YAxis Ayarları
+            chartMain.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
+            chartMain.ChartAreas[0].AxisY.MajorTickMark.Enabled = false;
+            chartMain.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+            chartMain.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Gray;
+            chartMain.ChartAreas[0].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+            chartMain.ChartAreas[0].AxisY.MajorGrid.Interval = (p2p_max * 6) / 36;
+            chartMain.ChartAreas[0].AxisY.Minimum = -(p2p_max * 6);
+            chartMain.ChartAreas[0].AxisY.Maximum = 0;
+        }
+        
         /*
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1131,8 +1160,7 @@ namespace grafikdeneme
         }
 
         private void Tb_ms_div_MouseClick(object sender, MouseEventArgs e)
-        {
-            
+        {            
             if (Tb_ms_div.Text != "")
             {
                 tb_ms_div_old = Convert.ToDouble(Tb_ms_div.Text);
@@ -1140,6 +1168,41 @@ namespace grafikdeneme
             else
             {
                 tb_ms_div_old = 1;
+            }
+        }
+
+        private void Tb_v_div_TextChanged(object sender, EventArgs e)
+        {
+            if (Tb_v_div.Text == "")
+                return;
+            double v_div = Convert.ToDouble(Tb_v_div.Text);
+            
+            for (int ch_no = 0; ch_no < 6; ch_no=ch_no + 2)
+            {
+                for (int i = 0; i < chartMain.Series[ch_no].Points.Count(); i++)
+                {
+                    chartMain.Series[ch_no].Points.ElementAt(i).SetValueY(chartMain.Series[ch_no].Points.ElementAt(i).GetValueByName("Y") * v_div / tb_v_div_old);
+                }
+            }
+
+
+
+
+            chartMain.Refresh();
+            
+            tb_v_div_old = v_div;
+
+        }
+
+        private void Tb_v_div_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Tb_v_div.Text != "")
+            {
+                tb_v_div_old = Convert.ToDouble(Tb_v_div.Text);
+            }
+            else
+            {
+                tb_v_div_old = 1;
             }
         }
     }
