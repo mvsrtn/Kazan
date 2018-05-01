@@ -116,7 +116,7 @@ namespace grafikdeneme
 
         private void DataReceivedHandler(object sender, EventArgs e)
         {
-             if (sp.ReadByte() == 0xCD)
+            if (sp.ReadByte() == 0xCD)
             {
                 if (sp.ReadByte() == 0xAB)
                 {
@@ -184,7 +184,7 @@ namespace grafikdeneme
 
                         if (kesici_no == 0x01)
                         {
-                            if (kesici_state == 0x00) 
+                            if (kesici_state == 0x00)
                             {
                                 //Kesici 1 devredışı
                                 this.Kesici_1.BackColor = Color.Green;
@@ -256,7 +256,7 @@ namespace grafikdeneme
                 }
             }
         }
-        
+
         private void RandomData_Click(object sender, EventArgs e)
         {
 
@@ -343,7 +343,7 @@ namespace grafikdeneme
             }
 
         }
-        
+
         private void UpdateLimits_1_Click(object sender, EventArgs e)
         {
 
@@ -392,7 +392,7 @@ namespace grafikdeneme
             chartMain.ChartAreas[0].AxisX.Maximum = Int32.Parse(tb_max_1.Text);
             chartMain.ChartAreas[0].AxisX.Minimum = Int32.Parse(tb_min_1.Text);
         }
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -419,9 +419,9 @@ namespace grafikdeneme
             this.Kesici_3.BackColor = Color.Yellow;
             this.TopraklıAyirici.BackColor = Color.Yellow;
             this.DirencliAyirici.BackColor = Color.Yellow;
-            
+
         }
-        
+
         private void Kesici_2_A_Click(object sender, EventArgs e)
         {
             if (this.TopraklıAyirici.BackColor == Color.Red)
@@ -437,7 +437,7 @@ namespace grafikdeneme
             else if (this.DirencliAyirici.BackColor == Color.Green)
                 this.DirencliAyirici.BackColor = Color.Red;
         }
-                
+
         private void KaydetToolStripMenuItem_Click(object sender, EventArgs e)
         {/*
             string newLine = "t\tV1\tA1\tV2\tA2\tV3\tA3";
@@ -482,9 +482,9 @@ namespace grafikdeneme
             string fullPathToFile = System.Windows.Forms.Application.StartupPath + "\\CalibrationParams.txt";
             StreamReader stream_calib = new StreamReader(fullPathToFile);
             var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-            string temp = Regex.Replace(stream_calib.ReadToEnd(), "[.,]", separator);            
+            string temp = Regex.Replace(stream_calib.ReadToEnd(), "[.,]", separator);
             stream_calib.Close();
-            string[] hede = temp.Split('\t','\n','\r');
+            string[] hede = temp.Split('\t', '\n', '\r');
             string[] parameters = new string[255];
             int ii = 0;
             for (int i = 0; i < hede.Length; i++)
@@ -495,10 +495,10 @@ namespace grafikdeneme
                     ii = ii + 1;
                 }
             }
-           
+
             for (int i = 0; i < parameters.Length; i++)
             {
-               if (parameters[i] == "#L1")
+                if (parameters[i] == "#L1")
                 {
                     double okunandeger = 0;
                     while (true)
@@ -510,7 +510,7 @@ namespace grafikdeneme
                             break;
                         }
                         try
-                        {                            
+                        {
                             okunandeger = double.Parse(parameters[i]);
                         }
                         catch
@@ -577,9 +577,9 @@ namespace grafikdeneme
                 }
 
             }
-            
+
         }
-        
+
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ScaleFactor == 0)
@@ -604,12 +604,12 @@ namespace grafikdeneme
 
             //read calibration parameters
             ReadCalibParams();
-            
+
 
             // Get the number separator for this culture and replace any others with it
             var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
-            
+
 
             StreamReader readFile = new StreamReader(ofd.FileName);
             Color[] Color_list = { Color.Blue, Color.Red, Color.Green, Color.Magenta, Color.Orange, Color.DarkBlue, Color.Yellow, Color.Black };
@@ -653,20 +653,20 @@ namespace grafikdeneme
             readFile.Close();
             double p2p_max = 0;
 
-            for (int i = 0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 double p2p = 0;
                 if (Math.Abs(cizilecekData[i].Max()) > Math.Abs(cizilecekData[i].Min()))
                     p2p = 2 * Math.Abs(cizilecekData[i].Max());
                 else
-                    p2p = 2 * Math.Abs(cizilecekData[i].Min());                
+                    p2p = 2 * Math.Abs(cizilecekData[i].Min());
                 if (p2p_max < p2p)
                 {
                     p2p_max = p2p;
                 }
             }
 
-            graphStartPoint = -p2p_max/2;
+            graphStartPoint = -p2p_max / 2;
 
             for (int ii = 0; ii < 6; ii++)
             {
@@ -677,8 +677,8 @@ namespace grafikdeneme
                 graphStartPoint = graphStartPoint - p2p_max;
                 chartMain.Series[ch_name[ii]].ChartType = SeriesChartType.FastLine;
                 chartMain.Series[ch_name[ii]].Color = Color_list[Color_id++];
-            }                                  
-             
+            }
+
             // I1_RMS hesapla
             double I1_RMS = ((cizilecekData[1].Max() - cizilecekData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
             tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
@@ -725,7 +725,8 @@ namespace grafikdeneme
 
             tb_v_div_old = (p2p_max * 6) / 36;
             Tb_v_div.Text = tb_v_div_old.ToString("F2");
-
+            tb_A_div_old = (p2p_max * 6) / 36;
+            Tb_A_div.Text = tb_v_div_old.ToString("F2");
 
             chartMain.ChartAreas[0].AxisX.Minimum = 0;
             chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
@@ -744,7 +745,7 @@ namespace grafikdeneme
 
             chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
-            
+
             //YAxis Ayarları
             chartMain.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chartMain.ChartAreas[0].AxisY.MajorTickMark.Enabled = false;
@@ -754,8 +755,12 @@ namespace grafikdeneme
             chartMain.ChartAreas[0].AxisY.MajorGrid.Interval = (p2p_max * 6) / 36;
             chartMain.ChartAreas[0].AxisY.Minimum = -(p2p_max * 6);
             chartMain.ChartAreas[0].AxisY.Maximum = 0;
+
+            GraphStart.Text = "0";
+
+            CatchFirstSample();
         }
-        
+
         /*
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -865,7 +870,7 @@ namespace grafikdeneme
                 return;
             }
         }
-        
+
         private void Kesici_1_On_Click(object sender, EventArgs e)
         {
             byte[] data = { 0xAB, 0xCD, 0x4B, 0x01, 0x0F };
@@ -1147,7 +1152,7 @@ namespace grafikdeneme
             }
             ScaleFactor = 100;
         }
-        
+
         private void Tb_ms_div_TextChanged(object sender, EventArgs e)
         {
             if (Tb_ms_div.Text == "")
@@ -1160,7 +1165,7 @@ namespace grafikdeneme
         }
 
         private void Tb_ms_div_MouseClick(object sender, MouseEventArgs e)
-        {            
+        {
             if (Tb_ms_div.Text != "")
             {
                 tb_ms_div_old = Convert.ToDouble(Tb_ms_div.Text);
@@ -1173,23 +1178,37 @@ namespace grafikdeneme
 
         private void Tb_v_div_TextChanged(object sender, EventArgs e)
         {
+            double v_div;
             if (Tb_v_div.Text == "")
                 return;
-            double v_div = Convert.ToDouble(Tb_v_div.Text);
-            
-            for (int ch_no = 0; ch_no < 6; ch_no=ch_no + 2)
+            try
+            {
+                v_div = Convert.ToDouble(Tb_v_div.Text);
+            }
+            catch
+            {
+                return;
+            }
+            if (v_div == 0)
+                return;
+
+            double axis_min = chartMain.ChartAreas[0].AxisY.Minimum;
+            double axis_max = chartMain.ChartAreas[0].AxisY.Maximum;
+            double graphStep = Math.Abs(axis_max - axis_min) / 6;
+            double graphStartPoint = axis_max - graphStep / 2;
+            if (Double.IsNaN(graphStartPoint))
+                return;
+            for (int ch_no = 0; ch_no < 6; ch_no = ch_no + 2)
             {
                 for (int i = 0; i < chartMain.Series[ch_no].Points.Count(); i++)
                 {
-                    chartMain.Series[ch_no].Points.ElementAt(i).SetValueY(chartMain.Series[ch_no].Points.ElementAt(i).GetValueByName("Y") * v_div / tb_v_div_old);
+                    chartMain.Series[ch_no].Points.ElementAt(i).SetValueY(chartMain.Series[ch_no].Points.ElementAt(i).GetValueByName("Y") * v_div / tb_v_div_old - graphStartPoint * (v_div / tb_v_div_old - 1));
                 }
+                graphStartPoint = graphStartPoint - graphStep * 2;
             }
 
-
-
-
             chartMain.Refresh();
-            
+
             tb_v_div_old = v_div;
 
         }
@@ -1205,6 +1224,79 @@ namespace grafikdeneme
                 tb_v_div_old = 1;
             }
         }
+
+        private void Tb_A_div_TextChanged(object sender, EventArgs e)
+        {
+            double A_div;
+            if (Tb_A_div.Text == "")
+                return;
+            try
+            {
+                A_div = Convert.ToDouble(Tb_A_div.Text);
+            }
+            catch
+            {
+                return;
+            }
+            if (A_div == 0)
+                return;
+
+            double axis_min = chartMain.ChartAreas[0].AxisY.Minimum;
+            double axis_max = chartMain.ChartAreas[0].AxisY.Maximum;
+            double graphStep = Math.Abs(axis_max - axis_min) / 6;
+            double graphStartPoint = axis_max - graphStep *3/ 2;
+            if (Double.IsNaN(graphStartPoint))
+                return;
+            for (int ch_no = 1; ch_no < 6; ch_no = ch_no + 2)
+            {
+                for (int i = 0; i < chartMain.Series[ch_no].Points.Count(); i++)
+                {
+                    chartMain.Series[ch_no].Points.ElementAt(i).SetValueY(chartMain.Series[ch_no].Points.ElementAt(i).GetValueByName("Y") * A_div / tb_A_div_old - graphStartPoint * (A_div / tb_A_div_old - 1));
+                }
+                graphStartPoint = graphStartPoint - graphStep * 2;
+            }
+
+            chartMain.Refresh();
+
+            tb_A_div_old = A_div;
+
+        }
+
+        private void Tb_A_div_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Tb_A_div.Text != "")
+            {
+                tb_A_div_old = Convert.ToDouble(Tb_A_div.Text);
+            }
+            else
+            {
+                tb_A_div_old = 1;
+            }
+        }
+
+        private void GraphStart_TextChanged(object sender, EventArgs e)
+        {
+            double StartPoint = 0;
+            if (GraphStart.Text == "")
+                return;
+            try
+            {
+                StartPoint = Convert.ToDouble(GraphStart.Text);
+            }
+            catch
+            {
+                return;
+            }
+
+            chartMain.ChartAreas[0].AxisX.Minimum = StartPoint;
+
+        }
+
+        private void CatchFirstSample()
+        {
+
+        }
+        
     }
 }
 

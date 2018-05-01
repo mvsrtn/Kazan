@@ -95,6 +95,8 @@ namespace grafikdeneme
             this.tb_I1_peak = new System.Windows.Forms.TextBox();
             this.tb_I1_rms = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.GraphStart = new System.Windows.Forms.TextBox();
+            this.Tb_A_div = new System.Windows.Forms.TextBox();
             this.Tb_v_div = new System.Windows.Forms.TextBox();
             this.Tb_ms_div = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -105,6 +107,8 @@ namespace grafikdeneme
             this.Rb_10kA = new System.Windows.Forms.RadioButton();
             this.Rb_50kA = new System.Windows.Forms.RadioButton();
             this.Rb_120kA = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.sp = new System.IO.Ports.SerialPort(this.components);
@@ -701,15 +705,38 @@ namespace grafikdeneme
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.GraphStart);
+            this.panel4.Controls.Add(this.Tb_A_div);
             this.panel4.Controls.Add(this.Tb_v_div);
             this.panel4.Controls.Add(this.Tb_ms_div);
             this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(127, 564);
             this.panel4.TabIndex = 11;
+            // 
+            // GraphStart
+            // 
+            this.GraphStart.Location = new System.Drawing.Point(23, 318);
+            this.GraphStart.Name = "GraphStart";
+            this.GraphStart.Size = new System.Drawing.Size(67, 20);
+            this.GraphStart.TabIndex = 1;
+            this.GraphStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.GraphStart.TextChanged += new System.EventHandler(this.GraphStart_TextChanged);
+            // 
+            // Tb_A_div
+            // 
+            this.Tb_A_div.Location = new System.Drawing.Point(8, 73);
+            this.Tb_A_div.Name = "Tb_A_div";
+            this.Tb_A_div.Size = new System.Drawing.Size(67, 20);
+            this.Tb_A_div.TabIndex = 1;
+            this.Tb_A_div.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_A_div.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Tb_A_div_MouseClick);
+            this.Tb_A_div.TextChanged += new System.EventHandler(this.Tb_A_div_TextChanged);
             // 
             // Tb_v_div
             // 
@@ -740,7 +767,7 @@ namespace grafikdeneme
             this.groupBox1.Controls.Add(this.Rb_10kA);
             this.groupBox1.Controls.Add(this.Rb_50kA);
             this.groupBox1.Controls.Add(this.Rb_120kA);
-            this.groupBox1.Location = new System.Drawing.Point(22, 170);
+            this.groupBox1.Location = new System.Drawing.Point(23, 100);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(77, 190);
             this.groupBox1.TabIndex = 0;
@@ -830,6 +857,24 @@ namespace grafikdeneme
             this.Rb_120kA.Text = "120 kA";
             this.Rb_120kA.UseVisualStyleBackColor = true;
             this.Rb_120kA.CheckedChanged += new System.EventHandler(this.Rb_120kA_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 302);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(106, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Grafik Başlangıç (ms)";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(81, 76);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(33, 13);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "A/div";
             // 
             // label8
             // 
@@ -1024,6 +1069,11 @@ namespace grafikdeneme
         private System.Windows.Forms.Label label8;
         private double tb_v_div_old;
         private double[][] cizilecekData = new double[6][];
+        private System.Windows.Forms.TextBox Tb_A_div;
+        private System.Windows.Forms.Label label9;
+        private double tb_A_div_old;
+        private System.Windows.Forms.TextBox GraphStart;
+        private System.Windows.Forms.Label label10;
     }
 }
 
