@@ -84,6 +84,7 @@ namespace grafikdeneme
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -92,9 +93,13 @@ namespace grafikdeneme
             this.tb_I3_rms = new System.Windows.Forms.TextBox();
             this.tb_I2_peak = new System.Windows.Forms.TextBox();
             this.tb_I2_rms = new System.Windows.Forms.TextBox();
+            this.Tb_ch1_I2t = new System.Windows.Forms.TextBox();
             this.tb_I1_peak = new System.Windows.Forms.TextBox();
             this.tb_I1_rms = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Tb_olcum_araligi = new System.Windows.Forms.TextBox();
+            this.Tb_son_ms = new System.Windows.Forms.TextBox();
+            this.Tb_ilk_ms = new System.Windows.Forms.TextBox();
             this.GraphStart = new System.Windows.Forms.TextBox();
             this.Tb_A_div = new System.Windows.Forms.TextBox();
             this.Tb_v_div = new System.Windows.Forms.TextBox();
@@ -107,6 +112,9 @@ namespace grafikdeneme
             this.Rb_10kA = new System.Windows.Forms.RadioButton();
             this.Rb_50kA = new System.Windows.Forms.RadioButton();
             this.Rb_120kA = new System.Windows.Forms.RadioButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -119,6 +127,10 @@ namespace grafikdeneme
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portAyarlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Tb_ch2_I2t = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.Tb_ch3_I2t = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -583,12 +595,15 @@ namespace grafikdeneme
             this.chartMain.Size = new System.Drawing.Size(261, 564);
             this.chartMain.TabIndex = 0;
             this.chartMain.Text = "chartMain";
-            this.chartMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartV1_Click);
+            this.chartMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ChartMain_Click);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label3);
@@ -597,6 +612,9 @@ namespace grafikdeneme
             this.panel3.Controls.Add(this.tb_I3_rms);
             this.panel3.Controls.Add(this.tb_I2_peak);
             this.panel3.Controls.Add(this.tb_I2_rms);
+            this.panel3.Controls.Add(this.Tb_ch3_I2t);
+            this.panel3.Controls.Add(this.Tb_ch2_I2t);
+            this.panel3.Controls.Add(this.Tb_ch1_I2t);
             this.panel3.Controls.Add(this.tb_I1_peak);
             this.panel3.Controls.Add(this.tb_I1_rms);
             this.panel3.Location = new System.Drawing.Point(403, 3);
@@ -621,6 +639,15 @@ namespace grafikdeneme
             this.label4.Size = new System.Drawing.Size(16, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Ip";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(23, 130);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(19, 13);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "I² t";
             // 
             // label2
             // 
@@ -660,6 +687,7 @@ namespace grafikdeneme
             // 
             // tb_I3_peak
             // 
+            this.tb_I3_peak.Enabled = false;
             this.tb_I3_peak.Location = new System.Drawing.Point(45, 399);
             this.tb_I3_peak.Name = "tb_I3_peak";
             this.tb_I3_peak.Size = new System.Drawing.Size(100, 20);
@@ -667,6 +695,7 @@ namespace grafikdeneme
             // 
             // tb_I3_rms
             // 
+            this.tb_I3_rms.Enabled = false;
             this.tb_I3_rms.Location = new System.Drawing.Point(45, 371);
             this.tb_I3_rms.Name = "tb_I3_rms";
             this.tb_I3_rms.Size = new System.Drawing.Size(100, 20);
@@ -674,6 +703,7 @@ namespace grafikdeneme
             // 
             // tb_I2_peak
             // 
+            this.tb_I2_peak.Enabled = false;
             this.tb_I2_peak.Location = new System.Drawing.Point(45, 238);
             this.tb_I2_peak.Name = "tb_I2_peak";
             this.tb_I2_peak.Size = new System.Drawing.Size(100, 20);
@@ -681,13 +711,23 @@ namespace grafikdeneme
             // 
             // tb_I2_rms
             // 
+            this.tb_I2_rms.Enabled = false;
             this.tb_I2_rms.Location = new System.Drawing.Point(45, 210);
             this.tb_I2_rms.Name = "tb_I2_rms";
             this.tb_I2_rms.Size = new System.Drawing.Size(100, 20);
             this.tb_I2_rms.TabIndex = 0;
             // 
+            // Tb_ch1_I2t
+            // 
+            this.Tb_ch1_I2t.Enabled = false;
+            this.Tb_ch1_I2t.Location = new System.Drawing.Point(45, 123);
+            this.Tb_ch1_I2t.Name = "Tb_ch1_I2t";
+            this.Tb_ch1_I2t.Size = new System.Drawing.Size(100, 20);
+            this.Tb_ch1_I2t.TabIndex = 0;
+            // 
             // tb_I1_peak
             // 
+            this.tb_I1_peak.Enabled = false;
             this.tb_I1_peak.Location = new System.Drawing.Point(45, 97);
             this.tb_I1_peak.Name = "tb_I1_peak";
             this.tb_I1_peak.Size = new System.Drawing.Size(100, 20);
@@ -695,6 +735,7 @@ namespace grafikdeneme
             // 
             // tb_I1_rms
             // 
+            this.tb_I1_rms.Enabled = false;
             this.tb_I1_rms.Location = new System.Drawing.Point(45, 69);
             this.tb_I1_rms.Name = "tb_I1_rms";
             this.tb_I1_rms.Size = new System.Drawing.Size(100, 20);
@@ -705,11 +746,17 @@ namespace grafikdeneme
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.Tb_olcum_araligi);
+            this.panel4.Controls.Add(this.Tb_son_ms);
+            this.panel4.Controls.Add(this.Tb_ilk_ms);
             this.panel4.Controls.Add(this.GraphStart);
             this.panel4.Controls.Add(this.Tb_A_div);
             this.panel4.Controls.Add(this.Tb_v_div);
             this.panel4.Controls.Add(this.Tb_ms_div);
             this.panel4.Controls.Add(this.groupBox1);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label8);
@@ -719,9 +766,36 @@ namespace grafikdeneme
             this.panel4.Size = new System.Drawing.Size(127, 564);
             this.panel4.TabIndex = 11;
             // 
+            // Tb_olcum_araligi
+            // 
+            this.Tb_olcum_araligi.Enabled = false;
+            this.Tb_olcum_araligi.Location = new System.Drawing.Point(28, 448);
+            this.Tb_olcum_araligi.Name = "Tb_olcum_araligi";
+            this.Tb_olcum_araligi.Size = new System.Drawing.Size(67, 20);
+            this.Tb_olcum_araligi.TabIndex = 1;
+            this.Tb_olcum_araligi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // Tb_son_ms
+            // 
+            this.Tb_son_ms.Location = new System.Drawing.Point(28, 405);
+            this.Tb_son_ms.Name = "Tb_son_ms";
+            this.Tb_son_ms.Size = new System.Drawing.Size(67, 20);
+            this.Tb_son_ms.TabIndex = 1;
+            this.Tb_son_ms.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_son_ms.TextChanged += new System.EventHandler(this.Tb_son_ms_TextChanged);
+            // 
+            // Tb_ilk_ms
+            // 
+            this.Tb_ilk_ms.Location = new System.Drawing.Point(28, 359);
+            this.Tb_ilk_ms.Name = "Tb_ilk_ms";
+            this.Tb_ilk_ms.Size = new System.Drawing.Size(67, 20);
+            this.Tb_ilk_ms.TabIndex = 1;
+            this.Tb_ilk_ms.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_ilk_ms.TextChanged += new System.EventHandler(this.Tb_ilk_ms_TextChanged);
+            // 
             // GraphStart
             // 
-            this.GraphStart.Location = new System.Drawing.Point(23, 318);
+            this.GraphStart.Location = new System.Drawing.Point(28, 318);
             this.GraphStart.Name = "GraphStart";
             this.GraphStart.Size = new System.Drawing.Size(67, 20);
             this.GraphStart.TabIndex = 1;
@@ -858,6 +932,33 @@ namespace grafikdeneme
             this.Rb_120kA.UseVisualStyleBackColor = true;
             this.Rb_120kA.CheckedChanged += new System.EventHandler(this.Rb_120kA_CheckedChanged);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 432);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Ölçüm Aralığı (ms)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(23, 389);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "son nokta (ms)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 343);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "ilk nokta (ms)";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -953,6 +1054,40 @@ namespace grafikdeneme
             this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            // 
+            // Tb_ch2_I2t
+            // 
+            this.Tb_ch2_I2t.Enabled = false;
+            this.Tb_ch2_I2t.Location = new System.Drawing.Point(45, 270);
+            this.Tb_ch2_I2t.Name = "Tb_ch2_I2t";
+            this.Tb_ch2_I2t.Size = new System.Drawing.Size(100, 20);
+            this.Tb_ch2_I2t.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(23, 275);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(19, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "I² t";
+            // 
+            // Tb_ch3_I2t
+            // 
+            this.Tb_ch3_I2t.Enabled = false;
+            this.Tb_ch3_I2t.Location = new System.Drawing.Point(45, 429);
+            this.Tb_ch3_I2t.Name = "Tb_ch3_I2t";
+            this.Tb_ch3_I2t.Size = new System.Drawing.Size(100, 20);
+            this.Tb_ch3_I2t.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(23, 432);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(19, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "I² t";
             // 
             // Form1
             // 
@@ -1074,6 +1209,18 @@ namespace grafikdeneme
         private double tb_A_div_old;
         private System.Windows.Forms.TextBox GraphStart;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox Tb_ilk_ms;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox Tb_son_ms;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox Tb_olcum_araligi;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox Tb_ch1_I2t;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox Tb_ch3_I2t;
+        private System.Windows.Forms.TextBox Tb_ch2_I2t;
     }
 }
 

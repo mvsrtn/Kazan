@@ -311,6 +311,7 @@ namespace grafikdeneme
 
         }
 
+        /*
         private void ChartV1_Click(object sender, MouseEventArgs e)
         {
             Axis ax = chartMain.ChartAreas[0].AxisX;
@@ -342,6 +343,37 @@ namespace grafikdeneme
                 cb_max_1.Checked = false;
             }
 
+        }
+        */
+
+        private void ChartMain_Click(object sender, MouseEventArgs e)
+        {
+            // textbox devredışı bırak
+            Tb_ilk_ms.TextChanged -= Tb_ilk_ms_TextChanged;
+            Tb_son_ms.TextChanged -= Tb_son_ms_TextChanged;
+
+            double start = Math.Round((chartMain.ChartAreas[0].CursorX.SelectionStart / chartMain.Series[1].Points.Count) * (Convert.ToDouble(Tb_ms_div.Text) * 20));
+            double end = Math.Round((chartMain.ChartAreas[0].CursorX.SelectionEnd / chartMain.Series[1].Points.Count) * (Convert.ToDouble(Tb_ms_div.Text) * 20));
+            if (start < end)
+            {
+                Tb_ilk_ms.Text = start.ToString();
+                Tb_son_ms.Text = end.ToString();
+            }
+            else
+            {
+                Tb_ilk_ms.Text = end.ToString();
+                Tb_son_ms.Text = start.ToString();
+            }
+
+            //Ölçüm aralığı hesabı yap
+            Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
+
+            //hesaplamaları yap
+            Hesaplamalar();
+
+            // textbox devreye al
+            Tb_ilk_ms.TextChanged += Tb_ilk_ms_TextChanged;
+            Tb_son_ms.TextChanged += Tb_son_ms_TextChanged;
         }
 
         private void UpdateLimits_1_Click(object sender, EventArgs e)
@@ -580,6 +612,70 @@ namespace grafikdeneme
 
         }
 
+        private void Hesaplamalar()
+        {
+            // I1_RMS hesapla
+            double I1_RMS = ((cizilecekData[1].Max() - cizilecekData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
+            tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
+
+            // I1_peak hesapla
+            double I1_peak = 0;
+            if (cizilecekData[1].Max() >= Math.Abs(cizilecekData[1].Min()))
+                I1_peak = (cizilecekData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
+            else
+                I1_peak = (cizilecekData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
+            I1_peak = Math.Abs(I1_peak);
+            tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
+
+            // CH1 I2T hesapla
+            if (Tb_olcum_araligi.Text.Length != 0)
+            {
+                double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                Tb_ch1_I2t.Text = Ch1_I2T.ToString("F2") + "kA*s";
+            }
+            
+
+            // I2_RMS hesapla
+            double I2_RMS = ((cizilecekData[3].Max() - cizilecekData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
+            tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
+
+            // I2_peak hesapla
+            double I2_peak = 0;
+            if (cizilecekData[3].Max() >= Math.Abs(cizilecekData[3].Min()))
+                I2_peak = (cizilecekData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
+            else
+                I2_peak = (cizilecekData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
+            I2_peak = Math.Abs(I2_peak);
+            tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
+
+            // CH2 I2T hesapla
+            if (Tb_olcum_araligi.Text.Length != 0)
+            {
+                double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                Tb_ch2_I2t.Text = Ch2_I2T.ToString("F2") + "kA*s";
+            }
+
+            // I3_RMS hesapla
+            double I3_RMS = ((cizilecekData[5].Max() - cizilecekData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
+            tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
+
+            // I3_peak hesapla
+            double I3_peak = 0;
+            if (cizilecekData[5].Max() >= Math.Abs(cizilecekData[5].Min()))
+                I3_peak = (cizilecekData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
+            else
+                I3_peak = (cizilecekData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
+            I3_peak = Math.Abs(I3_peak);
+            tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
+
+            // CH3 I2T hesapla
+            if (Tb_olcum_araligi.Text.Length != 0)
+            {
+                double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                Tb_ch3_I2t.Text = Ch3_I2T.ToString("F2") + "kA*s";
+            }
+        }
+
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ScaleFactor == 0)
@@ -679,72 +775,17 @@ namespace grafikdeneme
                 chartMain.Series[ch_name[ii]].Color = Color_list[Color_id++];
             }
 
-            // I1_RMS hesapla
-            double I1_RMS = ((cizilecekData[1].Max() - cizilecekData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
-            tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
+            Hesaplamalar();
 
-            // I1_peak hesapla
-            double I1_peak = 0;
-            if (cizilecekData[1].Max() >= Math.Abs(cizilecekData[1].Min()))
-                I1_peak = (cizilecekData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
-            else
-                I1_peak = (cizilecekData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
-            I1_peak = Math.Abs(I1_peak);
-            tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
-
-            // I2_RMS hesapla
-            double I2_RMS = ((cizilecekData[3].Max() - cizilecekData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
-            tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
-
-            // I2_peak hesapla
-            double I2_peak = 0;
-            if (cizilecekData[3].Max() >= Math.Abs(cizilecekData[3].Min()))
-                I2_peak = (cizilecekData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
-            else
-                I2_peak = (cizilecekData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
-            I2_peak = Math.Abs(I2_peak);
-            tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
-
-            // I3_RMS hesapla
-            double I3_RMS = ((cizilecekData[5].Max() - cizilecekData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
-            tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
-
-            // I3_peak hesapla
-            double I3_peak = 0;
-            if (cizilecekData[5].Max() >= Math.Abs(cizilecekData[5].Min()))
-                I3_peak = (cizilecekData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
-            else
-                I3_peak = (cizilecekData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
-            I3_peak = Math.Abs(I3_peak);
-            tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
-
-
-            tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * Double.Parse(Regex.Match(ch_size, @"\d+").Value) * 0.001 / 20);
-            Tb_ms_div.Text = tb_ms_div_old.ToString("F2");
-
-
-            tb_v_div_old = (p2p_max * 6) / 36;
-            Tb_v_div.Text = tb_v_div_old.ToString("F2");
-            tb_A_div_old = (p2p_max * 6) / 36;
-            Tb_A_div.Text = tb_v_div_old.ToString("F2");
-
-            chartMain.ChartAreas[0].AxisX.Minimum = 0;
-            chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
-
-            // XAxis MinorGrid Disabled
-            chartMain.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
-            chartMain.ChartAreas[0].AxisX.MinorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
-            chartMain.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.Gray;
-            chartMain.ChartAreas[0].AxisX.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
-
-            //XAxis Major Grid Enabled
-            chartMain.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
-            chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
-            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 40;
-            chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-
+            //XAxis Ayarları              
             chartMain.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chartMain.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
+            chartMain.ChartAreas[0].AxisX.Minimum = 0;
+            chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
 
             //YAxis Ayarları
             chartMain.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
@@ -756,9 +797,27 @@ namespace grafikdeneme
             chartMain.ChartAreas[0].AxisY.Minimum = -(p2p_max * 6);
             chartMain.ChartAreas[0].AxisY.Maximum = 0;
 
-            GraphStart.Text = "0";
+            //Cursor ayarları
+            chartMain.ChartAreas[0].CursorX.IsUserEnabled = true;
+            chartMain.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+            chartMain.ChartAreas[0].CursorX.SelectionColor = Color.LightBlue;
+            chartMain.ChartAreas[0].AxisX.ScaleView.Zoomable = false;
+            //chartMain.ChartAreas[0].CursorY.IsUserEnabled = true;
+            //chartMain.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
 
-            CatchFirstSample();
+            GraphStart.Text = "0";
+            
+            tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * 10 / 20);
+            Tb_ms_div.Text = tb_ms_div_old.ToString("F2");
+
+
+            tb_v_div_old = (p2p_max * 6) / 36;
+            Tb_v_div.Text = tb_v_div_old.ToString("F2");
+            tb_A_div_old = (p2p_max * 6) / 36;
+            Tb_A_div.Text = tb_v_div_old.ToString("F2");
+
+            chartMain.Refresh();
+            
         }
 
         /*
@@ -1281,7 +1340,7 @@ namespace grafikdeneme
                 return;
             try
             {
-                StartPoint = Convert.ToDouble(GraphStart.Text);
+                StartPoint = (Convert.ToDouble(GraphStart.Text)/Convert.ToDouble(Tb_ms_div.Text))* (chartMain.Series[1].Points.Count/20);
             }
             catch
             {
@@ -1292,11 +1351,37 @@ namespace grafikdeneme
 
         }
 
-        private void CatchFirstSample()
+        private void Tb_ilk_ms_TextChanged(object sender, EventArgs e)
         {
+            if (Convert.ToUInt64(Tb_son_ms.Text) < Convert.ToUInt64(Tb_ilk_ms.Text))
+            {
+                MessageBox.Show("geçersiz veri girdiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            chartMain.ChartAreas[0].CursorX.SelectionStart = chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_ilk_ms.Text)/(20* Convert.ToDouble(Tb_ms_div.Text));
+            Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
+                        
+            //hesaplamaları yap
+            Hesaplamalar();
+        }
+
+        private void Tb_son_ms_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToUInt64(Tb_son_ms.Text) < Convert.ToUInt64(Tb_ilk_ms.Text))
+            {
+                MessageBox.Show("geçersiz veri girdiniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            chartMain.ChartAreas[0].CursorX.SelectionEnd = chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_son_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text));
+            Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
+
+            //hesaplamaları yap
+            Hesaplamalar();
 
         }
-        
+
     }
 }
 
