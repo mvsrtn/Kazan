@@ -84,6 +84,8 @@ namespace grafikdeneme
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -93,6 +95,8 @@ namespace grafikdeneme
             this.tb_I3_rms = new System.Windows.Forms.TextBox();
             this.tb_I2_peak = new System.Windows.Forms.TextBox();
             this.tb_I2_rms = new System.Windows.Forms.TextBox();
+            this.Tb_ch3_I2t = new System.Windows.Forms.TextBox();
+            this.Tb_ch2_I2t = new System.Windows.Forms.TextBox();
             this.Tb_ch1_I2t = new System.Windows.Forms.TextBox();
             this.tb_I1_peak = new System.Windows.Forms.TextBox();
             this.tb_I1_rms = new System.Windows.Forms.TextBox();
@@ -127,10 +131,6 @@ namespace grafikdeneme
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portAyarlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Tb_ch2_I2t = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.Tb_ch3_I2t = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -640,6 +640,24 @@ namespace grafikdeneme
             this.label4.TabIndex = 1;
             this.label4.Text = "Ip";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(23, 432);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(19, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "I² t";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(23, 275);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(19, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "I² t";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -716,6 +734,22 @@ namespace grafikdeneme
             this.tb_I2_rms.Name = "tb_I2_rms";
             this.tb_I2_rms.Size = new System.Drawing.Size(100, 20);
             this.tb_I2_rms.TabIndex = 0;
+            // 
+            // Tb_ch3_I2t
+            // 
+            this.Tb_ch3_I2t.Enabled = false;
+            this.Tb_ch3_I2t.Location = new System.Drawing.Point(45, 429);
+            this.Tb_ch3_I2t.Name = "Tb_ch3_I2t";
+            this.Tb_ch3_I2t.Size = new System.Drawing.Size(100, 20);
+            this.Tb_ch3_I2t.TabIndex = 0;
+            // 
+            // Tb_ch2_I2t
+            // 
+            this.Tb_ch2_I2t.Enabled = false;
+            this.Tb_ch2_I2t.Location = new System.Drawing.Point(45, 270);
+            this.Tb_ch2_I2t.Name = "Tb_ch2_I2t";
+            this.Tb_ch2_I2t.Size = new System.Drawing.Size(100, 20);
+            this.Tb_ch2_I2t.TabIndex = 0;
             // 
             // Tb_ch1_I2t
             // 
@@ -1055,40 +1089,6 @@ namespace grafikdeneme
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
             // 
-            // Tb_ch2_I2t
-            // 
-            this.Tb_ch2_I2t.Enabled = false;
-            this.Tb_ch2_I2t.Location = new System.Drawing.Point(45, 270);
-            this.Tb_ch2_I2t.Name = "Tb_ch2_I2t";
-            this.Tb_ch2_I2t.Size = new System.Drawing.Size(100, 20);
-            this.Tb_ch2_I2t.TabIndex = 0;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(23, 275);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(19, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "I² t";
-            // 
-            // Tb_ch3_I2t
-            // 
-            this.Tb_ch3_I2t.Enabled = false;
-            this.Tb_ch3_I2t.Location = new System.Drawing.Point(45, 429);
-            this.Tb_ch3_I2t.Name = "Tb_ch3_I2t";
-            this.Tb_ch3_I2t.Size = new System.Drawing.Size(100, 20);
-            this.Tb_ch3_I2t.TabIndex = 0;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(23, 432);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(19, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "I² t";
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1098,7 +1098,7 @@ namespace grafikdeneme
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "Form1";
-            this.Text = "MAVIS";
+            this.Text = "LVT";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1204,6 +1204,7 @@ namespace grafikdeneme
         private System.Windows.Forms.Label label8;
         private double tb_v_div_old;
         private double[][] cizilecekData = new double[6][];
+        private double[][] hesaplanacakData = new double[6][];
         private System.Windows.Forms.TextBox Tb_A_div;
         private System.Windows.Forms.Label label9;
         private double tb_A_div_old;

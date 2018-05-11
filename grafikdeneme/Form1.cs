@@ -368,7 +368,14 @@ namespace grafikdeneme
             //Ölçüm aralığı hesabı yap
             Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
 
+            int ilk = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_ilk_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+            int son = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_son_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+
             //hesaplamaları yap
+            for (int i = 0; i < 6; i++)
+            {
+                hesaplanacakData[i] = cizilecekData[i].Skip(ilk).Take(son-ilk).ToArray();
+            }
             Hesaplamalar();
 
             // textbox devreye al
@@ -614,64 +621,67 @@ namespace grafikdeneme
 
         private void Hesaplamalar()
         {
+            if (hesaplanacakData.Length == 0)
+                return;
+
             // I1_RMS hesapla
-            double I1_RMS = ((cizilecekData[1].Max() - cizilecekData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
+            double I1_RMS = ((hesaplanacakData[1].Max() - hesaplanacakData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
             tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
 
             // I1_peak hesapla
             double I1_peak = 0;
-            if (cizilecekData[1].Max() >= Math.Abs(cizilecekData[1].Min()))
-                I1_peak = (cizilecekData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
+            if (hesaplanacakData[1].Max() >= Math.Abs(hesaplanacakData[1].Min()))
+                I1_peak = (hesaplanacakData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
             else
-                I1_peak = (cizilecekData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
+                I1_peak = (hesaplanacakData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
             I1_peak = Math.Abs(I1_peak);
             tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
 
             // CH1 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text) / 1000;
                 Tb_ch1_I2t.Text = Ch1_I2T.ToString("F2") + "kA*s";
             }
             
 
             // I2_RMS hesapla
-            double I2_RMS = ((cizilecekData[3].Max() - cizilecekData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
+            double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
             tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
 
             // I2_peak hesapla
             double I2_peak = 0;
-            if (cizilecekData[3].Max() >= Math.Abs(cizilecekData[3].Min()))
-                I2_peak = (cizilecekData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
+            if (hesaplanacakData[3].Max() >= Math.Abs(hesaplanacakData[3].Min()))
+                I2_peak = (hesaplanacakData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
             else
-                I2_peak = (cizilecekData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
+                I2_peak = (hesaplanacakData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
             I2_peak = Math.Abs(I2_peak);
             tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
 
             // CH2 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text) / 1000;
                 Tb_ch2_I2t.Text = Ch2_I2T.ToString("F2") + "kA*s";
             }
 
             // I3_RMS hesapla
-            double I3_RMS = ((cizilecekData[5].Max() - cizilecekData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
+            double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
             tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
 
             // I3_peak hesapla
             double I3_peak = 0;
-            if (cizilecekData[5].Max() >= Math.Abs(cizilecekData[5].Min()))
-                I3_peak = (cizilecekData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
+            if (hesaplanacakData[5].Max() >= Math.Abs(hesaplanacakData[5].Min()))
+                I3_peak = (hesaplanacakData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
             else
-                I3_peak = (cizilecekData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
+                I3_peak = (hesaplanacakData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
             I3_peak = Math.Abs(I3_peak);
             tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
 
             // CH3 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
+                double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text)/1000;
                 Tb_ch3_I2t.Text = Ch3_I2T.ToString("F2") + "kA*s";
             }
         }
@@ -740,7 +750,15 @@ namespace grafikdeneme
                     for (int i = 0; i < numOfData; i++)
                     {
                         string temp_s = Regex.Replace(readFile.ReadLine(), "[.,]", separator);
-                        temp_d[i] = Convert.ToDouble(temp_s);
+                        if (ch_counter == 1 || ch_counter == 3 || ch_counter == 5)
+                        {
+                            temp_d[i] = Convert.ToDouble(temp_s) * 100;
+                        }
+                        else
+                        {
+                            temp_d[i] = Convert.ToDouble(temp_s);
+                        }
+
                     }
                     cizilecekData[ch_counter] = temp_d;
                     ch_counter = ch_counter + 1;
@@ -775,6 +793,7 @@ namespace grafikdeneme
                 chartMain.Series[ch_name[ii]].Color = Color_list[Color_id++];
             }
 
+            cizilecekData.CopyTo(hesaplanacakData,0);
             Hesaplamalar();
 
             //XAxis Ayarları              
@@ -1361,8 +1380,15 @@ namespace grafikdeneme
 
             chartMain.ChartAreas[0].CursorX.SelectionStart = chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_ilk_ms.Text)/(20* Convert.ToDouble(Tb_ms_div.Text));
             Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
-                        
+
+            int ilk = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_ilk_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+            int son = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_son_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+
             //hesaplamaları yap
+            for (int i = 0; i < 6; i++)
+            {
+                hesaplanacakData[i] = cizilecekData[i].Skip(ilk).Take(son - ilk).ToArray();
+            }
             Hesaplamalar();
         }
 
@@ -1377,7 +1403,14 @@ namespace grafikdeneme
             chartMain.ChartAreas[0].CursorX.SelectionEnd = chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_son_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text));
             Tb_olcum_araligi.Text = (Convert.ToUInt64(Tb_son_ms.Text) - Convert.ToUInt64(Tb_ilk_ms.Text)).ToString();
 
+            int ilk = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_ilk_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+            int son = Convert.ToInt16(Math.Round(chartMain.Series[1].Points.Count * Convert.ToDouble(Tb_son_ms.Text) / (20 * Convert.ToDouble(Tb_ms_div.Text))));
+
             //hesaplamaları yap
+            for (int i = 0; i < 6; i++)
+            {
+                hesaplanacakData[i] = cizilecekData[i].Skip(ilk).Take(son - ilk).ToArray();
+            }
             Hesaplamalar();
 
         }
