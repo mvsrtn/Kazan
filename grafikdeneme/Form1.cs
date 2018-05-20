@@ -310,42 +310,7 @@ namespace grafikdeneme
             tb_min_1.Text = "0";
 
         }
-
-        /*
-        private void ChartV1_Click(object sender, MouseEventArgs e)
-        {
-            Axis ax = chartMain.ChartAreas[0].AxisX;
-
-            //double Xpoint;
-            double clickedX = ax.PixelPositionToValue(e.X);
-            double temp = double.MaxValue;
-            string tempstr = "";
-
-            foreach (DataPoint dp in chartMain.Series[0].Points)
-            {
-                if (Math.Abs(dp.XValue - clickedX) < temp)
-                {
-                    temp = Math.Abs(dp.XValue - clickedX);
-                    tempstr = dp.XValue.ToString();
-                }
-                else
-                    break;
-            }
-
-            if (cb_min_1.Checked == true)
-            {
-                tb_min_1.Text = tempstr;
-                cb_min_1.Checked = false;
-            }
-            if (cb_max_1.Checked == true)
-            {
-                tb_max_1.Text = tempstr;
-                cb_max_1.Checked = false;
-            }
-
-        }
-        */
-
+        
         private void ChartMain_Click(object sender, MouseEventArgs e)
         {
             // textbox devredışı bırak
@@ -621,69 +586,120 @@ namespace grafikdeneme
 
         private void Hesaplamalar()
         {
-            if (hesaplanacakData.Length == 0)
+            if (hesaplanacakData[1].Length == 0)
                 return;
 
             // I1_RMS hesapla
-            double I1_RMS = ((hesaplanacakData[1].Max() - hesaplanacakData[1].Min()) * L1_RMS) / 1000; // kA cinsinden
+            double buyuk = hesaplanacakData[1].Max();
+            double kucuk = hesaplanacakData[1].Min();
+            double I1_RMS = ((buyuk - kucuk) * L1_RMS); // kA cinsinden
             tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
 
             // I1_peak hesapla
             double I1_peak = 0;
             if (hesaplanacakData[1].Max() >= Math.Abs(hesaplanacakData[1].Min()))
-                I1_peak = (hesaplanacakData[1].Max() * L1_PEAK) / 1000; // kA cinsinden
+                I1_peak = (hesaplanacakData[1].Max() * L1_PEAK); // kA cinsinden
             else
-                I1_peak = (hesaplanacakData[1].Min() * L1_PEAK) / 1000; // kA cinsinden
+                I1_peak = (hesaplanacakData[1].Min() * L1_PEAK); // kA cinsinden
             I1_peak = Math.Abs(I1_peak);
             tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
 
             // CH1 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text) / 1000;
+                double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
                 Tb_ch1_I2t.Text = Ch1_I2T.ToString("F2") + "kA*s";
             }
             
 
             // I2_RMS hesapla
-            double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS) / 1000; // kA cinsinden
+            double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS); // kA cinsinden
             tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
 
             // I2_peak hesapla
             double I2_peak = 0;
             if (hesaplanacakData[3].Max() >= Math.Abs(hesaplanacakData[3].Min()))
-                I2_peak = (hesaplanacakData[3].Max() * L2_PEAK) / 1000; // kA cinsinden
+                I2_peak = (hesaplanacakData[3].Max() * L2_PEAK); // kA cinsinden
             else
-                I2_peak = (hesaplanacakData[3].Min() * L2_PEAK) / 1000; // kA cinsinden
+                I2_peak = (hesaplanacakData[3].Min() * L2_PEAK); // kA cinsinden
             I2_peak = Math.Abs(I2_peak);
             tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
 
             // CH2 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text) / 1000;
+                double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
                 Tb_ch2_I2t.Text = Ch2_I2T.ToString("F2") + "kA*s";
             }
 
             // I3_RMS hesapla
-            double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS) / 1000; // kA cinsinden
+            double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS); // kA cinsinden
             tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
 
             // I3_peak hesapla
             double I3_peak = 0;
             if (hesaplanacakData[5].Max() >= Math.Abs(hesaplanacakData[5].Min()))
-                I3_peak = (hesaplanacakData[5].Max() * L3_PEAK) / 1000; // kA cinsinden
+                I3_peak = (hesaplanacakData[5].Max() * L3_PEAK); // kA cinsinden
             else
-                I3_peak = (hesaplanacakData[5].Min() * L3_PEAK) / 1000; // kA cinsinden
+                I3_peak = (hesaplanacakData[5].Min() * L3_PEAK); // kA cinsinden
             I3_peak = Math.Abs(I3_peak);
             tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
 
             // CH3 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
-                double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text)/1000;
+                double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
                 Tb_ch3_I2t.Text = Ch3_I2T.ToString("F2") + "kA*s";
             }
+        }
+
+        private void ReadData(string path, out double ch_clock, out UInt16 ch_size, out double[] data)
+        {
+            // Get the number separator for this culture and replace any others with it
+            var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+
+            int i = 0;
+            data = new double[0];
+            ch_clock = 0;
+            ch_size = 0;
+
+            bool flag = true;
+
+            StreamReader readFile = new StreamReader(path);
+            
+            while (flag)
+            {
+                string line = readFile.ReadLine();
+                if (line == "" || line == null)
+                {
+                    flag = false;
+                    return;
+                }
+                if (line.ToCharArray()[0] == '#')
+                {
+                    string[] temp = line.Split('#');
+                    string[] temp2 = temp[1].Split('=');
+                    if (temp2[0] == "CLOCK")
+                    {
+                        string temp_s = Regex.Replace(temp2[1], "[.,]", separator);
+                        ch_clock = Convert.ToDouble(temp_s);
+                    }
+                    if (temp2[0] == "SIZE")
+                    {
+                        string temp_s = Regex.Replace(temp2[1], "[.,]", separator);
+                        ch_size = Convert.ToUInt16(temp_s);
+                        data = new double[ch_size];
+                    }
+                }
+                else
+                {
+                    string[] data_line = line.Split(',');
+                    string temp_s = Regex.Replace(data_line[0], "[.,]", separator);
+                    data[i] = Convert.ToDouble(temp_s);
+                    i = i + 1;
+                }
+            }
+            readFile.Close();
         }
 
         private void AcToolStripMenuItem_Click(object sender, EventArgs e)
@@ -693,9 +709,10 @@ namespace grafikdeneme
                 MessageBox.Show("Lüfen Akım Skalası seçiniz.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = "Excel dosyaları (*.xls)|*.xls"
+                Filter = "Excel dosyaları (*.xls)|*V1.csv"
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -708,63 +725,35 @@ namespace grafikdeneme
                 return;
             }
 
+
             //read calibration parameters
             ReadCalibParams();
 
+            // read Data from file
+            double[] ch_clock = new double[6];
+            UInt16[] ch_size = new UInt16[6];
 
-            // Get the number separator for this culture and replace any others with it
-            var separator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            string[] fileList = new string[6];
+            string baseName = ofd.FileName.Substring(0, ofd.FileName.Length - 6);
+
+            fileList[0] = baseName + "V1.csv";
+            fileList[1] = baseName + "A1.csv";
+            fileList[2] = baseName + "V2.csv";
+            fileList[3] = baseName + "A2.csv";
+            fileList[4] = baseName + "V3.csv";
+            fileList[5] = baseName + "A3.csv";
 
 
+            for (int i=0; i<6; i++)
+            {
+                ReadData(fileList[i], out ch_clock[i], out ch_size[i], out cizilecekData[i]);
+            }
 
-            StreamReader readFile = new StreamReader(ofd.FileName);
+            double graphStartPoint = 0;
             Color[] Color_list = { Color.Blue, Color.Red, Color.Green, Color.Magenta, Color.Orange, Color.DarkBlue, Color.Yellow, Color.Black };
             int Color_id = 0;
-            double graphStartPoint = 0;
-            double[] peak2peak = new double[6];
-            int ch_counter = 0;
-            string ch_clock = "";
-            string ch_size = "";
             string[] ch_name = new string[6];
-
-            while (ch_counter < 6)
-            {
-                ch_name[ch_counter] = readFile.ReadLine();
-                if (ch_name[ch_counter] == null)
-                {
-                    break;
-                }
-                if (ch_name[ch_counter] != "")
-                {
-                    chartMain.Series[ch_name[ch_counter]].Points.Clear();
-                    ch_clock = readFile.ReadLine();
-                    ch_size = readFile.ReadLine();
-
-                    string ch_unit = readFile.ReadLine();
-                    readFile.ReadLine();
-
-                    int numOfData = Convert.ToInt32(string.Join(null, Regex.Split(ch_size, "[^\\d]")));
-
-                    double[] temp_d = new double[numOfData];
-
-                    for (int i = 0; i < numOfData; i++)
-                    {
-                        string temp_s = Regex.Replace(readFile.ReadLine(), "[.,]", separator);
-                        if (ch_counter == 1 || ch_counter == 3 || ch_counter == 5)
-                        {
-                            temp_d[i] = Convert.ToDouble(temp_s) * 100;
-                        }
-                        else
-                        {
-                            temp_d[i] = Convert.ToDouble(temp_s);
-                        }
-
-                    }
-                    cizilecekData[ch_counter] = temp_d;
-                    ch_counter = ch_counter + 1;
-                }
-            }
-            readFile.Close();
+                                   
             double p2p_max = 0;
 
             for (int i = 0; i < 6; i++)
@@ -784,13 +773,14 @@ namespace grafikdeneme
 
             for (int ii = 0; ii < 6; ii++)
             {
+                chartMain.Series[ii].Points.Clear();
                 for (int i = 0; i < cizilecekData[ii].Length; i++)
                 {
-                    chartMain.Series[ch_name[ii]].Points.AddXY(i, cizilecekData[ii][i] + graphStartPoint);
+                    chartMain.Series[ii].Points.AddXY(i, cizilecekData[ii][i] + graphStartPoint);
                 }
                 graphStartPoint = graphStartPoint - p2p_max;
-                chartMain.Series[ch_name[ii]].ChartType = SeriesChartType.FastLine;
-                chartMain.Series[ch_name[ii]].Color = Color_list[Color_id++];
+                chartMain.Series[ii].ChartType = SeriesChartType.FastLine;
+                chartMain.Series[ii].Color = Color_list[Color_id++];
             }
 
             cizilecekData.CopyTo(hesaplanacakData,0);
@@ -802,9 +792,11 @@ namespace grafikdeneme
             chartMain.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chartMain.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Gray;
             chartMain.ChartAreas[0].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Dash;
-            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
+            //chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) / 20;
+            chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = ch_size[0] / 20;
             chartMain.ChartAreas[0].AxisX.Minimum = 0;
-            chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
+            //chartMain.ChartAreas[0].AxisX.Maximum = Convert.ToInt32(Regex.Match(ch_size, @"\d+").Value) - 1;
+            chartMain.ChartAreas[0].AxisX.Maximum = ch_size[0] - 1;
 
             //YAxis Ayarları
             chartMain.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
@@ -826,101 +818,23 @@ namespace grafikdeneme
 
             GraphStart.Text = "0";
             
-            tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * 10 / 20);
+            //tb_ms_div_old = (Double.Parse(Regex.Match(ch_clock, @"\d+").Value) * 10 / 20);
+            tb_ms_div_old = (ch_clock[0]*1000 * 10 / 20);
             Tb_ms_div.Text = tb_ms_div_old.ToString("F2");
 
 
-            tb_v_div_old = (p2p_max * 6) / 36;
+            tb_v_div_old = (p2p_max * 6) / (36);
             Tb_v_div.Text = tb_v_div_old.ToString("F2");
-            tb_A_div_old = (p2p_max * 6) / 36;
+            tb_A_div_old = (p2p_max * 6) / (36);
             Tb_A_div.Text = tb_v_div_old.ToString("F2");
+
+            
+            Tb_A_div.Text = (tb_A_div_old*100).ToString("F2");
 
             chartMain.Refresh();
             
         }
-
-        /*
-        private void AcToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog
-            {
-                Filter = "CSV dosyaları (*.csv)|*.csv"                
-            };
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                Path.GetFullPath(ofd.FileName);
-            }
-            else
-            {
-                MessageBox.Show("Dosya Seçmediniz.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            StreamReader readFile = new StreamReader(ofd.FileName);
-            string line;
-            string[] row;
-            string first_line = readFile.ReadLine();
-
-            string[] headers = first_line.Split('\t');
-
-            if (first_line != "t\tV1\tA1\tV2\tA2\tV3\tA3")
-            {
-                MessageBox.Show("Seçtiğiniz dosya uygun değil.", "HATA!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            chartV1.Series[headers[1]].Points.Clear();
-            chartA1.Series[headers[2]].Points.Clear();
-            chartV2.Series[headers[3]].Points.Clear();
-            chartA2.Series[headers[4]].Points.Clear();
-            chartV3.Series[headers[5]].Points.Clear();
-            chartA3.Series[headers[6]].Points.Clear();
-
-            int i = 0;
-            while ((line = readFile.ReadLine()) != null)
-            {
-
-                row = line.Split('\t');
-
-                //V1
-                chartV1.Series[headers[1]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[1]));
-                chartV1.Series[headers[1]].ChartType = SeriesChartType.FastLine;
-                chartV1.Series[headers[1]].Color = Color.Red;
-                //A1
-                chartA1.Series[headers[2]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[2]));
-                chartA1.Series[headers[2]].ChartType = SeriesChartType.FastLine;
-                chartA1.Series[headers[2]].Color = Color.Blue;
-                //V2
-                chartV2.Series[headers[3]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[3]));
-                chartV2.Series[headers[3]].ChartType = SeriesChartType.FastLine;
-                chartV2.Series[headers[3]].Color = Color.Red;
-                //A2
-                chartA2.Series[headers[4]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[4]));
-                chartA2.Series[headers[4]].ChartType = SeriesChartType.FastLine;
-                chartA2.Series[headers[4]].Color = Color.Blue;
-                //V3
-                chartV3.Series[headers[5]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[5]));
-                chartV3.Series[headers[5]].ChartType = SeriesChartType.FastLine;
-                chartV3.Series[headers[5]].Color = Color.Red;
-                //A3
-                chartA3.Series[headers[6]].Points.AddXY(Convert.ToDouble(row[0]), Convert.ToDouble(row[6]));
-                chartA3.Series[headers[6]].ChartType = SeriesChartType.FastLine;
-                chartA3.Series[headers[6]].Color = Color.Blue;
-
-                i++;
-            }
-            readFile.Close();
-
-            tb_max_1.Text = (chartV1.Series[0].Points.Count - 1).ToString();
-            tb_min_1.Text = "0";
-            tb_max_2.Text = (chartV2.Series[0].Points.Count - 1).ToString();
-            tb_min_2.Text = "0";
-            tb_max_3.Text = (chartV2.Series[0].Points.Count - 1).ToString();
-            tb_min_3.Text = "0";
-        }
-        */
-
+        
         private void Tb_ZamanYukle_TextChanged(object sender, EventArgs e)
         {
             cb_zamanayarlandı.Checked = false;
@@ -1236,6 +1150,10 @@ namespace grafikdeneme
             if (Tb_ms_div.Text == "")
                 return;
             double ms_div = Convert.ToDouble(Tb_ms_div.Text);
+            if (chartMain.ChartAreas[0].AxisX.Minimum > chartMain.ChartAreas[0].AxisX.Maximum * ms_div / tb_ms_div_old)
+            {
+                return;
+            }
             chartMain.ChartAreas[0].AxisX.Maximum = chartMain.ChartAreas[0].AxisX.Maximum * ms_div / tb_ms_div_old;
             tb_ms_div_old = ms_div;
             chartMain.ChartAreas[0].AxisX.MajorGrid.Interval = chartMain.ChartAreas[0].AxisX.Maximum / 20;
