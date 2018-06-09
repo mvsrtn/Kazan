@@ -593,7 +593,7 @@ namespace grafikdeneme
             double buyuk = hesaplanacakData[1].Max();
             double kucuk = hesaplanacakData[1].Min();
             double I1_RMS = ((buyuk - kucuk) * L1_RMS); // kA cinsinden
-            tb_I1_rms.Text = I1_RMS.ToString("F4") + " kA";
+            tb_I1_rms.Text = I1_RMS.ToString("#,##0.000") + " kA";
 
             // I1_peak hesapla
             double I1_peak = 0;
@@ -602,19 +602,19 @@ namespace grafikdeneme
             else
                 I1_peak = (hesaplanacakData[1].Min() * L1_PEAK); // kA cinsinden
             I1_peak = Math.Abs(I1_peak);
-            tb_I1_peak.Text = I1_peak.ToString("F4") + " kA";
+            tb_I1_peak.Text = I1_peak.ToString("#,##0.000") + " kA";
 
             // CH1 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
                 double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
-                Tb_ch1_I2t.Text = Ch1_I2T.ToString("F2") + "kA*s";
+                Tb_ch1_I2t.Text = Ch1_I2T.ToString("#,##0.0000") + "kA*s";
             }
             
 
             // I2_RMS hesapla
             double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS); // kA cinsinden
-            tb_I2_rms.Text = I2_RMS.ToString("F4") + " kA";
+            tb_I2_rms.Text = I2_RMS.ToString("#,##0.000") + " kA";
 
             // I2_peak hesapla
             double I2_peak = 0;
@@ -623,18 +623,18 @@ namespace grafikdeneme
             else
                 I2_peak = (hesaplanacakData[3].Min() * L2_PEAK); // kA cinsinden
             I2_peak = Math.Abs(I2_peak);
-            tb_I2_peak.Text = I2_peak.ToString("F4") + " kA";
+            tb_I2_peak.Text = I2_peak.ToString("#,##0.000") + " kA";
 
             // CH2 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
                 double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
-                Tb_ch2_I2t.Text = Ch2_I2T.ToString("F2") + "kA*s";
+                Tb_ch2_I2t.Text = Ch2_I2T.ToString("#,##0.0000") + "kA*s";
             }
 
             // I3_RMS hesapla
             double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS); // kA cinsinden
-            tb_I3_rms.Text = I3_RMS.ToString("F4") + " kA";
+            tb_I3_rms.Text = I3_RMS.ToString("#,##0.000") + " kA";
 
             // I3_peak hesapla
             double I3_peak = 0;
@@ -643,13 +643,13 @@ namespace grafikdeneme
             else
                 I3_peak = (hesaplanacakData[5].Min() * L3_PEAK); // kA cinsinden
             I3_peak = Math.Abs(I3_peak);
-            tb_I3_peak.Text = I3_peak.ToString("F4") + " kA";
+            tb_I3_peak.Text = I3_peak.ToString("#,##0.000") + " kA";
 
             // CH3 I2T hesapla
             if (Tb_olcum_araligi.Text.Length != 0)
             {
                 double Ch3_I2T = I3_RMS * I3_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
-                Tb_ch3_I2t.Text = Ch3_I2T.ToString("F2") + "kA*s";
+                Tb_ch3_I2t.Text = Ch3_I2T.ToString("#,##0.0000") + "kA*s";
             }
         }
 
