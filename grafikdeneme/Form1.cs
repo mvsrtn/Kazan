@@ -584,17 +584,31 @@ namespace grafikdeneme
 
         }
 
+        private double RMSHesapla(double[] giris)
+        {
+            double cikis = 0;
+            for (int i = 0; i <giris.Length; i++)
+            {
+                cikis = cikis + (giris[i] * giris[i]);
+            }
+            cikis = Math.Sqrt(cikis / giris.Length);
+            
+            return cikis;
+        }
+
         private void Hesaplamalar()
         {
             if (hesaplanacakData[1].Length == 0)
                 return;
 
-            // I1_RMS hesapla
-            double buyuk = hesaplanacakData[1].Max();
-            double kucuk = hesaplanacakData[1].Min();
-            double I1_RMS = ((buyuk - kucuk) * L1_RMS); // kA cinsinden
-            tb_I1_rms.Text = I1_RMS.ToString("#,##0.000") + " kA";
+            // V1_RMS
+            double V1_RMS = RMSHesapla(hesaplanacakData[0]);
+            tb_V1_rms.Text = V1_RMS.ToString("#,##0.000");
 
+            // I1_RMS hesapla
+            double I1_RMS = ((hesaplanacakData[1].Max() - hesaplanacakData[1].Min()) * L1_RMS); // kA cinsinden
+            tb_I1_rms.Text = I1_RMS.ToString("#,##0.000") + " kA";
+                    
             // I1_peak hesapla
             double I1_peak = 0;
             if (hesaplanacakData[1].Max() >= Math.Abs(hesaplanacakData[1].Min()))
@@ -610,7 +624,11 @@ namespace grafikdeneme
                 double Ch1_I2T = I1_RMS * I1_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
                 Tb_ch1_I2t.Text = Ch1_I2T.ToString("#,##0.0000") + "kA*s";
             }
-            
+
+
+            // V2_RMS
+            double V2_RMS = RMSHesapla(hesaplanacakData[2]);
+            tb_V2_rms.Text = V2_RMS.ToString("#,##0.000");
 
             // I2_RMS hesapla
             double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS); // kA cinsinden
@@ -631,6 +649,10 @@ namespace grafikdeneme
                 double Ch2_I2T = I2_RMS * I2_RMS * Convert.ToDouble(Tb_olcum_araligi.Text);
                 Tb_ch2_I2t.Text = Ch2_I2T.ToString("#,##0.0000") + "kA*s";
             }
+
+            // V3_RMS
+            double V3_RMS = RMSHesapla(hesaplanacakData[4]);
+            tb_V3_rms.Text = V3_RMS.ToString("#,##0.000");
 
             // I3_RMS hesapla
             double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS); // kA cinsinden
@@ -1147,9 +1169,19 @@ namespace grafikdeneme
 
         private void Tb_ms_div_TextChanged(object sender, EventArgs e)
         {
+            double ms_div;
             if (Tb_ms_div.Text == "")
                 return;
-            double ms_div = Convert.ToDouble(Tb_ms_div.Text);
+            try
+            {
+                ms_div = Convert.ToDouble(Tb_ms_div.Text);
+            }
+            catch
+            {
+                return;
+            }
+            if (ms_div == 0)
+                return;
             if (chartMain.ChartAreas[0].AxisX.Minimum > chartMain.ChartAreas[0].AxisX.Maximum * ms_div / tb_ms_div_old)
             {
                 return;
@@ -1173,7 +1205,7 @@ namespace grafikdeneme
         }
 
         private void Tb_v_div_TextChanged(object sender, EventArgs e)
-        {
+       {
             double v_div;
             if (Tb_v_div.Text == "")
                 return;

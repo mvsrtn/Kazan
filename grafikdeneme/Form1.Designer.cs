@@ -35,15 +35,15 @@ namespace grafikdeneme
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.randomData = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -131,6 +131,12 @@ namespace grafikdeneme
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.portAyarlarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_V1_rms = new System.Windows.Forms.TextBox();
+            this.tb_V2_rms = new System.Windows.Forms.TextBox();
+            this.tb_V3_rms = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -556,42 +562,42 @@ namespace grafikdeneme
             this.chartMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chartMain.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartMain.ChartAreas.Add(chartArea2);
             this.chartMain.Location = new System.Drawing.Point(136, 3);
             this.chartMain.Name = "chartMain";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Name = "#CHANNEL:CH1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Name = "#CHANNEL:CH2";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.Name = "#CHANNEL:CH3";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Name = "#CHANNEL:CH4";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series5.Name = "#CHANNEL:CH5";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series6.Name = "#CHANNEL:CH6";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series7.Name = "#CHANNEL:CH7";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series8.Name = "#CHANNEL:CH8";
-            this.chartMain.Series.Add(series1);
-            this.chartMain.Series.Add(series2);
-            this.chartMain.Series.Add(series3);
-            this.chartMain.Series.Add(series4);
-            this.chartMain.Series.Add(series5);
-            this.chartMain.Series.Add(series6);
-            this.chartMain.Series.Add(series7);
-            this.chartMain.Series.Add(series8);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series9.Name = "#CHANNEL:CH1";
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series10.Name = "#CHANNEL:CH2";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series11.Name = "#CHANNEL:CH3";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series12.Name = "#CHANNEL:CH4";
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series13.Name = "#CHANNEL:CH5";
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series14.Name = "#CHANNEL:CH6";
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series15.Name = "#CHANNEL:CH7";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series16.Name = "#CHANNEL:CH8";
+            this.chartMain.Series.Add(series9);
+            this.chartMain.Series.Add(series10);
+            this.chartMain.Series.Add(series11);
+            this.chartMain.Series.Add(series12);
+            this.chartMain.Series.Add(series13);
+            this.chartMain.Series.Add(series14);
+            this.chartMain.Series.Add(series15);
+            this.chartMain.Series.Add(series16);
             this.chartMain.Size = new System.Drawing.Size(261, 564);
             this.chartMain.TabIndex = 0;
             this.chartMain.Text = "chartMain";
@@ -607,6 +613,9 @@ namespace grafikdeneme
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.tb_I3_peak);
             this.panel3.Controls.Add(this.tb_I3_rms);
@@ -616,6 +625,9 @@ namespace grafikdeneme
             this.panel3.Controls.Add(this.Tb_ch2_I2t);
             this.panel3.Controls.Add(this.Tb_ch1_I2t);
             this.panel3.Controls.Add(this.tb_I1_peak);
+            this.panel3.Controls.Add(this.tb_V3_rms);
+            this.panel3.Controls.Add(this.tb_V2_rms);
+            this.panel3.Controls.Add(this.tb_V1_rms);
             this.panel3.Controls.Add(this.tb_I1_rms);
             this.panel3.Location = new System.Drawing.Point(403, 3);
             this.panel3.Name = "panel3";
@@ -1089,6 +1101,57 @@ namespace grafikdeneme
             this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.hakkındaToolStripMenuItem.Text = "Hakkında";
             // 
+            // tb_V1_rms
+            // 
+            this.tb_V1_rms.Enabled = false;
+            this.tb_V1_rms.Location = new System.Drawing.Point(76, 29);
+            this.tb_V1_rms.Name = "tb_V1_rms";
+            this.tb_V1_rms.Size = new System.Drawing.Size(69, 20);
+            this.tb_V1_rms.TabIndex = 0;
+            // 
+            // tb_V2_rms
+            // 
+            this.tb_V2_rms.Enabled = false;
+            this.tb_V2_rms.Location = new System.Drawing.Point(76, 172);
+            this.tb_V2_rms.Name = "tb_V2_rms";
+            this.tb_V2_rms.Size = new System.Drawing.Size(69, 20);
+            this.tb_V2_rms.TabIndex = 0;
+            // 
+            // tb_V3_rms
+            // 
+            this.tb_V3_rms.Enabled = false;
+            this.tb_V3_rms.Location = new System.Drawing.Point(76, 331);
+            this.tb_V3_rms.Name = "tb_V3_rms";
+            this.tb_V3_rms.Size = new System.Drawing.Size(69, 20);
+            this.tb_V3_rms.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(23, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(47, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "V1 RMS";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(23, 175);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "V2 RMS";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(23, 334);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(47, 13);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "V3 RMS";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1222,6 +1285,12 @@ namespace grafikdeneme
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox Tb_ch3_I2t;
         private System.Windows.Forms.TextBox Tb_ch2_I2t;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tb_V3_rms;
+        private System.Windows.Forms.TextBox tb_V2_rms;
+        private System.Windows.Forms.TextBox tb_V1_rms;
     }
 }
 
