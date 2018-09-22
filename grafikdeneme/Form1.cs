@@ -606,15 +606,15 @@ namespace grafikdeneme
             tb_V1_rms.Text = V1_RMS.ToString("#,##0.000");
 
             // I1_RMS hesapla
-            double I1_RMS = ((hesaplanacakData[1].Max() - hesaplanacakData[1].Min()) * L1_RMS); // kA cinsinden
+            double I1_RMS = (((hesaplanacakData[1].Max() - hesaplanacakData[1].Min()) / (2*Math.Sqrt(2))) * 52453); // kA cinsinden
             tb_I1_rms.Text = I1_RMS.ToString("#,##0.000") + " kA";
                     
             // I1_peak hesapla
             double I1_peak = 0;
             if (hesaplanacakData[1].Max() >= Math.Abs(hesaplanacakData[1].Min()))
-                I1_peak = (hesaplanacakData[1].Max() * L1_PEAK); // kA cinsinden
+                I1_peak = (hesaplanacakData[1].Max() * 52453 * Math.Sqrt(2)); // kA cinsinden
             else
-                I1_peak = (hesaplanacakData[1].Min() * L1_PEAK); // kA cinsinden
+                I1_peak = (hesaplanacakData[1].Min() * 52453 * Math.Sqrt(2)); // kA cinsinden
             I1_peak = Math.Abs(I1_peak);
             tb_I1_peak.Text = I1_peak.ToString("#,##0.000") + " kA";
 
@@ -631,7 +631,7 @@ namespace grafikdeneme
             tb_V2_rms.Text = V2_RMS.ToString("#,##0.000");
 
             // I2_RMS hesapla
-            double I2_RMS = ((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) * L2_RMS); // kA cinsinden
+            double I2_RMS = (((hesaplanacakData[3].Max() - hesaplanacakData[3].Min()) / (2 * Math.Sqrt(2))) * L2_RMS); // kA cinsinden
             tb_I2_rms.Text = I2_RMS.ToString("#,##0.000") + " kA";
 
             // I2_peak hesapla
@@ -655,7 +655,7 @@ namespace grafikdeneme
             tb_V3_rms.Text = V3_RMS.ToString("#,##0.000");
 
             // I3_RMS hesapla
-            double I3_RMS = ((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) * L3_RMS); // kA cinsinden
+            double I3_RMS = (((hesaplanacakData[5].Max() - hesaplanacakData[5].Min()) / (2 * Math.Sqrt(2))) * L3_RMS); // kA cinsinden
             tb_I3_rms.Text = I3_RMS.ToString("#,##0.000") + " kA";
 
             // I3_peak hesapla
@@ -1364,7 +1364,7 @@ namespace grafikdeneme
             Hesaplamalar();
 
         }
-
+        
     }
 }
 
