@@ -93,6 +93,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="LOGO.png" />
+    <Content Include="parameters.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="PortSettings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

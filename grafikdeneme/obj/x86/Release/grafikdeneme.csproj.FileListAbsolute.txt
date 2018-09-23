@@ -29,3 +29,4 @@ C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.pdb
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\CalibrationParams.txt
 C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\obj\x86\Release\grafikdeneme.LVT.resources
+C:\Users\ertan\Documents\GitHub\Kazan\grafikdeneme\bin\Release\parameters.txt
