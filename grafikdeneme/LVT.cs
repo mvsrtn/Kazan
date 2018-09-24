@@ -131,87 +131,280 @@ namespace grafikdeneme
             fileList[3] = baseName + "A2.csv";
             fileList[4] = baseName + "V3.csv";
             fileList[5] = baseName + "A3.csv";
+            
+            double maxV = double.MinValue;
+            double minV = double.MaxValue;
+            double maxA = double.MinValue;
+            double minA = double.MaxValue;
 
             //V1
+            chart_V1.Series[0].Points.Clear();
             ReadData(fileList[0], out ch_clock[0], out ch_size[0], out V1_Data);
             for (int ii = 0; ii <V1_Data.Count; ii++)
             {
                 chart_V1.Series[0].Points.AddXY(ii, V1_Data[ii]);
+            }
+            foreach (double type in V1_Data)
+            {
+                if (type > maxV)
+                {
+                    maxV = type;
+                }
+            }
+            foreach (double type in V1_Data)
+            {
+                if (type < minV)
+                {
+                    minV = type;
+                }
             }
             chart_V1.Series[0].Color = Color.Blue;
             chart_V1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_V1.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_V1.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_V1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_V1.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_V1.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_V1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+            
             //A1
+            chart_A1.Series[0].Points.Clear();
             ReadData(fileList[1], out ch_clock[1], out ch_size[1], out A1_Data);
             for (int ii = 0; ii < A1_Data.Count; ii++)
             {
                 chart_A1.Series[0].Points.AddXY(ii, A1_Data[ii]);
+            }
+            foreach (double type in A1_Data)
+            {
+                if (type > maxA)
+                {
+                    maxA = type;
+                }
+            }
+            foreach (double type in A1_Data)
+            {
+                if (type < minA)
+                {
+                    minA = type;
+                }
             }
             chart_A1.Series[0].Color = Color.Red;
             chart_A1.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_A1.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_A1.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_A1.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_A1.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_A1.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_A1.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
             //V2
+            chart_V2.Series[0].Points.Clear();
             ReadData(fileList[2], out ch_clock[2], out ch_size[2], out V2_Data);
             for (int ii = 0; ii < V2_Data.Count; ii++)
             {
                 chart_V2.Series[0].Points.AddXY(ii, V2_Data[ii]);
+            }
+            foreach (double type in V2_Data)
+            {
+                if (type > maxV)
+                {
+                    maxV = type;
+                }
+            }
+            foreach (double type in V2_Data)
+            {
+                if (type < minV)
+                {
+                    minV = type;
+                }
             }
             chart_V2.Series[0].Color = Color.Green;
             chart_V2.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_V2.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_V2.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_V2.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_V2.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_V2.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_V2.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
             //A2
+            chart_A2.Series[0].Points.Clear();
             ReadData(fileList[3], out ch_clock[3], out ch_size[3], out A2_Data);
             for (int ii = 0; ii < A2_Data.Count; ii++)
             {
                 chart_A2.Series[0].Points.AddXY(ii, A2_Data[ii]);
+            }
+            foreach (double type in A2_Data)
+            {
+                if (type > maxA)
+                {
+                    maxA = type;
+                }
+            }
+            foreach (double type in A2_Data)
+            {
+                if (type < minA)
+                {
+                    minA = type;
+                }
             }
             chart_A2.Series[0].Color = Color.Magenta;
             chart_A2.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_A2.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_A2.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_A2.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_A2.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_A2.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_A2.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
             //V3
+            chart_V3.Series[0].Points.Clear();
             ReadData(fileList[4], out ch_clock[4], out ch_size[4], out V3_Data);
             for (int ii = 0; ii < V3_Data.Count; ii++)
             {
                 chart_V3.Series[0].Points.AddXY(ii, V3_Data[ii]);
+            }
+            foreach (double type in V3_Data)
+            {
+                if (type > maxV)
+                {
+                    maxV = type;
+                }
+            }
+            foreach (double type in V3_Data)
+            {
+                if (type < minV)
+                {
+                    minV = type;
+                }
             }
             chart_V3.Series[0].Color = Color.Orange;
             chart_V3.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_V3.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_V3.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_V3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_V3.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_V3.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_V3.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+
             //A3
+            chart_A3.Series[0].Points.Clear();
             ReadData(fileList[5], out ch_clock[5], out ch_size[5], out A3_Data);
             for (int ii = 0; ii < A3_Data.Count; ii++)
             {
                 chart_A3.Series[0].Points.AddXY(ii, A3_Data[ii]);
+            }
+            foreach (double type in A3_Data)
+            {
+                if (type > maxA)
+                {
+                    maxA = type;
+                }
+            }
+            foreach (double type in A3_Data)
+            {
+                if (type < minA)
+                {
+                    minA = type;
+                }
             }
             chart_A3.Series[0].Color = Color.DarkBlue;
             chart_A3.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
             chart_A3.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
             chart_A3.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
             chart_A3.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
-            chart_A3.ChartAreas[0].AxisX.MinorGrid.Enabled = true;
+            chart_A3.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
             chart_A3.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
 
-            //chartMain.Refresh();
+            //Axisleri ayarla
+            double ucdeger = 0;
+            double V_AdimAraligi = 0;
+            if ( Math.Abs(maxV) > Math.Abs(minV) )
+            {
+                ucdeger = Math.Abs(maxV);
+            }
+            else
+            {
+                ucdeger = Math.Abs(minV);
+            }
+            V_AdimAraligi = Math.Ceiling (ucdeger / 30) * 10;
+            chart_V1.ChartAreas[0].AxisY.Maximum = V_AdimAraligi * 3;
+            chart_V1.ChartAreas[0].AxisY.Minimum = V_AdimAraligi * (-3);
+            chart_V1.ChartAreas[0].AxisY.Interval = V_AdimAraligi;
+            chart_V2.ChartAreas[0].AxisY.Maximum = V_AdimAraligi * 3;
+            chart_V2.ChartAreas[0].AxisY.Minimum = V_AdimAraligi * (-3);
+            chart_V2.ChartAreas[0].AxisY.Interval = V_AdimAraligi;
+            chart_V3.ChartAreas[0].AxisY.Maximum = V_AdimAraligi * 3;
+            chart_V3.ChartAreas[0].AxisY.Minimum = V_AdimAraligi * (-3);
+            chart_V3.ChartAreas[0].AxisY.Interval = V_AdimAraligi;
+
+            double A_AdimAraligi = 0;
+            if (Math.Abs(maxA) > Math.Abs(minA))
+            {
+                ucdeger = Math.Abs(maxA);
+            }
+            else
+            {
+                ucdeger = Math.Abs(minA);
+            }
+            A_AdimAraligi = Math.Ceiling(ucdeger*10 / 3) / 10;
+            chart_A1.ChartAreas[0].AxisY.Maximum = A_AdimAraligi * 3;
+            chart_A1.ChartAreas[0].AxisY.Minimum = A_AdimAraligi * (-3);
+            chart_A1.ChartAreas[0].AxisY.Interval = A_AdimAraligi;
+            chart_A2.ChartAreas[0].AxisY.Maximum = A_AdimAraligi * 3;
+            chart_A2.ChartAreas[0].AxisY.Minimum = A_AdimAraligi * (-3);
+            chart_A2.ChartAreas[0].AxisY.Interval = A_AdimAraligi;
+            chart_A3.ChartAreas[0].AxisY.Maximum = A_AdimAraligi * 3;
+            chart_A3.ChartAreas[0].AxisY.Minimum = A_AdimAraligi * (-3);
+            chart_A3.ChartAreas[0].AxisY.Interval = A_AdimAraligi;
+
+            double ms_AdimAraligi = 0;
+            double temp = 0;
+            chart_V1.ChartAreas[0].AxisX.Minimum = 0;
+            chart_V1.ChartAreas[0].AxisX.Maximum = V1_Data.Count;
+            temp = Math.Floor(V1_Data.Count * ch_clock[0]/10);
+            ms_AdimAraligi = temp/ch_clock[0];
+            chart_V1.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_V2.ChartAreas[0].AxisX.Minimum = 0;
+            chart_V2.ChartAreas[0].AxisX.Maximum = V2_Data.Count;
+            temp = Math.Floor(V2_Data.Count * ch_clock[2] / 10);
+            ms_AdimAraligi = temp / ch_clock[2];
+            chart_V2.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_V3.ChartAreas[0].AxisX.Minimum = 0;
+            chart_V3.ChartAreas[0].AxisX.Maximum = V3_Data.Count;
+            temp = Math.Floor(V3_Data.Count * ch_clock[4] / 10);
+            ms_AdimAraligi = temp / ch_clock[4];
+            chart_V3.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A1.ChartAreas[0].AxisX.Minimum = 0;
+            chart_A1.ChartAreas[0].AxisX.Maximum = A1_Data.Count;
+            temp = Math.Floor(A1_Data.Count * ch_clock[1] / 10);
+            ms_AdimAraligi = temp / ch_clock[1];
+            chart_A1.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A2.ChartAreas[0].AxisX.Minimum = 0;
+            chart_A2.ChartAreas[0].AxisX.Maximum = A2_Data.Count;
+            temp = Math.Floor(A2_Data.Count * ch_clock[3] / 10);
+            ms_AdimAraligi = temp / ch_clock[3];
+            chart_A2.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A3.ChartAreas[0].AxisX.Minimum = 0;
+            chart_A3.ChartAreas[0].AxisX.Maximum = A3_Data.Count;
+            temp = Math.Floor(A3_Data.Count * ch_clock[5] / 10);
+            ms_AdimAraligi = temp / ch_clock[5];
+            chart_A3.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+
+            //Refresh graphs
+            chart_V1.Refresh();
+            chart_A1.Refresh();
+            chart_V2.Refresh();
+            chart_A2.Refresh();
+            chart_V3.Refresh();
+            chart_A3.Refresh();
+
+            //Skalaları yaz
+            Tb_A_div.Text = Convert.ToString(A_AdimAraligi);
+            Tb_v_div.Text = Convert.ToString(V_AdimAraligi);
+            Tb_ms_div.Text = Convert.ToString(ms_AdimAraligi*ch_clock[0]);
+
+            //hesaplamalar
+            Hesaplamalar();
+
+            //limitler
+            GraphStart.Text = "0";
+
         }
 
         private void ReadData(string path, out double ch_clock, out UInt16 ch_size, out List<double> data)
@@ -274,6 +467,92 @@ namespace grafikdeneme
             L2_PEAK = L2_PEAK_params[Cb_AkimSkala.SelectedIndex];
             L3_PEAK = L3_PEAK_params[Cb_AkimSkala.SelectedIndex];
 
+            Hesaplamalar();
         }
+
+        private void RSMHesapla(List<double> data, out double RMS, out double PEAK)
+        {
+            RMS = 0;
+            PEAK = 0;
+
+            if (data.Count == 0)
+                return;
+
+            double maxValue = double.MinValue;
+            foreach (double temp in data)
+            {
+                if (temp > maxValue)
+                {
+                    maxValue = temp;
+                }
+            }
+            double minValue = double.MaxValue;
+            foreach (double temp in data)
+            {
+                if (temp < minValue)
+                {
+                    minValue = temp;
+                }
+            }
+
+            RMS = ((maxValue - minValue));// / (2 * Math.Sqrt(2)));
+            if (maxValue > Math.Abs(minValue))
+            {
+                PEAK = maxValue;
+            }
+            else
+            {
+                PEAK = minValue;
+            }
+        }
+
+        private void Hesaplamalar()
+        {
+        double V1_RMS;
+        double V1_PEAK;
+        RSMHesapla(V1_Data, out V1_RMS, out V1_PEAK);
+        V1_RMS = V1_RMS* L1_RMS;
+        V1_PEAK = V1_PEAK* L1_PEAK;
+        tb_V1_rms.Text = V1_RMS.ToString("#,##0.000");
+
+        double I1_RMS;
+        double I1_PEAK;
+        RSMHesapla(A1_Data, out I1_RMS, out I1_PEAK);
+        I1_RMS = I1_RMS* L1_RMS;
+        I1_PEAK = I1_PEAK* L1_PEAK;
+        tb_I1_rms.Text = I1_RMS.ToString("#,##0.000");
+        tb_I1_peak.Text = I1_PEAK.ToString("#,##0.000");
+
+        double V2_RMS;
+        double V2_PEAK;
+        RSMHesapla(V2_Data, out V2_RMS, out V2_PEAK);
+        V2_RMS = V2_RMS* L2_RMS;
+        V2_PEAK = V2_PEAK* L2_PEAK;
+        tb_V2_rms.Text = V2_RMS.ToString("#,##0.000");
+
+        double I2_RMS;
+        double I2_PEAK;
+        RSMHesapla(A2_Data, out I2_RMS, out I2_PEAK);
+        I2_RMS = I2_RMS* L2_RMS;
+        I2_PEAK = I2_PEAK* L2_PEAK;
+        tb_I2_rms.Text = I2_RMS.ToString("#,##0.000");
+        tb_I2_peak.Text = I2_PEAK.ToString("#,##0.000");
+
+        double V3_RMS;
+        double V3_PEAK;
+        RSMHesapla(V3_Data, out V3_RMS, out V3_PEAK);
+        V3_RMS = V3_RMS* L3_RMS;
+        V3_PEAK = V3_PEAK* L3_PEAK;
+        tb_V3_rms.Text = V3_RMS.ToString("#,##0.000");
+
+        double I3_RMS;
+        double I3_PEAK;
+        RSMHesapla(A3_Data, out I3_RMS, out I3_PEAK);
+        I3_RMS = I3_RMS* L3_RMS;
+        I3_PEAK = I3_PEAK* L3_PEAK;
+        tb_I3_rms.Text = I3_RMS.ToString("#,##0.000");
+        tb_I3_peak.Text = I3_PEAK.ToString("#,##0.000");
+        }
+
     }
 }

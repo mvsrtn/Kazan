@@ -99,16 +99,16 @@ namespace grafikdeneme
             this.Cb_AkimSkala = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Tb_ilk_ms = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.GraphStart = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Tb_son_ms = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Tb_olcum_araligi = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.açToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,6 +203,8 @@ namespace grafikdeneme
             this.chart_V1.BackImageTransparentColor = System.Drawing.Color.Transparent;
             this.chart_V1.BackSecondaryColor = System.Drawing.Color.Transparent;
             this.chart_V1.BorderlineColor = System.Drawing.Color.Transparent;
+            chartArea1.AxisX.IsMarginVisible = false;
+            chartArea1.AxisX.ScaleBreakStyle.Enabled = true;
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.Name = "ChartArea1";
@@ -851,6 +853,7 @@ namespace grafikdeneme
             this.Cb_AkimSkala.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cb_AkimSkala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cb_AkimSkala.FormattingEnabled = true;
             this.Cb_AkimSkala.Location = new System.Drawing.Point(3, 30);
             this.Cb_AkimSkala.Name = "Cb_AkimSkala";
@@ -867,7 +870,7 @@ namespace grafikdeneme
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Controls.Add(this.label17, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.textBox1, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.Tb_ilk_ms, 0, 1);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(478, 186);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
@@ -889,16 +892,16 @@ namespace grafikdeneme
             this.label17.Text = "İLK NOKTA (ms)";
             this.label17.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // textBox1
+            // Tb_ilk_ms
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Tb_ilk_ms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(3, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(67, 20);
-            this.textBox1.TabIndex = 1;
+            this.Tb_ilk_ms.BackColor = System.Drawing.SystemColors.Window;
+            this.Tb_ilk_ms.Location = new System.Drawing.Point(3, 30);
+            this.Tb_ilk_ms.Name = "Tb_ilk_ms";
+            this.Tb_ilk_ms.Size = new System.Drawing.Size(67, 20);
+            this.Tb_ilk_ms.TabIndex = 1;
             // 
             // tableLayoutPanel10
             // 
@@ -909,7 +912,7 @@ namespace grafikdeneme
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Controls.Add(this.label18, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.textBox2, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.GraphStart, 0, 1);
             this.tableLayoutPanel10.Location = new System.Drawing.Point(478, 125);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
@@ -931,16 +934,16 @@ namespace grafikdeneme
             this.label18.Text = "GRAFİK BAŞLANGIÇ (ms)";
             this.label18.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // textBox2
+            // GraphStart
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.GraphStart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Location = new System.Drawing.Point(3, 30);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(67, 20);
-            this.textBox2.TabIndex = 1;
+            this.GraphStart.BackColor = System.Drawing.SystemColors.Window;
+            this.GraphStart.Location = new System.Drawing.Point(3, 30);
+            this.GraphStart.Name = "GraphStart";
+            this.GraphStart.Size = new System.Drawing.Size(67, 20);
+            this.GraphStart.TabIndex = 1;
             // 
             // tableLayoutPanel11
             // 
@@ -951,7 +954,7 @@ namespace grafikdeneme
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel11.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.textBox3, 0, 1);
+            this.tableLayoutPanel11.Controls.Add(this.Tb_son_ms, 0, 1);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(478, 247);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
@@ -973,16 +976,16 @@ namespace grafikdeneme
             this.label19.Text = "SON NOKTA (ms)";
             this.label19.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // textBox3
+            // Tb_son_ms
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Tb_son_ms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Location = new System.Drawing.Point(3, 30);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(67, 20);
-            this.textBox3.TabIndex = 1;
+            this.Tb_son_ms.BackColor = System.Drawing.SystemColors.Window;
+            this.Tb_son_ms.Location = new System.Drawing.Point(3, 30);
+            this.Tb_son_ms.Name = "Tb_son_ms";
+            this.Tb_son_ms.Size = new System.Drawing.Size(67, 20);
+            this.Tb_son_ms.TabIndex = 1;
             // 
             // tableLayoutPanel14
             // 
@@ -993,7 +996,7 @@ namespace grafikdeneme
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel14.Controls.Add(this.label20, 0, 0);
-            this.tableLayoutPanel14.Controls.Add(this.textBox4, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.Tb_olcum_araligi, 0, 1);
             this.tableLayoutPanel14.Location = new System.Drawing.Point(478, 308);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 2;
@@ -1015,17 +1018,17 @@ namespace grafikdeneme
             this.label20.Text = "ÖLÇÜM ARALIĞI (ms)";
             this.label20.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // textBox4
+            // Tb_olcum_araligi
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.Tb_olcum_araligi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(3, 33);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(67, 20);
-            this.textBox4.TabIndex = 1;
+            this.Tb_olcum_araligi.BackColor = System.Drawing.SystemColors.Window;
+            this.Tb_olcum_araligi.Enabled = false;
+            this.Tb_olcum_araligi.Location = new System.Drawing.Point(3, 33);
+            this.Tb_olcum_araligi.Name = "Tb_olcum_araligi";
+            this.Tb_olcum_araligi.Size = new System.Drawing.Size(67, 20);
+            this.Tb_olcum_araligi.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -1157,16 +1160,16 @@ namespace grafikdeneme
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Tb_ilk_ms;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox GraphStart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Tb_son_ms;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Tb_olcum_araligi;
 
 
         public double[] L1_RMS_params = new double[10];
