@@ -119,7 +119,7 @@ namespace grafikdeneme
             }
             
             // read Data from file
-            double[] ch_clock = new double[6];
+            //double[] ch_clock = new double[6];
             UInt16[] ch_size = new UInt16[6];
 
             string[] fileList = new string[6];
@@ -140,9 +140,9 @@ namespace grafikdeneme
             //V1
             chart_V1.Series[0].Points.Clear();
             ReadData(fileList[0], out ch_clock[0], out ch_size[0], out V1_Data);
-            for (int ii = 0; ii <V1_Data.Count; ii++)
+            for (int ii = 0; ii < V1_Data.Count; ii++)
             {
-                chart_V1.Series[0].Points.AddXY(ii, V1_Data[ii]);
+                chart_V1.Series[0].Points.AddXY(ii * ch_clock[0]*10/V1_Data.Count, V1_Data[ii]);
             }
             foreach (double type in V1_Data)
             {
@@ -171,7 +171,7 @@ namespace grafikdeneme
             ReadData(fileList[1], out ch_clock[1], out ch_size[1], out A1_Data);
             for (int ii = 0; ii < A1_Data.Count; ii++)
             {
-                chart_A1.Series[0].Points.AddXY(ii, A1_Data[ii]);
+                chart_A1.Series[0].Points.AddXY(ii * ch_clock[1] * 10 / A1_Data.Count, A1_Data[ii]);
             }
             foreach (double type in A1_Data)
             {
@@ -200,7 +200,7 @@ namespace grafikdeneme
             ReadData(fileList[2], out ch_clock[2], out ch_size[2], out V2_Data);
             for (int ii = 0; ii < V2_Data.Count; ii++)
             {
-                chart_V2.Series[0].Points.AddXY(ii, V2_Data[ii]);
+                chart_V2.Series[0].Points.AddXY(ii * ch_clock[2] * 10 / V2_Data.Count, V2_Data[ii]);
             }
             foreach (double type in V2_Data)
             {
@@ -229,7 +229,7 @@ namespace grafikdeneme
             ReadData(fileList[3], out ch_clock[3], out ch_size[3], out A2_Data);
             for (int ii = 0; ii < A2_Data.Count; ii++)
             {
-                chart_A2.Series[0].Points.AddXY(ii, A2_Data[ii]);
+                chart_A2.Series[0].Points.AddXY(ii * ch_clock[3] * 10 / A2_Data.Count, A2_Data[ii]);
             }
             foreach (double type in A2_Data)
             {
@@ -258,7 +258,7 @@ namespace grafikdeneme
             ReadData(fileList[4], out ch_clock[4], out ch_size[4], out V3_Data);
             for (int ii = 0; ii < V3_Data.Count; ii++)
             {
-                chart_V3.Series[0].Points.AddXY(ii, V3_Data[ii]);
+                chart_V3.Series[0].Points.AddXY(ii * ch_clock[4] * 10 / V3_Data.Count, V3_Data[ii]);
             }
             foreach (double type in V3_Data)
             {
@@ -287,7 +287,7 @@ namespace grafikdeneme
             ReadData(fileList[5], out ch_clock[5], out ch_size[5], out A3_Data);
             for (int ii = 0; ii < A3_Data.Count; ii++)
             {
-                chart_A3.Series[0].Points.AddXY(ii, A3_Data[ii]);
+                chart_A3.Series[0].Points.AddXY(ii * ch_clock[5] * 10 / A3_Data.Count, A3_Data[ii]);
             }
             foreach (double type in A3_Data)
             {
@@ -352,39 +352,25 @@ namespace grafikdeneme
             chart_A3.ChartAreas[0].AxisY.Maximum = A_AdimAraligi * 3;
             chart_A3.ChartAreas[0].AxisY.Minimum = A_AdimAraligi * (-3);
             chart_A3.ChartAreas[0].AxisY.Interval = A_AdimAraligi;
-
-            double ms_AdimAraligi = 0;
-            double temp = 0;
+            
             chart_V1.ChartAreas[0].AxisX.Minimum = 0;
-            chart_V1.ChartAreas[0].AxisX.Maximum = V1_Data.Count;
-            temp = Math.Floor(V1_Data.Count * ch_clock[0]/10);
-            ms_AdimAraligi = temp/ch_clock[0];
-            chart_V1.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_V1.ChartAreas[0].AxisX.Maximum = ch_clock[0]*10;
+            chart_V1.ChartAreas[0].AxisX.Interval = ch_clock[0];
             chart_V2.ChartAreas[0].AxisX.Minimum = 0;
-            chart_V2.ChartAreas[0].AxisX.Maximum = V2_Data.Count;
-            temp = Math.Floor(V2_Data.Count * ch_clock[2] / 10);
-            ms_AdimAraligi = temp / ch_clock[2];
-            chart_V2.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_V2.ChartAreas[0].AxisX.Maximum = ch_clock[1] * 10;
+            chart_V2.ChartAreas[0].AxisX.Interval = ch_clock[1];
             chart_V3.ChartAreas[0].AxisX.Minimum = 0;
-            chart_V3.ChartAreas[0].AxisX.Maximum = V3_Data.Count;
-            temp = Math.Floor(V3_Data.Count * ch_clock[4] / 10);
-            ms_AdimAraligi = temp / ch_clock[4];
-            chart_V3.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_V3.ChartAreas[0].AxisX.Maximum = ch_clock[2] * 10;
+            chart_V3.ChartAreas[0].AxisX.Interval = ch_clock[2];
             chart_A1.ChartAreas[0].AxisX.Minimum = 0;
-            chart_A1.ChartAreas[0].AxisX.Maximum = A1_Data.Count;
-            temp = Math.Floor(A1_Data.Count * ch_clock[1] / 10);
-            ms_AdimAraligi = temp / ch_clock[1];
-            chart_A1.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A1.ChartAreas[0].AxisX.Maximum = ch_clock[3] * 10;
+            chart_A1.ChartAreas[0].AxisX.Interval = ch_clock[3];
             chart_A2.ChartAreas[0].AxisX.Minimum = 0;
-            chart_A2.ChartAreas[0].AxisX.Maximum = A2_Data.Count;
-            temp = Math.Floor(A2_Data.Count * ch_clock[3] / 10);
-            ms_AdimAraligi = temp / ch_clock[3];
-            chart_A2.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A2.ChartAreas[0].AxisX.Maximum = ch_clock[4] * 10;
+            chart_A2.ChartAreas[0].AxisX.Interval = ch_clock[4];
             chart_A3.ChartAreas[0].AxisX.Minimum = 0;
-            chart_A3.ChartAreas[0].AxisX.Maximum = A3_Data.Count;
-            temp = Math.Floor(A3_Data.Count * ch_clock[5] / 10);
-            ms_AdimAraligi = temp / ch_clock[5];
-            chart_A3.ChartAreas[0].AxisX.Interval = ms_AdimAraligi;
+            chart_A3.ChartAreas[0].AxisX.Maximum = ch_clock[5] * 10;
+            chart_A3.ChartAreas[0].AxisX.Interval = ch_clock[5];
 
             //Refresh graphs
             chart_V1.Refresh();
@@ -397,7 +383,7 @@ namespace grafikdeneme
             //Skalaları yaz
             Tb_A_div.Text = Convert.ToString(A_AdimAraligi);
             Tb_v_div.Text = Convert.ToString(V_AdimAraligi);
-            Tb_ms_div.Text = Convert.ToString(ms_AdimAraligi*ch_clock[0]);
+            Tb_ms_div.Text = Convert.ToString(ch_clock[0]);
 
             //hesaplamalar
             Hesaplamalar();
@@ -437,7 +423,7 @@ namespace grafikdeneme
                     if (temp2[0] == "CLOCK")
                     {
                         string temp_s = Regex.Replace(temp2[1], "[.,]", separator);
-                        ch_clock = Convert.ToDouble(temp_s);
+                        ch_clock = Convert.ToDouble(temp_s)*1000;
                     }
                     if (temp2[0] == "SIZE")
                     {
@@ -554,5 +540,263 @@ namespace grafikdeneme
         tb_I3_peak.Text = I3_PEAK.ToString("#,##0.000");
         }
 
+        private void AddCursor_L1(object sender, MouseEventArgs e)
+        {
+            if (L1_zoomed == true)
+            {
+                L1_zoomed = false;
+                chart_V1.Series[0].Points.Clear();
+                for (int ii = 0; ii < V1_Data.Count; ii++)
+                {
+                    chart_V1.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V1_Data.Count, V1_Data[ii]);
+                }
+                chart_V1.ChartAreas[0].AxisX.Minimum = 0;
+                chart_V1.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                chart_A1.Series[0].Points.Clear();
+                for (int ii = 0; ii < A1_Data.Count; ii++)
+                {
+                    chart_A1.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A1_Data.Count, A1_Data[ii]);
+                }
+                chart_A1.ChartAreas[0].AxisX.Minimum = 0;
+                chart_A1.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                return;
+            }
+            Point mousePoint = new Point(e.X, e.Y);
+            if (L1_cursor_flag == false)
+            {
+                chart_V1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                position = chart_V1.ChartAreas[0].CursorX.Position;
+                chart_V1.ChartAreas[0].CursorX.SetSelectionPosition(position,position);
+                chart_A1.ChartAreas[0].CursorX.SetSelectionPosition(position, position);
+                L1_cursor_flag = true;
+                return;
+            }
+            if (L1_cursor_flag == true)
+            {
+                chart_V1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                double pos = chart_V1.ChartAreas[0].CursorX.Position;
+                chart_V1.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                chart_A1.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                L1_cursor_flag = false;
+                if (position < pos)
+                {
+                    Tb_ilk_ms.Text = Convert.ToString(position);
+                    Tb_son_ms.Text = Convert.ToString(pos);
+                }
+                else
+                {
+                    Tb_son_ms.Text = Convert.ToString(position);
+                    Tb_ilk_ms.Text = Convert.ToString(pos);
+                }
+                Zoom_L1();
+                return;
+            }         
+        }
+
+        private void Zoom_L1()
+        {
+            L1_zoomed = true;
+            chart_V1.Series[0].Points.Clear();
+            chart_A1.Series[0].Points.Clear();
+            double stepsize = ch_clock[0] * 10 / V1_Data.Count;
+            Double ilkpoint = Convert.ToDouble(Tb_ilk_ms.Text) / stepsize;
+            double sonpoint = Convert.ToDouble(Tb_son_ms.Text) / stepsize;
+            
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_V1.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V1_Data.Count, V1_Data[Convert.ToInt16(ii)]);
+            }
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_A1.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A1_Data.Count, A1_Data[Convert.ToInt16(ii)]);
+            }
+
+            chart_V1.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_V1.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+            chart_A1.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_A1.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+        }
+
+        private void AddCursor_L2(object sender, MouseEventArgs e)
+        {
+            if (L2_zoomed == true)
+            {
+                L2_zoomed = false;
+                chart_V2.Series[0].Points.Clear();
+                for (int ii = 0; ii < V2_Data.Count; ii++)
+                {
+                    chart_V2.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V2_Data.Count, V2_Data[ii]);
+                }
+                chart_V2.ChartAreas[0].AxisX.Minimum = 0;
+                chart_V2.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                chart_A2.Series[0].Points.Clear();
+                for (int ii = 0; ii < A2_Data.Count; ii++)
+                {
+                    chart_A2.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A2_Data.Count, A2_Data[ii]);
+                }
+                chart_A2.ChartAreas[0].AxisX.Minimum = 0;
+                chart_A2.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                return;
+            }
+            Point mousePoint = new Point(e.X, e.Y);
+            if (L2_cursor_flag == false)
+            {
+                chart_V2.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A2.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                position = chart_V2.ChartAreas[0].CursorX.Position;
+                chart_V2.ChartAreas[0].CursorX.SetSelectionPosition(position, position);
+                chart_A2.ChartAreas[0].CursorX.SetSelectionPosition(position, position);
+                L2_cursor_flag = true;
+                return;
+            }
+            if (L2_cursor_flag == true)
+            {
+                chart_V2.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A2.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                double pos = chart_V2.ChartAreas[0].CursorX.Position;
+                chart_V2.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                chart_A2.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                L2_cursor_flag = false;
+                if (position < pos)
+                {
+                    Tb_ilk_ms.Text = Convert.ToString(position);
+                    Tb_son_ms.Text = Convert.ToString(pos);
+                }
+                else
+                {
+                    Tb_son_ms.Text = Convert.ToString(position);
+                    Tb_ilk_ms.Text = Convert.ToString(pos);
+                }
+                Zoom_L2();
+                return;
+            }
+        }
+
+        private void Zoom_L2()
+        {
+            L2_zoomed = true;
+            chart_V2.Series[0].Points.Clear();
+            chart_A2.Series[0].Points.Clear();
+            double stepsize = ch_clock[0] * 10 / V2_Data.Count;
+            Double ilkpoint = Convert.ToDouble(Tb_ilk_ms.Text) / stepsize;
+            double sonpoint = Convert.ToDouble(Tb_son_ms.Text) / stepsize;
+
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_V2.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V2_Data.Count, V2_Data[Convert.ToInt16(ii)]);
+            }
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_A2.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A2_Data.Count, A2_Data[Convert.ToInt16(ii)]);
+            }
+
+            chart_V2.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_V2.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+            chart_A2.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_A2.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+        }
+
+        private void AddCursor_L3(object sender, MouseEventArgs e)
+        {
+            if (L3_zoomed == true)
+            {
+                L3_zoomed = false;
+                chart_V3.Series[0].Points.Clear();
+                for (int ii = 0; ii < V3_Data.Count; ii++)
+                {
+                    chart_V3.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V3_Data.Count, V3_Data[ii]);
+                }
+                chart_V3.ChartAreas[0].AxisX.Minimum = 0;
+                chart_V3.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                chart_A3.Series[0].Points.Clear();
+                for (int ii = 0; ii < A3_Data.Count; ii++)
+                {
+                    chart_A3.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A3_Data.Count, A3_Data[ii]);
+                }
+                chart_A3.ChartAreas[0].AxisX.Minimum = 0;
+                chart_A3.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+                return;
+            }
+            Point mousePoint = new Point(e.X, e.Y);
+            if (L3_cursor_flag == false)
+            {
+                chart_V3.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A3.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                position = chart_V3.ChartAreas[0].CursorX.Position;
+                chart_V3.ChartAreas[0].CursorX.SetSelectionPosition(position, position);
+                chart_A3.ChartAreas[0].CursorX.SetSelectionPosition(position, position);
+                L3_cursor_flag = true;
+                return;
+            }
+            if (L3_cursor_flag == true)
+            {
+                chart_V3.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                chart_A3.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, true);
+                double pos = chart_V3.ChartAreas[0].CursorX.Position;
+                chart_V3.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                chart_A3.ChartAreas[0].CursorX.SetSelectionPosition(position, pos);
+                L3_cursor_flag = false;
+                if (position < pos)
+                {
+                    Tb_ilk_ms.Text = Convert.ToString(position);
+                    Tb_son_ms.Text = Convert.ToString(pos);
+                }
+                else
+                {
+                    Tb_son_ms.Text = Convert.ToString(position);
+                    Tb_ilk_ms.Text = Convert.ToString(pos);
+                }
+                Zoom_L3();
+                return;
+            }
+        }
+
+        private void Zoom_L3()
+        {
+            L3_zoomed = true;
+            chart_V3.Series[0].Points.Clear();
+            chart_A3.Series[0].Points.Clear();
+            double stepsize = ch_clock[0] * 10 / V3_Data.Count;
+            Double ilkpoint = Convert.ToDouble(Tb_ilk_ms.Text) / stepsize;
+            double sonpoint = Convert.ToDouble(Tb_son_ms.Text) / stepsize;
+
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_V3.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / V3_Data.Count, V3_Data[Convert.ToInt16(ii)]);
+            }
+            for (double ii = ilkpoint; ii < sonpoint; ii++)
+            {
+                chart_A3.Series[0].Points.AddXY(ii * ch_clock[0] * 10 / A3_Data.Count, A3_Data[Convert.ToInt16(ii)]);
+            }
+
+            chart_V3.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_V3.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+            chart_A3.ChartAreas[0].AxisX.Minimum = ilkpoint * stepsize;
+            chart_A3.ChartAreas[0].AxisX.Maximum = sonpoint * stepsize;
+        }
+
+        private void OlcumAraligiHesapla(object sender, EventArgs e)
+        {
+            if ((Tb_son_ms.Text == "") || (Tb_ilk_ms.Text == ""))
+                return;
+            Tb_olcum_araligi.Text = Convert.ToString(Convert.ToDouble(Tb_son_ms.Text)-Convert.ToDouble(Tb_ilk_ms.Text));
+        }
+
+        private void I2t_hesapla(object sender, EventArgs e)
+        {
+            //L1
+            if ((Tb_olcum_araligi.Text != "") && (tb_I1_rms.Text != ""))
+                Tb_ch1_I2t.Text = Convert.ToString(Convert.ToDouble(tb_I1_rms.Text) * Convert.ToDouble(tb_I1_rms.Text) * Convert.ToDouble(Tb_olcum_araligi.Text));
+            
+            //L2
+            if ((Tb_olcum_araligi.Text != "") && (tb_I2_rms.Text != ""))
+                Tb_ch2_I2t.Text = Convert.ToString(Convert.ToDouble(tb_I2_rms.Text) * Convert.ToDouble(tb_I2_rms.Text) * Convert.ToDouble(Tb_olcum_araligi.Text));
+            //L1
+            if ((Tb_olcum_araligi.Text != "") && (tb_I3_rms.Text != ""))
+                Tb_ch3_I2t.Text = Convert.ToString(Convert.ToDouble(tb_I3_rms.Text) * Convert.ToDouble(tb_I3_rms.Text) * Convert.ToDouble(Tb_olcum_araligi.Text));
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace grafikdeneme
 {
@@ -222,6 +223,7 @@ namespace grafikdeneme
             this.chart_V1.Size = new System.Drawing.Size(381, 55);
             this.chart_V1.TabIndex = 2;
             this.chart_V1.Text = "chartV1";
+            this.chart_V1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L1);
             // 
             // chart_A1
             // 
@@ -248,6 +250,7 @@ namespace grafikdeneme
             this.chart_A1.Size = new System.Drawing.Size(381, 55);
             this.chart_A1.TabIndex = 2;
             this.chart_A1.Text = "chartA1";
+            this.chart_A1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L1);
             // 
             // chart_V2
             // 
@@ -274,6 +277,7 @@ namespace grafikdeneme
             this.chart_V2.Size = new System.Drawing.Size(381, 55);
             this.chart_V2.TabIndex = 2;
             this.chart_V2.Text = "chartV2";
+            this.chart_V2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L2);
             // 
             // chart_A2
             // 
@@ -300,6 +304,7 @@ namespace grafikdeneme
             this.chart_A2.Size = new System.Drawing.Size(381, 55);
             this.chart_A2.TabIndex = 2;
             this.chart_A2.Text = "chartA2";
+            this.chart_A2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L2);
             // 
             // chart_V3
             // 
@@ -326,6 +331,7 @@ namespace grafikdeneme
             this.chart_V3.Size = new System.Drawing.Size(381, 55);
             this.chart_V3.TabIndex = 2;
             this.chart_V3.Text = "chartV3";
+            this.chart_V3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L3);
             // 
             // chart_A3
             // 
@@ -352,6 +358,7 @@ namespace grafikdeneme
             this.chart_A3.Size = new System.Drawing.Size(381, 60);
             this.chart_A3.TabIndex = 2;
             this.chart_A3.Text = "chartA3";
+            this.chart_A3.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.AddCursor_L3);
             // 
             // tableLayoutPanel3
             // 
@@ -510,6 +517,7 @@ namespace grafikdeneme
             this.tb_I1_rms.Name = "tb_I1_rms";
             this.tb_I1_rms.Size = new System.Drawing.Size(41, 20);
             this.tb_I1_rms.TabIndex = 0;
+            this.tb_I1_rms.TextChanged += new System.EventHandler(this.I2t_hesapla);
             // 
             // Tb_ch1_I2t
             // 
@@ -597,6 +605,7 @@ namespace grafikdeneme
             this.tb_I2_rms.Name = "tb_I2_rms";
             this.tb_I2_rms.Size = new System.Drawing.Size(41, 20);
             this.tb_I2_rms.TabIndex = 0;
+            this.tb_I2_rms.TextChanged += new System.EventHandler(this.I2t_hesapla);
             // 
             // Tb_ch2_I2t
             // 
@@ -684,6 +693,7 @@ namespace grafikdeneme
             this.tb_I3_rms.Name = "tb_I3_rms";
             this.tb_I3_rms.Size = new System.Drawing.Size(41, 20);
             this.tb_I3_rms.TabIndex = 0;
+            this.tb_I3_rms.TextChanged += new System.EventHandler(this.I2t_hesapla);
             // 
             // Tb_ch3_I2t
             // 
@@ -902,6 +912,7 @@ namespace grafikdeneme
             this.Tb_ilk_ms.Name = "Tb_ilk_ms";
             this.Tb_ilk_ms.Size = new System.Drawing.Size(67, 20);
             this.Tb_ilk_ms.TabIndex = 1;
+            this.Tb_ilk_ms.TextChanged += new System.EventHandler(this.OlcumAraligiHesapla);
             // 
             // tableLayoutPanel10
             // 
@@ -986,6 +997,7 @@ namespace grafikdeneme
             this.Tb_son_ms.Name = "Tb_son_ms";
             this.Tb_son_ms.Size = new System.Drawing.Size(67, 20);
             this.Tb_son_ms.TabIndex = 1;
+            this.Tb_son_ms.TextChanged += new System.EventHandler(this.OlcumAraligiHesapla);
             // 
             // tableLayoutPanel14
             // 
@@ -1029,6 +1041,7 @@ namespace grafikdeneme
             this.Tb_olcum_araligi.Name = "Tb_olcum_araligi";
             this.Tb_olcum_araligi.Size = new System.Drawing.Size(67, 20);
             this.Tb_olcum_araligi.TabIndex = 1;
+            this.Tb_olcum_araligi.TextChanged += new System.EventHandler(this.I2t_hesapla);
             // 
             // menuStrip1
             // 
@@ -1190,5 +1203,13 @@ namespace grafikdeneme
         public List<double> A1_Data = new List<double>();
         public List<double> A2_Data = new List<double>();
         public List<double> A3_Data = new List<double>();
+        public bool L1_cursor_flag = false;
+        public bool L2_cursor_flag = false;
+        public bool L3_cursor_flag = false;
+        public double position = 0;
+        public double[] ch_clock = new double[6];
+        public bool L1_zoomed = false;
+        public bool L2_zoomed = false;
+        public bool L3_zoomed = false;
     }
 }
