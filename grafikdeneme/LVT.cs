@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -559,6 +560,11 @@ namespace grafikdeneme
                 }
                 chart_A1.ChartAreas[0].AxisX.Minimum = 0;
                 chart_A1.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+
+                chart_V1.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_A1.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_V1.ChartAreas[0].CursorX.Position = 0;
+                chart_A1.ChartAreas[0].CursorX.Position = 0;
                 return;
             }
             Point mousePoint = new Point(e.X, e.Y);
@@ -594,7 +600,7 @@ namespace grafikdeneme
                 return;
             }         
         }
-
+        
         private void Zoom_L1()
         {
             L1_zoomed = true;
@@ -638,6 +644,11 @@ namespace grafikdeneme
                 }
                 chart_A2.ChartAreas[0].AxisX.Minimum = 0;
                 chart_A2.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+
+                chart_V2.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_A2.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_V2.ChartAreas[0].CursorX.Position = 0;
+                chart_A2.ChartAreas[0].CursorX.Position = 0;
                 return;
             }
             Point mousePoint = new Point(e.X, e.Y);
@@ -717,6 +728,11 @@ namespace grafikdeneme
                 }
                 chart_A3.ChartAreas[0].AxisX.Minimum = 0;
                 chart_A3.ChartAreas[0].AxisX.Maximum = ch_clock[0] * 10;
+
+                chart_V3.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_A3.ChartAreas[0].CursorX.SetSelectionPosition(0, 0);
+                chart_V3.ChartAreas[0].CursorX.Position = 0;
+                chart_A3.ChartAreas[0].CursorX.Position = 0;
                 return;
             }
             Point mousePoint = new Point(e.X, e.Y);
@@ -782,6 +798,7 @@ namespace grafikdeneme
             if ((Tb_son_ms.Text == "") || (Tb_ilk_ms.Text == ""))
                 return;
             Tb_olcum_araligi.Text = Convert.ToString(Convert.ToDouble(Tb_son_ms.Text)-Convert.ToDouble(Tb_ilk_ms.Text));
+
         }
 
         private void I2t_hesapla(object sender, EventArgs e)
@@ -797,6 +814,20 @@ namespace grafikdeneme
             if ((Tb_olcum_araligi.Text != "") && (tb_I3_rms.Text != ""))
                 Tb_ch3_I2t.Text = Convert.ToString(Convert.ToDouble(tb_I3_rms.Text) * Convert.ToDouble(tb_I3_rms.Text) * Convert.ToDouble(Tb_olcum_araligi.Text));
 
+        }
+
+        private void kaydetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap printscreen = new Bitmap(this.Width, this.Height);
+            Graphics graphics = Graphics.FromImage(printscreen as Image);
+            graphics.CopyFromScreen(this.Bounds.X, this.Bounds.Y, 0, 0, this.Bounds.Size, CopyPixelOperation.SourceCopy);
+
+            SaveFileDialog save = new SaveFileDialog()
+            {
+                Filter = "Resim dosyaları (*.bmp)|*bmp"
+            };
+            save.ShowDialog();
+            printscreen.Save(save.FileName + ".bmp", ImageFormat.Bmp);
         }
     }
 }

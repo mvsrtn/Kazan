@@ -113,6 +113,7 @@ namespace grafikdeneme
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.açToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kaydetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_V1)).BeginInit();
@@ -141,7 +142,7 @@ namespace grafikdeneme
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.BackgroundImage = global::grafikdeneme.Properties.Resources.LOGO;
+            this.tableLayoutPanel1.BackgroundImage = global::LVT.Properties.Resources.LOGO;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -908,6 +909,7 @@ namespace grafikdeneme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tb_ilk_ms.BackColor = System.Drawing.SystemColors.Window;
+            this.Tb_ilk_ms.Enabled = false;
             this.Tb_ilk_ms.Location = new System.Drawing.Point(3, 30);
             this.Tb_ilk_ms.Name = "Tb_ilk_ms";
             this.Tb_ilk_ms.Size = new System.Drawing.Size(67, 20);
@@ -951,6 +953,7 @@ namespace grafikdeneme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GraphStart.BackColor = System.Drawing.SystemColors.Window;
+            this.GraphStart.Enabled = false;
             this.GraphStart.Location = new System.Drawing.Point(3, 30);
             this.GraphStart.Name = "GraphStart";
             this.GraphStart.Size = new System.Drawing.Size(67, 20);
@@ -993,6 +996,7 @@ namespace grafikdeneme
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Tb_son_ms.BackColor = System.Drawing.SystemColors.Window;
+            this.Tb_son_ms.Enabled = false;
             this.Tb_son_ms.Location = new System.Drawing.Point(3, 30);
             this.Tb_son_ms.Name = "Tb_son_ms";
             this.Tb_son_ms.Size = new System.Drawing.Size(67, 20);
@@ -1056,7 +1060,8 @@ namespace grafikdeneme
             // dosyaToolStripMenuItem
             // 
             this.dosyaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.açToolStripMenuItem});
+            this.açToolStripMenuItem,
+            this.kaydetToolStripMenuItem});
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
             this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.dosyaToolStripMenuItem.Text = "Dosya";
@@ -1064,9 +1069,16 @@ namespace grafikdeneme
             // açToolStripMenuItem
             // 
             this.açToolStripMenuItem.Name = "açToolStripMenuItem";
-            this.açToolStripMenuItem.Size = new System.Drawing.Size(88, 22);
+            this.açToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.açToolStripMenuItem.Text = "Aç";
             this.açToolStripMenuItem.Click += new System.EventHandler(this.AcToolStripMenuItem_Click);
+            // 
+            // kaydetToolStripMenuItem
+            // 
+            this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
+            this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kaydetToolStripMenuItem.Text = "Kaydet";
+            this.kaydetToolStripMenuItem.Click += new System.EventHandler(this.kaydetToolStripMenuItem_Click);
             // 
             // LVT
             // 
@@ -1211,5 +1223,6 @@ namespace grafikdeneme
         public bool L1_zoomed = false;
         public bool L2_zoomed = false;
         public bool L3_zoomed = false;
+        private System.Windows.Forms.ToolStripMenuItem kaydetToolStripMenuItem;
     }
 }
